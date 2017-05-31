@@ -262,7 +262,6 @@ public class PlayerAction : MonoBehaviour
             isGround = false;
         }
 
-
         //ClearFlagがtrueだったら
         ClearControl();
 
@@ -459,7 +458,10 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                 //カードセットフラグ
                     animationNum = (int)ANIMATION.MOVE;  //アニメーションの番号
                     animationName = "Move";              //アニメーションの名前
-                    particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
+                    }
                     break;
                 //jump
                 case CardManagement.CardType.Jump:
@@ -475,7 +477,10 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                     //カードセットフラグ
                     animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
                     animationName = "Attack";               //アニメーションの名前
-                    particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    }
                     break;
                 case CardManagement.CardType.Count:
                     audioSource.PlayOneShot(Attack);        //音
@@ -735,8 +740,8 @@ public class PlayerAction : MonoBehaviour
     {
         CanvasBord.SetActive(false);
         CanvasResetButton.SetActive(false);
-        CanvasSetButton.SetActive(false);
-        CanvasPlayButton.SetActive(false);
+        //CanvasSetButton.SetActive(false);
+        //CanvasPlayButton.SetActive(false);
         ImageBord.SetActive(false);
         ImageBord2.SetActive(false);
     }
@@ -766,6 +771,7 @@ public class PlayerAction : MonoBehaviour
     //----------------------------------------------------------------------
     void OverControl()
     {
+
         //OverFlagがtrueだったら
         if (OverFlag)
         {

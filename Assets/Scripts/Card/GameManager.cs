@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         
         flag.MoveInLerp();
 
-        Debug.Log(flag.Move_cnt);
+        //Debug.Log(flag.Move_cnt);
 
         switch (gameState)
         {
