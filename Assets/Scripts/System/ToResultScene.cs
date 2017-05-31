@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ToResultScene : MonoBehaviour {
 
@@ -57,6 +58,9 @@ public class ToResultScene : MonoBehaviour {
         player.GetComponent<PlayerAction>().enabled = false;
 
         Flag = true;
+
+        // クリア情報の書き込み
+        ClearSave();
     }
 
     public void ToOver(int waitTime = 0, OverType type = OverType.FALL)
@@ -79,4 +83,14 @@ public class ToResultScene : MonoBehaviour {
         //Invoke("ToOverScene", waitTime);
     }
 
+    void ClearSave()
+    {
+        StreamWriter sw;
+        FileInfo fi;
+        fi = new FileInfo(Application.dataPath + "/Resources/ClearData.csv");
+        sw = fi.AppendText();
+        sw.WriteLine(Application.loadedLevelName);
+        sw.Flush();
+        sw.Close();
+    }
 }

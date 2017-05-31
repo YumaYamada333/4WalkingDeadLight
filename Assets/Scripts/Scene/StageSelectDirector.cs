@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System;
 
 public class StageSelectDirector : MonoBehaviour {
 
@@ -57,6 +59,9 @@ public class StageSelectDirector : MonoBehaviour {
     [SerializeField]
     private GameObject m_ribbon;
 
+    [SerializeField]
+    private GameObject m_clearPrefab;
+
     private Vector2 dragVecOld;
 
     [SerializeField]
@@ -106,6 +111,8 @@ public class StageSelectDirector : MonoBehaviour {
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
+        // クリア情報の読み込み
+        LoadClear();
     }
 
     // Update is called once per frame
@@ -233,5 +240,24 @@ public class StageSelectDirector : MonoBehaviour {
     private void StageScene()
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadClear()
+    {
+        TextAsset csv = Resources.Load("ClearData") as TextAsset;
+        StringReader reader = new StringReader(csv.text);
+        while (reader.Peek() > -1)
+        {
+            string line = reader.ReadLine();
+            string[] values = line.Split(',');
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                GameObject clearObj = Instantiate(m_clearPrefab);
+                clearObj.gameObject.transform.parent =
+                    m_pamphlet[(int)Enum.Parse(typeof(SceneName), values[i]) - 1].gameObject.transform.FindChild("PamphletCanvas").transform;
+                clearObj.transform.localPosition =new Vector3(6.8f, 6.9f, 0.0f);
+            }
+        }
     }
 }

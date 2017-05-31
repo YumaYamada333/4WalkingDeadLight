@@ -384,24 +384,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 362003413}
---- !u!1 &380236760
+--- !u!1 &380236760 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1563632311199614, guid: 62ecae655c8c23b489dbd3db2c8ca797,
     type: 2}
   m_PrefabInternal: {fileID: 1809608496}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 380236762}
-  - component: {fileID: 380236761}
-  - component: {fileID: 380236763}
-  m_Layer: 0
-  m_Name: StageSelectDirector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &380236761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,21 +434,9 @@ MonoBehaviour:
       type: 2}
     nextScene: 10
   m_ribbon: {fileID: 1590000985}
-  stepSpd: 0.01
---- !u!4 &380236762
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4209494314826890, guid: 62ecae655c8c23b489dbd3db2c8ca797,
+  m_clearPrefab: {fileID: 1095684664569536, guid: bce489ca245c3cc4595d6b435426b81c,
     type: 2}
-  m_PrefabInternal: {fileID: 1809608496}
-  m_GameObject: {fileID: 380236760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  stepSpd: 0.01
 --- !u!114 &380236763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,7 +1587,6 @@ Prefab:
     - {fileID: 114574031853344708, guid: 62ecae655c8c23b489dbd3db2c8ca797, type: 2}
     - {fileID: 114663005504133168, guid: 62ecae655c8c23b489dbd3db2c8ca797, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 62ecae655c8c23b489dbd3db2c8ca797, type: 2}
-  m_RootGameObject: {fileID: 380236760}
   m_IsPrefabParent: 0
 --- !u!1 &1867333811
 GameObject:
