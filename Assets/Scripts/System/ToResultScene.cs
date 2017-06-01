@@ -85,12 +85,6 @@ public class ToResultScene : MonoBehaviour {
 
     void ClearSave()
     {
-        StreamWriter sw;
-        FileInfo fi;
-        fi = new FileInfo(Application.dataPath + "/Resources/ClearData.csv");
-        sw = fi.AppendText();
-        sw.WriteLine(Application.loadedLevelName);
-        sw.Flush();
-        sw.Close();
+        PlayerPrefs.SetInt(Application.loadedLevelName, 1);
     }
 }
