@@ -122,7 +122,7 @@ public class BlockRot : BlockAction
     {
         //時間を取得
         m_start_time = Time.time;
-        m_start_deg =     
+        //m_start_deg =     
     }
 
     public void Rot(ref GameObject obj)
