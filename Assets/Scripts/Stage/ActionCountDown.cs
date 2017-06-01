@@ -121,8 +121,7 @@ public class BlockRot : BlockAction
     public void Init(ref GameObject obj)
     {
         //時間を取得
-        m_start_time = Time.time;
-        m_start_deg =     
+        m_start_time = Time.time; 
     }
 
     public void Rot(ref GameObject obj)
