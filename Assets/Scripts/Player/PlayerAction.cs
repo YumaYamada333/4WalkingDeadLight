@@ -73,8 +73,6 @@ public class PlayerAction : MonoBehaviour
     public GameObject ImageBord;
     public GameObject ImageBord2;
     public GameObject CanvasResetButton;
-    public GameObject CanvasSetButton;
-    public GameObject CanvasPlayButton;
 
     //カメラのポジション
     Vector3 CameraPos;
@@ -144,8 +142,6 @@ public class PlayerAction : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
-        ImageBord = GameObject.Find("Imagebord");
-        ImageBord2 = GameObject.Find("Imagebord2");
         child = transform.FindChild("AttackColl").gameObject;
     }
 
@@ -692,8 +688,6 @@ public class PlayerAction : MonoBehaviour
     {
         CanvasBord.SetActive(false);
         CanvasResetButton.SetActive(false);
-        CanvasSetButton.SetActive(false);
-        CanvasPlayButton.SetActive(false);
         ImageBord.SetActive(false);
         ImageBord2.SetActive(false);
     }

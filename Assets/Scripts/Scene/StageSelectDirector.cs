@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System;
 
-public class StageSelectDirector : MonoBehaviour {
+public class StageSelectDirector : MonoBehaviour
+{
 
     // シーン名登録
     public enum SceneName
@@ -57,6 +60,9 @@ public class StageSelectDirector : MonoBehaviour {
     [SerializeField]
     private GameObject m_ribbon;
 
+    [SerializeField]
+    private GameObject m_clearPrefab;
+
     private Vector2 dragVecOld;
 
     [SerializeField]
@@ -76,7 +82,7 @@ public class StageSelectDirector : MonoBehaviour {
     StepDirction stepDir = StepDirction.Down;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         // 配列生成
         m_pamphlet = new GameObject[m_pamphletData.Length];
@@ -106,16 +112,23 @@ public class StageSelectDirector : MonoBehaviour {
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
+
+        // クリア情報を削除したい場合のみコメント外してください =======================================
+        //PlayerPrefs.DeleteAll();
+        // ============================================================================================
+
+        // クリア情報の読み込み
+        LoadClearData();
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (isEnd != true) curtainUpStep += 0.01f;
         else curtainUpStep -= 0.01f;
         if (curtainUpStep > 1.0f) curtainUpStep = 1.0f;
         if (curtainUpStep < 0.0f) curtainUpStep = 0.0f;
-        
+
         // マウスのドラック量を取得
         Vector2 dragVec = GetComponent<MouseSystem>().GetDragVec() - dragVecOld;
         // スワイプの距離を取得
@@ -216,7 +229,7 @@ public class StageSelectDirector : MonoBehaviour {
     // ボタンを押したときの処理
     public void PlayButton()
     {
-        if(SceneManager.GetActiveScene().name != "StageSelect")
+        if (SceneManager.GetActiveScene().name != "StageSelect")
         {
             CurtainControl CurtainSystem = GameObject.Find("Canvas").GetComponent<CurtainControl>();
             //カーテンを閉める
@@ -233,5 +246,23 @@ public class StageSelectDirector : MonoBehaviour {
     private void StageScene()
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    //private string[] m_clearData;
+
+    public void LoadClearData()
+    {
+        for (int i = 0; i < m_pamphletData.Length; i++)
+        {
+            int clear = PlayerPrefs.GetInt(m_pamphletData[i].nextScene.ToString());
+
+            if (clear >= 1)
+            {
+                GameObject clearObj = Instantiate(m_clearPrefab);
+                clearObj.gameObject.transform.parent =
+                    m_pamphlet[i].gameObject.transform.FindChild("PamphletCanvas").transform;
+                clearObj.transform.localPosition = new Vector3(6.8f, 6.9f, 0.0f);
+            }
+        }
     }
 }
