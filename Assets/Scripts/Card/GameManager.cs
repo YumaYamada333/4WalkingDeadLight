@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     }
     GameState gameState;
 
+    //プレイボタン音
     public AudioClip OK;
 
     SetButton flag;

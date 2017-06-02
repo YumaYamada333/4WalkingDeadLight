@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114041817934102556}
   - component: {fileID: 223849151042987984}
   - component: {fileID: 114815042576512588}
+  - component: {fileID: 114430899837131232}
   m_Layer: 5
   m_Name: CountCard
   m_TagString: Untagged
@@ -56,6 +57,17 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &114430899837131232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955066981817506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e489473363acc0468cd529effafa890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114815042576512588
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -100,7 +100,6 @@ public class CardBord : MonoBehaviour {
 
             cards[i].obj.transform.localPosition =
                 new Vector3(cardSize.x / 2 + (i - centerCard) * cardSize.x - GetComponent<RectTransform>().sizeDelta.x / 2 + scrollStep, 0.0f, zPos);
-            //}
         }
     }
 
