@@ -102,6 +102,8 @@ public class SceneLoadScript : MonoBehaviour
     {
         ButtonActive = GameObject.Find("unitychan").GetComponent<PlayerAction>();
         //ボタンを消す
+        ButtonActive.SetCanvasActive();
+
         ButtonActive.SetButtonOff();
     }
     public void ResultActive()
