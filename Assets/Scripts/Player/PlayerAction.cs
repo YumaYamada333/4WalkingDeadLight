@@ -167,17 +167,6 @@ public class PlayerAction : MonoBehaviour
                 isSliding = false;
             }
         }
-        //走っている場合
-        if (animationFlag[(int)ANIMATION.MOVE])
-        {
-            if (isGround)       //地面についている
-                middlePosition.y = transform.position.y;    //中央地点yを今のプレイヤーの座標にする
-            if (!isGround)      //地面についていない
-                middlePosition.y -= 1.0f;                   //中央地点yを引く
-        }
-        //中央地点yがステージの高さより低い場合
-        if (middlePosition.y < Constants.StageHeight)
-            middlePosition.y = Constants.StageHeight;   //ステージの高さにする
 
         //敵の数を取得
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
@@ -228,16 +217,6 @@ public class PlayerAction : MonoBehaviour
         {
             child.SetActive(false);
         }
-        //if (Physics.Raycast(transform.position, Vector3.forward, out slideHit))
-        //{
-        //    //敵との当たり判定
-        //    for (int i = 0; i < enemy.Length; i++)
-        //    {
-        //        //attack
-        //        if (animationFlag[(int)ANIMATION.ATTACK] == true)
-        //            Destroy(enemy[i]);
-        //    }
-        //}
         //characterとgroundの判定
 
         if (controller.isGrounded)
@@ -281,34 +260,12 @@ public class PlayerAction : MonoBehaviour
         {
             if (isGround)       //地面についている
                 middlePosition.y = transform.position.y;    //中央地点yを今のプレイヤーの座標にする
-            if (!isGround)      //地面についていない
-                middlePosition.y -= 1.0f;                   //中央地点yを引く
         }
         //中央地点yがステージの高さより低い場合
         if (middlePosition.y < Constants.StageHeight)
             middlePosition.y = Constants.StageHeight;   //ステージの高さにする
         //今現在のy地点をに記憶させる
         endPosition.y = transform.position.y;
-    }
-    //----------------------------------------------------------------------
-    //! @brief プレイヤーの攻撃
-    //!
-    //! @param[in] なし
-    //!
-    //! @return なし
-    //----------------------------------------------------------------------
-    void PlayerAttack(int i, int num)
-    {
-        //プレイヤーの攻撃範囲に敵がいる場合
-        if (enemy[i].transform.position.x - transform.position.x <= Constants.MassDistance * num
-            && transform.position.y > enemy[i].transform.position.y
-            && enemy[i].transform.position.y - transform.position.y >= -Constants.Adjustment)
-        {
-            //敵を消す
-            Destroy(enemy[i]);
-            //音を出す
-            audioSource.PlayOneShot(Hit);
-        }
     }
     //----------------------------------------------------------------------
     //! @brief 今待機中かどうか
