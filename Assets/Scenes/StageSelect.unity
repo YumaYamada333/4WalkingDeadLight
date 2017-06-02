@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 523175171}
   - component: {fileID: 523175170}
   m_Layer: 5
-  m_Name: UpImage
+  m_Name: DownImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,14 +554,14 @@ RectTransform:
   m_GameObject: {fileID: 523175168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5000006, y: 0.5000006, z: 0.5}
+  m_LocalScale: {x: -0.5, y: 0.25, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1590000989}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -80}
+  m_AnchoredPosition: {x: 130, y: -32}
   m_SizeDelta: {x: 80, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523175170
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 523175168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0540fbe16305d645ba93d23ae4360a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af051f24f91b1d4da3c659e78128a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &523175171
@@ -594,7 +594,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 54ab4d0085de2914982146460c909358, type: 3}
+  m_Texture: {fileID: 2800000, guid: 82b7bb224c707764cb0c10993399c252, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
