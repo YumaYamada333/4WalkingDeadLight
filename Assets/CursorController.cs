@@ -1,0 +1,60 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CursorController : MonoBehaviour {
+
+    //[SerializeField]
+    //GameObject m_cursorPrefab;                    // カーソルプレハブ
+    //GameObject m_cursor;                          // カーソル
+    [SerializeField]
+    private Texture m_defaultCursor;              // デフォルトカーソル
+    [SerializeField]
+    private Texture m_cardSelectCursor;           // カードの上時カーソル
+    [SerializeField]
+    private Texture m_cardGrabCursor;             // カードつかみ中カーソル
+
+    private bool m_grabFlag = false;
+    private bool m_oldGrabFlag = false;
+
+    // Use this for initialization
+    void Start () {
+        // カーソル変更
+        Cursor.visible = false;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        // マウスカーソルの移動
+        transform.position = Input.mousePosition;
+
+        GameObject handsBoard = GameObject.Find("HandsBord");
+        RawImage image = GetComponent<RawImage>();
+
+        if (handsBoard != null)
+        {
+            if (GameObject.Find("MouseSystem").GetComponent<MouseSystem>().GetMouseHit(handsBoard) >= 0 || m_grabFlag)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    image.texture = m_cardGrabCursor;
+                    m_grabFlag = true;
+                }
+                else if (!m_oldGrabFlag)
+                {
+                    image.texture = m_cardSelectCursor;
+                    m_grabFlag = false;
+                }
+                else
+                {
+                    image.texture = m_defaultCursor;
+                    m_grabFlag = false;
+                }
+            }
+            else
+                image.texture = m_defaultCursor;
+        }
+        m_oldGrabFlag = m_grabFlag;
+    }
+}
