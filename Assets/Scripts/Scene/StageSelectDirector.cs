@@ -170,7 +170,7 @@ public class StageSelectDirector : MonoBehaviour
             {
                 changeStep += 0.1f;
                 if (changeStep > 0.95f) changeStep = 1.0f;
-             }
+            }
 
             // パンフレットのラープ処理
             for (int i = 0; i < m_pamphlet.Length; i++)
@@ -217,7 +217,7 @@ public class StageSelectDirector : MonoBehaviour
             for (int i = 0; i < m_pamphlet.Length; i++)
             {
                 // 始まりの演出
-                m_pamphlet[i].transform.position = MathClass.Lerp(new Vector3(0, -80, 0) + (m_pos * i), posBasePamphlet, curtainUpStep);
+                m_pamphlet[i].transform.position = MathClass.Lerp(m_space[i].pos + new Vector3(0, -80, 0) + (m_pos * i), /*posBasePamphlet +*/ m_space[i].pos, curtainUpStep);
                 m_ribbon.transform.position = MathClass.Lerp(new Vector3(0, 80, 0), posRibbon, curtainUpStep);
             }
 
