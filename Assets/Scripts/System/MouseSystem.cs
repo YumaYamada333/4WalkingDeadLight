@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseSystem : MonoBehaviour {
 
@@ -13,14 +14,24 @@ public class MouseSystem : MonoBehaviour {
     static Vector2 touchStartPos;
     static Vector2 touchEndPos;
 
+    [SerializeField]
+    private Texture m_defaultCursor;              // デフォルトカーソル
+    [SerializeField]
+    private Texture m_cardSelectCursor;           // カードの上時カーソル
+    [SerializeField]
+    private Texture m_cardGrabCursor;             // カードつかみ中カーソル
+
+    private bool m_grabFlag = false;
+    private bool m_oldGrabFlag = false;
+
     // Use this for initialization
     void Start ()
     {
-        
+        Cursor.visible = false;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         //マウスの座標を取得
         screen_pos = Input.mousePosition;
@@ -45,6 +56,36 @@ public class MouseSystem : MonoBehaviour {
         else dragVec = Vector2.zero;
 
         Flick();
+
+        // マウスカーソルの移動
+        transform.position = screen_pos;
+
+        GameObject handsBoard = GameObject.Find("HandsBord");
+
+        if (handsBoard != null)
+        {                                       
+            if (GetMouseHit(handsBoard) >= 0 || m_grabFlag)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    GetComponent<RawImage>().texture = m_cardGrabCursor;
+                    m_grabFlag = true;
+                }
+                else if (!m_oldGrabFlag)
+                {
+                    GetComponent<RawImage>().texture = m_cardSelectCursor;
+                    m_grabFlag = false;
+                }
+                else
+                {
+                    GetComponent<RawImage>().texture = m_defaultCursor;
+                    m_grabFlag = false;
+                }
+            }
+            else
+                GetComponent<RawImage>().texture = m_defaultCursor;
+        }
+        m_oldGrabFlag = m_grabFlag;
     }
     public Vector2 GetDragVec()
     {
