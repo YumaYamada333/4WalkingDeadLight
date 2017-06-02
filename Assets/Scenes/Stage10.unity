@@ -12215,16 +12215,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 198350371230173732, guid: 4baf222d04a3164439802b4cbd935ce4,
-        type: 2}
-      propertyPath: simulationSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 198350371230173732, guid: 4baf222d04a3164439802b4cbd935ce4,
-        type: 2}
-      propertyPath: randomSeed
-      value: 131974007
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4baf222d04a3164439802b4cbd935ce4, type: 2}
   m_IsPrefabParent: 0
@@ -13116,6 +13106,7 @@ MonoBehaviour:
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
+  LiquidType: 0
 --- !u!82 &960909425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24744,7 +24735,7 @@ Transform:
   m_GameObject: {fileID: 2114303327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9, y: -3, z: 0}
-  m_LocalScale: {x: 20, y: 2, z: 6}
+  m_LocalScale: {x: 20, y: 4, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16

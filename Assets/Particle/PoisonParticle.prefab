@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4207766098687948}
   - component: {fileID: 198350371230173732}
   - component: {fileID: 199546037445988100}
+  - component: {fileID: 114661195680275170}
   m_Layer: 0
   m_Name: PoisonParticle
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114661195680275170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1042262740626336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c622bb76f28914aa47270573428357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198350371230173732
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -49,7 +61,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1042262740626336}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 8
+  simulationSpeed: 20
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -96,7 +108,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 131974007
+  randomSeed: -1183742502
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -243,7 +255,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 0, b: 0.93103456, a: 1}
     startSize:
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -522,7 +534,7 @@ ParticleSystem:
     serializedVersion: 4
     enabled: 1
     type: 4
-    angle: 10
+    angle: 20
     length: 5
     boxX: 1
     boxY: 1
@@ -1440,7 +1452,7 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       minMaxState: 0
-      scalar: 0.5
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:

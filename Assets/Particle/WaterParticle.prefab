@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4221238390745652}
   - component: {fileID: 198424660548202000}
   - component: {fileID: 199240437844703040}
+  - component: {fileID: 114348088245944982}
   m_Layer: 0
   m_Name: WaterParticle
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114348088245944982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657445177724192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c622bb76f28914aa47270573428357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198424660548202000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -49,7 +61,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1657445177724192}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 8
+  simulationSpeed: 20
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -96,7 +108,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1970246617
+  randomSeed: -1896363179
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1470,7 +1482,7 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:

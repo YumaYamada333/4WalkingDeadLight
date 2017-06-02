@@ -14,6 +14,8 @@ public class ParticaleScript : MonoBehaviour
     const int ATTACK = 2;
     const int DAMAGE = 3;
     const int LANDING = 4;
+    const int WATER = 5;
+    const int POISON = 6;
 
     //const int GIMMICK = 2;
     //const int BREAK = 1;
@@ -117,6 +119,27 @@ public class ParticaleScript : MonoBehaviour
                     particle.Stop();
                 }
                 break;
+            case WATER:
+                if (particle.name == "WaterParticle")
+                {
+                    particle.Play();
+                }
+                else
+                {
+                    particle.Stop();
+                }
+                break;
+            case POISON:
+                if (particle.name == "PoisonParticle")
+                {
+                    particle.Play();
+                }
+                else
+                {
+                    particle.Stop();
+                }
+                break;
+
         }
     }
 

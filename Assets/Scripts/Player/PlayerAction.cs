@@ -30,7 +30,7 @@ static class Constants
 //アニメーション
 enum ANIMATION { MOVE, JUMP, ATTACK, OVER };
 //パーティクル
-enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING};
+enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON};
 public class PlayerAction : MonoBehaviour
 {
     private int effect_count = 0;   //エフェクト再生用のカウント
@@ -125,6 +125,9 @@ public class PlayerAction : MonoBehaviour
     float clearButtonPosY = -83;
     float clearButtonPosZ = -1;
 
+    //液体ブロック種類判別用
+    public int LiquidType;
+
     void OnEnable() //objが生きている場合
     {
         if (time <= 0)
@@ -147,6 +150,7 @@ public class PlayerAction : MonoBehaviour
         ImageBord = GameObject.Find("Imagebord");
         ImageBord2 = GameObject.Find("Imagebord2");
         child = transform.FindChild("AttackColl").gameObject;
+        LiquidType = 0;
     }
 
     // Update is called once per frame
@@ -261,6 +265,9 @@ public class PlayerAction : MonoBehaviour
         {
             isGround = false;
         }
+
+        //液体パーティクル判別
+        GetLiquid();
 
         //ClearFlagがtrueだったら
         ClearControl();
@@ -577,6 +584,24 @@ public class PlayerAction : MonoBehaviour
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
         }
+
+        //液体ブロック判定
+        if (coll.gameObject.tag == "Water")
+        {
+            //水
+            LiquidType = (int)PARTICLE.WATER;
+        }
+        else if (coll.gameObject.tag == "Thorn")
+        {
+            //毒
+            LiquidType = (int)PARTICLE.POISON;
+        }
+        else
+        {
+            //なし
+            LiquidType = (int)PARTICLE.NONE;
+        }
+
     }
 
     //----------------------------------------------------------------------
@@ -779,6 +804,29 @@ public class PlayerAction : MonoBehaviour
             Invoke("SetButtonOn", 0.6f);
         }
     }
-}
 
+    //----------------------------------------------------------------------
+    //! @brief 液体ブッロクの判定取得
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private int GetLiquid()
+    {
+        switch (LiquidType)
+        {
+            case (int)PARTICLE.WATER:
+                //水のパーティクルを発生させる
+                particleType = (int)PARTICLE.WATER;
+                break;
+            case (int)PARTICLE.POISON:
+                //毒のパーティクルを発生させる
+                particleType = (int)PARTICLE.POISON;
+                break;
+        }
+        return LiquidType;
+    }
+
+}
 
