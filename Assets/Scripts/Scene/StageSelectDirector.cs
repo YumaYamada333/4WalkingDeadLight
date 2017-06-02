@@ -89,12 +89,18 @@ public class StageSelectDirector : MonoBehaviour
     {
         // 配列生成
         m_pamphlet = new GameObject[m_pamphletData.Length];
-        // ループ変数初期化
-        m_selectPamphlet = new MathClass.Looper(m_pamphletData.Length - 1, 0, 0, 0);
 
         // パンフレット配置位置の配列の生成
-        m_space = new PamphletSpace[m_pamphlet.Length];
+        if (m_space == null)
+        {
+            m_space = new PamphletSpace[m_pamphlet.Length];
+            for (int i = 0; i < m_pamphlet.Length; i++)
+                m_space[i].Set(m_zeroPos + (m_pos * i), i);
+        }
 
+        // ループ変数初期化
+        m_selectPamphlet = new MathClass.Looper(m_pamphletData.Length - 1, 0, 0, m_space[0].pamphlietIndex);
+        
         // ベース位置の初期化
         posBasePamphlet = m_zeroPos;
         posRibbon = m_ribbon.transform.position;
@@ -107,9 +113,8 @@ public class StageSelectDirector : MonoBehaviour
         for (int i = 0; i < m_pamphlet.Length; i++)
         {
             m_pamphlet[i] = Instantiate(m_pamphletData[i].pamphletPrefab);
-            m_space[i].Set(m_zeroPos + (m_pos * i), i);
             if (i > 5 - 1) m_space[i].pos += new Vector3(0, -100, 0);
-            m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i)/*m_space[m_space[i].pamphlietIndex].pos*/;
+            m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i) + m_space[m_space[i].pamphlietIndex].pos;
             //m_pamphlet[i].GetComponent<Button>().
             // ボタンの非表示
             GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
@@ -219,7 +224,7 @@ public class StageSelectDirector : MonoBehaviour
             for (int i = 0; i < m_pamphlet.Length; i++)
             {
                 // 始まりの演出
-                m_pamphlet[i].transform.position = MathClass.Lerp(m_space[i].pos + new Vector3(0, -80, 0) + (m_pos * i), /*posBasePamphlet +*/ m_space[i].pos, curtainUpStep);
+                m_pamphlet[m_space[i].pamphlietIndex].transform.position = MathClass.Lerp(m_space[i].pos + new Vector3(0, -80, 0) + (m_pos * i), /*posBasePamphlet +*/ m_space[i].pos, curtainUpStep);
                 m_ribbon.transform.position = MathClass.Lerp(new Vector3(0, 80, 0), posRibbon, curtainUpStep);
             }
 
@@ -271,4 +276,17 @@ public class StageSelectDirector : MonoBehaviour
             }
         }
     }
+
+
+    static public void StaticInitilize()
+    {
+        if (m_space == null) return;
+        {
+            for (int i = 0; i < m_space.Length; i++)
+            {
+                m_space[i].pamphlietIndex = i;
+            }
+        }
+    }
+
 }
