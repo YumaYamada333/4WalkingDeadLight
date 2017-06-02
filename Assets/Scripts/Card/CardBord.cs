@@ -119,6 +119,7 @@ public class CardBord : MonoBehaviour {
         //プレイフラグが立ったら
         if (PlayFlag == true)
         {
+            scrollStep = 0.0f;
             //カードを初期位置に移動させる
             Coordinate();
         }
