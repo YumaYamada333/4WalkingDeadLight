@@ -111,6 +111,7 @@ public class StageSelectDirector : MonoBehaviour
             if (i > 5 - 1) m_space[i].pos += new Vector3(0, -100, 0);
             m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i)/*m_space[m_space[i].pamphlietIndex].pos*/;
             //m_pamphlet[i].GetComponent<Button>().
+            // ボタンの非表示
             GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
@@ -204,8 +205,9 @@ public class StageSelectDirector : MonoBehaviour
                             MathClass.Lerp(m_pamphlet[m_space[i].pamphlietIndex].transform.position, m_space[i].pos, changeStep);
                     }
                 }
+                // ボタンを表示　非表示
                 GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
-                childObject.SetActive(false);
+                if (changeStep > 0.95f) childObject.SetActive(false);
                 if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
 
             }
