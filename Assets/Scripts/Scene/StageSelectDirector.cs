@@ -74,6 +74,9 @@ public class StageSelectDirector : MonoBehaviour
     Vector3 posBasePamphlet;
     Vector3 posRibbon;
 
+    [SerializeField]
+    private float activityAreaFlick = 15.0f;
+
     private enum StepDirction
     {
         Up,
@@ -137,7 +140,7 @@ public class StageSelectDirector : MonoBehaviour
             // 切り替えが行われていない
             if (changeStep >= 1.0f)
             {
-                if (MouseSystem.GetFlickDistance().y > 30)
+                if (MouseSystem.GetFlickDistance().y > activityAreaFlick)
                 {
                     // 配置空間のパンフインデックスの更新
                     for (int i = 0; i < m_space.Length; i++)
@@ -149,7 +152,7 @@ public class StageSelectDirector : MonoBehaviour
                     m_selectPamphlet.Plus(1);
                     changeStep = 0.0f;
                 }
-                else if (MouseSystem.GetFlickDistance().y < -30)
+                else if (MouseSystem.GetFlickDistance().y < -activityAreaFlick)
                 {
                     m_selectPamphlet.Plus(-2);
                     // 配置空間のパンフインデックスの更新
@@ -165,8 +168,9 @@ public class StageSelectDirector : MonoBehaviour
             }
             else
             {
-                changeStep = changeStep + stepSpd > 1.0f ? 1.0f : changeStep + stepSpd;
-            }
+                changeStep += 0.1f;
+                if (changeStep > 0.95f) changeStep = 1.0f;
+             }
 
             // パンフレットのラープ処理
             for (int i = 0; i < m_pamphlet.Length; i++)
