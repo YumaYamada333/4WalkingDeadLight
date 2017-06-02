@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System;
 
-public class StageSelectDirector : MonoBehaviour {
+public class StageSelectDirector : MonoBehaviour
+{
 
     // シーン名登録
     public enum SceneName
@@ -57,6 +60,9 @@ public class StageSelectDirector : MonoBehaviour {
     [SerializeField]
     private GameObject m_ribbon;
 
+    [SerializeField]
+    private GameObject m_clearPrefab;
+
     private Vector2 dragVecOld;
 
     [SerializeField]
@@ -68,6 +74,9 @@ public class StageSelectDirector : MonoBehaviour {
     Vector3 posBasePamphlet;
     Vector3 posRibbon;
 
+    [SerializeField]
+    private float activityAreaFlick = 15.0f;
+
     private enum StepDirction
     {
         Up,
@@ -76,16 +85,22 @@ public class StageSelectDirector : MonoBehaviour {
     StepDirction stepDir = StepDirction.Down;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         // 配列生成
         m_pamphlet = new GameObject[m_pamphletData.Length];
-        // ループ変数初期化
-        m_selectPamphlet = new MathClass.Looper(m_pamphletData.Length - 1, 0, 0, 0);
 
         // パンフレット配置位置の配列の生成
-        m_space = new PamphletSpace[m_pamphlet.Length];
+        if (m_space == null)
+        {
+            m_space = new PamphletSpace[m_pamphlet.Length];
+            for (int i = 0; i < m_pamphlet.Length; i++)
+                m_space[i].Set(m_zeroPos + (m_pos * i), i);
+        }
 
+        // ループ変数初期化
+        m_selectPamphlet = new MathClass.Looper(m_pamphletData.Length - 1, 0, 0, m_space[0].pamphlietIndex);
+        
         // ベース位置の初期化
         posBasePamphlet = m_zeroPos;
         posRibbon = m_ribbon.transform.position;
@@ -98,24 +113,31 @@ public class StageSelectDirector : MonoBehaviour {
         for (int i = 0; i < m_pamphlet.Length; i++)
         {
             m_pamphlet[i] = Instantiate(m_pamphletData[i].pamphletPrefab);
-            m_space[i].Set(m_zeroPos + (m_pos * i), i);
             if (i > 5 - 1) m_space[i].pos += new Vector3(0, -100, 0);
-            m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i)/*m_space[m_space[i].pamphlietIndex].pos*/;
+            m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i) + m_space[m_space[i].pamphlietIndex].pos;
             //m_pamphlet[i].GetComponent<Button>().
+            // ボタンの非表示
             GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
+
+        // クリア情報を削除したい場合のみコメント外してください =======================================
+        //PlayerPrefs.DeleteAll();
+        // ============================================================================================
+
+        // クリア情報の読み込み
+        LoadClearData();
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (isEnd != true) curtainUpStep += 0.01f;
         else curtainUpStep -= 0.01f;
         if (curtainUpStep > 1.0f) curtainUpStep = 1.0f;
         if (curtainUpStep < 0.0f) curtainUpStep = 0.0f;
-        
+
         // マウスのドラック量を取得
         Vector2 dragVec = GetComponent<MouseSystem>().GetDragVec() - dragVecOld;
         // スワイプの距離を取得
@@ -124,7 +146,7 @@ public class StageSelectDirector : MonoBehaviour {
             // 切り替えが行われていない
             if (changeStep >= 1.0f)
             {
-                if (MouseSystem.GetFlickDistance().y > 30)
+                if (MouseSystem.GetFlickDistance().y > activityAreaFlick)
                 {
                     // 配置空間のパンフインデックスの更新
                     for (int i = 0; i < m_space.Length; i++)
@@ -136,7 +158,7 @@ public class StageSelectDirector : MonoBehaviour {
                     m_selectPamphlet.Plus(1);
                     changeStep = 0.0f;
                 }
-                else if (MouseSystem.GetFlickDistance().y < -30)
+                else if (MouseSystem.GetFlickDistance().y < -activityAreaFlick)
                 {
                     m_selectPamphlet.Plus(-2);
                     // 配置空間のパンフインデックスの更新
@@ -152,7 +174,8 @@ public class StageSelectDirector : MonoBehaviour {
             }
             else
             {
-                changeStep = changeStep + stepSpd > 1.0f ? 1.0f : changeStep + stepSpd;
+                changeStep += 0.1f;
+                if (changeStep > 0.95f) changeStep = 1.0f;
             }
 
             // パンフレットのラープ処理
@@ -187,8 +210,9 @@ public class StageSelectDirector : MonoBehaviour {
                             MathClass.Lerp(m_pamphlet[m_space[i].pamphlietIndex].transform.position, m_space[i].pos, changeStep);
                     }
                 }
+                // ボタンを表示　非表示
                 GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
-                childObject.SetActive(false);
+                if (changeStep > 0.95f) childObject.SetActive(false);
                 if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
 
             }
@@ -200,7 +224,7 @@ public class StageSelectDirector : MonoBehaviour {
             for (int i = 0; i < m_pamphlet.Length; i++)
             {
                 // 始まりの演出
-                m_pamphlet[i].transform.position = MathClass.Lerp(new Vector3(0, -80, 0) + (m_pos * i), posBasePamphlet, curtainUpStep);
+                m_pamphlet[m_space[i].pamphlietIndex].transform.position = MathClass.Lerp(m_space[i].pos + new Vector3(0, -80, 0) + (m_pos * i), /*posBasePamphlet +*/ m_space[i].pos, curtainUpStep);
                 m_ribbon.transform.position = MathClass.Lerp(new Vector3(0, 80, 0), posRibbon, curtainUpStep);
             }
 
@@ -216,7 +240,7 @@ public class StageSelectDirector : MonoBehaviour {
     // ボタンを押したときの処理
     public void PlayButton()
     {
-        if(SceneManager.GetActiveScene().name != "StageSelect")
+        if (SceneManager.GetActiveScene().name != "StageSelect")
         {
             CurtainControl CurtainSystem = GameObject.Find("Canvas").GetComponent<CurtainControl>();
             //カーテンを閉める
@@ -234,4 +258,35 @@ public class StageSelectDirector : MonoBehaviour {
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    //private string[] m_clearData;
+
+    public void LoadClearData()
+    {
+        for (int i = 0; i < m_pamphletData.Length; i++)
+        {
+            int clear = PlayerPrefs.GetInt(m_pamphletData[i].nextScene.ToString());
+
+            if (clear >= 1)
+            {
+                GameObject clearObj = Instantiate(m_clearPrefab);
+                clearObj.gameObject.transform.parent =
+                    m_pamphlet[i].gameObject.transform.FindChild("PamphletCanvas").transform;
+                clearObj.transform.localPosition = new Vector3(6.8f, 6.9f, 0.0f);
+            }
+        }
+    }
+
+
+    static public void StaticInitilize()
+    {
+        if (m_space == null) return;
+        {
+            for (int i = 0; i < m_space.Length; i++)
+            {
+                m_space[i].pamphlietIndex = i;
+            }
+        }
+    }
+
 }

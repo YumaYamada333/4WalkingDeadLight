@@ -16,11 +16,11 @@ public class MouseSystem : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        
+       
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         //マウスの座標を取得
         screen_pos = Input.mousePosition;
