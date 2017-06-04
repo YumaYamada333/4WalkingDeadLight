@@ -13846,12 +13846,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handsBord: {fileID: 520211583}
   actionBord: {fileID: 683584502}
-  startCard: {fileID: 1438233885358246, guid: 0eb3adde3698c804ebc7c5065f6082c6, type: 2}
-  moveCard: {fileID: 1652029114002432, guid: 2b4e06bfcc68b2b429dd6fe200829a51, type: 2}
-  jumpCard: {fileID: 1825495799527144, guid: 5b574b66d7f0902408f78edb6b798c24, type: 2}
-  attackCard: {fileID: 1863271417641788, guid: 7c05d7998e0730b4f94378d7b9754f1b, type: 2}
-  countCard: {fileID: 1955066981817506, guid: 6645586d2695eb441befe986611a848a, type: 2}
-  finishCard: {fileID: 1685240109318318, guid: 6aef1c3d64fe7ac45a87d7c7736cddb5, type: 2}
+  startCard: {fileID: 1301149664070022, guid: 0eb3adde3698c804ebc7c5065f6082c6, type: 2}
+  moveCard: {fileID: 1328970143807814, guid: 2b4e06bfcc68b2b429dd6fe200829a51, type: 2}
+  jumpCard: {fileID: 1863288411721520, guid: 5b574b66d7f0902408f78edb6b798c24, type: 2}
+  attackCard: {fileID: 1471246930014864, guid: 7c05d7998e0730b4f94378d7b9754f1b, type: 2}
+  countCard: {fileID: 1696280681032956, guid: 6645586d2695eb441befe986611a848a, type: 2}
+  finishCard: {fileID: 1337537267455224, guid: 6aef1c3d64fe7ac45a87d7c7736cddb5, type: 2}
   originalnumUI: {fileID: 1087652529463930, guid: cf4a08efbca6b9840b7e23f9f14b924c,
     type: 2}
   CountManager: {fileID: 2112663738}

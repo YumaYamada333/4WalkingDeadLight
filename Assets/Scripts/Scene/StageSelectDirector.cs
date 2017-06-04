@@ -117,7 +117,7 @@ public class StageSelectDirector : MonoBehaviour
             m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i) + m_space[m_space[i].pamphlietIndex].pos;
             //m_pamphlet[i].GetComponent<Button>().
             // ボタンの非表示
-            GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
+            GameObject childObject = m_pamphlet[i].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject;
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
@@ -211,7 +211,7 @@ public class StageSelectDirector : MonoBehaviour
                     }
                 }
                 // ボタンを表示　非表示
-                GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
+                GameObject childObject = m_pamphlet[i].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject;
                 if (changeStep > 0.95f) childObject.SetActive(false);
                 if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
 
@@ -271,7 +271,7 @@ public class StageSelectDirector : MonoBehaviour
             {
                 GameObject clearObj = Instantiate(m_clearPrefab);
                 clearObj.gameObject.transform.parent =
-                    m_pamphlet[i].gameObject.transform.FindChild("PamphletCanvas").transform;
+                    m_pamphlet[i].gameObject.transform.Find("PamphletCanvas").transform;
                 clearObj.transform.localPosition = new Vector3(6.8f, 6.9f, 0.0f);
             }
         }

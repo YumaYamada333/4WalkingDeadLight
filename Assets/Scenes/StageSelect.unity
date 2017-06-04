@@ -403,34 +403,34 @@ MonoBehaviour:
   m_zeroPos: {x: 0, y: -4.5, z: 0}
   m_pos: {x: 0, y: 1, z: 1}
   m_pamphletData:
-  - pamphletPrefab: {fileID: 1929990832982254, guid: c0edba4e7a17d16469845eb6232652c5,
+  - pamphletPrefab: {fileID: 1435797523848852, guid: c0edba4e7a17d16469845eb6232652c5,
       type: 2}
     nextScene: 1
-  - pamphletPrefab: {fileID: 1183504952136226, guid: 302bc03759782bc4bb366aa8d5e75d36,
+  - pamphletPrefab: {fileID: 1906319343670344, guid: 1be35e9e1fe7cf644a8e743067397de8,
       type: 2}
     nextScene: 2
-  - pamphletPrefab: {fileID: 1961786789528592, guid: 30ee79b909d992b47a5da7cc65778bd1,
+  - pamphletPrefab: {fileID: 1638912240411534, guid: 30ee79b909d992b47a5da7cc65778bd1,
       type: 2}
     nextScene: 3
-  - pamphletPrefab: {fileID: 1199777424632202, guid: 37d9af48ddf11064097b29f4c72fe952,
+  - pamphletPrefab: {fileID: 1779639102049086, guid: 37d9af48ddf11064097b29f4c72fe952,
       type: 2}
     nextScene: 4
-  - pamphletPrefab: {fileID: 1776382247095510, guid: debb6e2cb75a4084abeee9e9b89cd8a1,
+  - pamphletPrefab: {fileID: 1615459187258896, guid: debb6e2cb75a4084abeee9e9b89cd8a1,
       type: 2}
     nextScene: 5
-  - pamphletPrefab: {fileID: 1210046083686018, guid: ffbbac4e4a6483c4ca54f75de7ed8fe7,
+  - pamphletPrefab: {fileID: 1806326566946150, guid: ffbbac4e4a6483c4ca54f75de7ed8fe7,
       type: 2}
     nextScene: 6
-  - pamphletPrefab: {fileID: 1641585229783346, guid: 2e1558307fc96fd429156840f5671f05,
+  - pamphletPrefab: {fileID: 1558659743593782, guid: 2e1558307fc96fd429156840f5671f05,
       type: 2}
     nextScene: 7
-  - pamphletPrefab: {fileID: 1530237544148810, guid: 741c85056f86f4b419aa8f1f574254be,
+  - pamphletPrefab: {fileID: 1820672185432858, guid: 741c85056f86f4b419aa8f1f574254be,
       type: 2}
     nextScene: 8
-  - pamphletPrefab: {fileID: 1891730749159096, guid: b98190a603d255147be617060a1cec60,
+  - pamphletPrefab: {fileID: 1920501604850838, guid: b98190a603d255147be617060a1cec60,
       type: 2}
     nextScene: 9
-  - pamphletPrefab: {fileID: 1276151469984196, guid: 309aded2e9b5b0240b4cfdf03f19a19e,
+  - pamphletPrefab: {fileID: 1649543153320906, guid: 309aded2e9b5b0240b4cfdf03f19a19e,
       type: 2}
     nextScene: 10
   m_ribbon: {fileID: 1590000985}

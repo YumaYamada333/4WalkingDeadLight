@@ -142,7 +142,7 @@ public class PlayerAction : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
-        child = transform.FindChild("AttackColl").gameObject;
+        child = transform.Find("AttackColl").gameObject;
     }
 
     // Update is called once per frame

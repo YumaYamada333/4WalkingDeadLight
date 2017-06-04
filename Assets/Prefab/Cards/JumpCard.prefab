@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1825495799527144}
+  m_RootGameObject: {fileID: 1863288411721520}
   m_IsPrefabParent: 1
---- !u!1 &1825495799527144
+--- !u!1 &1863288411721520
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 224694160560827886}
-  - component: {fileID: 222864320724844522}
-  - component: {fileID: 114716356422404118}
+  - component: {fileID: 224163996977962186}
+  - component: {fileID: 222451180729960330}
+  - component: {fileID: 114663873902027900}
   m_Layer: 5
   m_Name: JumpCard
   m_TagString: Untagged
@@ -28,18 +28,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114716356422404118
+--- !u!114 &114663873902027900
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825495799527144}
+  m_GameObject: {fileID: 1863288411721520}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 217fdaae8f7d9004095555138a6b783a, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
@@ -54,18 +54,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!222 &222864320724844522
+--- !u!222 &222451180729960330
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825495799527144}
---- !u!224 &224694160560827886
+  m_GameObject: {fileID: 1863288411721520}
+--- !u!224 &224163996977962186
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825495799527144}
+  m_GameObject: {fileID: 1863288411721520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
