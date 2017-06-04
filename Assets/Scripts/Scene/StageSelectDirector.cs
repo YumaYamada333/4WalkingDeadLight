@@ -84,6 +84,9 @@ public class StageSelectDirector : MonoBehaviour
     };
     StepDirction stepDir = StepDirction.Down;
 
+    public AudioClip PlaySound;
+    static private AudioClip PS;
+
     // Use this for initialization
     void Start()
     {
@@ -121,6 +124,9 @@ public class StageSelectDirector : MonoBehaviour
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
+
+        /*音を入れる*/
+        PS = PlaySound;
 
         // クリア情報を削除したい場合のみコメント外してください =======================================
         //PlayerPrefs.DeleteAll();
@@ -240,6 +246,10 @@ public class StageSelectDirector : MonoBehaviour
     // ボタンを押したときの処理
     public void PlayButton()
     {
+        /*プレイ音を鳴らす*/
+        AudioSource audioSource = GameObject.Find("StageSelectDirector").GetComponent<AudioSource>();
+        audioSource.PlayOneShot(PS);
+
         if (SceneManager.GetActiveScene().name != "StageSelect")
         {
             CurtainControl CurtainSystem = GameObject.Find("Canvas").GetComponent<CurtainControl>();
@@ -287,6 +297,11 @@ public class StageSelectDirector : MonoBehaviour
                 m_space[i].pamphlietIndex = i;
             }
         }
+    }
+
+    static public void SetisEnd(bool isend)
+    {
+        isEnd = isend;
     }
 
 }

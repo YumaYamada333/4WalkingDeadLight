@@ -298,8 +298,12 @@ public class ActionCountDown : MonoBehaviour
     private List<GameObject> ride = new List<GameObject>();
     private Vector3 m_correction_value_ride;
 
+    /*ギミック音*/
+    public AudioClip GimmickSound;
+
     //パーティクルフラグ取得
     public bool PartTim;
+
 
     // Use this for initialization
     void Start()
@@ -389,6 +393,10 @@ public class ActionCountDown : MonoBehaviour
             }
             else
             {
+
+                AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+                audioSource.PlayOneShot(GimmickSound);
+
                 //フラグを上げる
                 m_action_flag = true;
             }  

@@ -412,6 +412,16 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                 //カードセットフラグ
                     animationNum = (int)ANIMATION.MOVE;  //アニメーションの番号
                     animationName = "Move";              //アニメーションの名前
+
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
+                    }
+                    else
+                    {
+                        audioSource.Stop();       /*音を止める*/
+                    }
+
                     particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
                     break;
                 //jump
@@ -420,6 +430,16 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                 //カードセットフラグ
                     animationNum = (int)ANIMATION.JUMP; //アニメーションの番号
                     animationName = "Jump";             //アニメーションの名前
+
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
+                    }
+                    else
+                    {
+                        audioSource.Stop();       /*音を止める*/
+                    }
+
                     particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
                     break;
                 //attack
@@ -428,6 +448,16 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                     //カードセットフラグ
                     animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
                     animationName = "Attack";               //アニメーションの名前
+
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    }
+                    else
+                    {
+                        audioSource.Stop();       /*音を止める*/
+                    }
+
                     particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     break;
                 case CardManagement.CardType.Count:
@@ -436,6 +466,16 @@ public class PlayerAction : MonoBehaviour
                     animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
                     animationName = "Attack";               //アニメーションの名前
                     //EffekseerHandle attack = EffekseerSystem.PlayEffect("attake", transform.position);
+
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    }
+                    else
+                    {
+                        audioSource.Stop();       /*音を止める*/
+                    }
+
                     particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     //CountDown.SetCountDown(type);
                     break;
