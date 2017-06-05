@@ -158,7 +158,6 @@ public class PlayerAction : MonoBehaviour
     {
         //カメラのポジション
         CameraPos = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
-
         //OverPosに代入
         FallPosY = CameraPos.y / 2 + 10;
         //真下にRayを飛ばして、当たっているかどうか
@@ -534,6 +533,7 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+
         }
         else
         {
@@ -796,7 +796,6 @@ public class PlayerAction : MonoBehaviour
     //----------------------------------------------------------------------
     void OverControl()
     {
-
         //OverFlagがtrueだったら
         if (OverFlag)
         {
