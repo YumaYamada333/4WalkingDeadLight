@@ -122,6 +122,8 @@ public class StageSelectDirector : MonoBehaviour
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
 
+        FlashingUGui.SetPlayButton(m_pamphlet[0].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject);
+
         // クリア情報を削除したい場合のみコメント外してください =======================================
         //PlayerPrefs.DeleteAll();
         // ============================================================================================
