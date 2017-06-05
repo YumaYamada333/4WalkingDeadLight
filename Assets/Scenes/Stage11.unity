@@ -3520,6 +3520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_countType: 00000000
+  CountSound: {fileID: 0}
 --- !u!114 &352204058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3543,6 +3544,7 @@ MonoBehaviour:
   m_game_manager: {fileID: 0}
   m_final_move_obj: {fileID: 0}
   m_obj: {fileID: 0}
+  GimmickSound: {fileID: 0}
   PartTim: 0
 --- !u!65 &352204059
 BoxCollider:
@@ -4672,6 +4674,7 @@ MonoBehaviour:
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 0}
   m_obj: {fileID: 0}
+  GimmickSound: {fileID: 0}
   PartTim: 0
 --- !u!1 &434924112
 GameObject:
@@ -9632,6 +9635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_countType: 020000000100000003000000
+  CountSound: {fileID: 0}
 --- !u!114 &584472087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16842,8 +16846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollstart: 3
-  StartBlock: {fileID: 829787372}
-  GoalBlock: {fileID: 1466142777}
+  targetPosX: 10
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
@@ -17915,6 +17918,8 @@ MonoBehaviour:
   ImageBord: {fileID: 2131642794}
   ImageBord2: {fileID: 1650275854}
   CanvasResetButton: {fileID: 356671889}
+  CanvasSetButton: {fileID: 0}
+  CanvasPlayButton: {fileID: 0}
   Attack: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
   Jump: {fileID: 8300000, guid: 940b1eafada9d644a901c8529e54fab2, type: 3}
   Hit: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
@@ -17922,6 +17927,7 @@ MonoBehaviour:
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
+  LiquidType: 0
 --- !u!82 &960909425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19922,9 +19928,9 @@ MonoBehaviour:
   actionBord: {fileID: 683584502}
   startCard: {fileID: 1301149664070022, guid: 0eb3adde3698c804ebc7c5065f6082c6, type: 2}
   moveCard: {fileID: 1328970143807814, guid: 2b4e06bfcc68b2b429dd6fe200829a51, type: 2}
-  jumpCard: {fileID: 1863288411721520, guid: 5b574b66d7f0902408f78edb6b798c24, type: 2}
-  attackCard: {fileID: 1471246930014864, guid: 7c05d7998e0730b4f94378d7b9754f1b, type: 2}
-  countCard: {fileID: 1696280681032956, guid: 6645586d2695eb441befe986611a848a, type: 2}
+  jumpCard: {fileID: 1825495799527144, guid: 5b574b66d7f0902408f78edb6b798c24, type: 2}
+  attackCard: {fileID: 1863271417641788, guid: 7c05d7998e0730b4f94378d7b9754f1b, type: 2}
+  countCard: {fileID: 1955066981817506, guid: 6645586d2695eb441befe986611a848a, type: 2}
   finishCard: {fileID: 1337537267455224, guid: 6aef1c3d64fe7ac45a87d7c7736cddb5, type: 2}
   originalnumUI: {fileID: 1087652529463930, guid: cf4a08efbca6b9840b7e23f9f14b924c,
     type: 2}
@@ -19935,6 +19941,8 @@ MonoBehaviour:
   attackNum: 0
   jumpNum: 1
   countNum: 0
+  Grip: {fileID: 0}
+  release: {fileID: 0}
 --- !u!4 &1136850363
 Transform:
   m_ObjectHideFlags: 0
@@ -33093,6 +33101,7 @@ MonoBehaviour:
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 0}
   m_obj: {fileID: 0}
+  GimmickSound: {fileID: 0}
   PartTim: 0
 --- !u!4 &1759097883 stripped
 Transform:
