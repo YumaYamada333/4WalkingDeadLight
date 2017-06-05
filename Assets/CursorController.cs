@@ -35,9 +35,9 @@ public class CursorController : MonoBehaviour {
 
         if (handsBoard != null)
         {
+                transform.FindChild("BatuImage").gameObject.GetComponent<RawImage>().enabled = GameObject.Find("GameManager").GetComponent<GameManager>().GetGimmickFlag();
             if (GameObject.Find("MouseSystem").GetComponent<MouseSystem>().GetMouseHit(handsBoard) >= 0 || m_grabFlag)
             {
-                transform.FindChild("BatuImage").gameObject.GetComponent<RawImage>().enabled = GameObject.Find("GameManager").GetComponent<GameManager>().GetGimmickFlag();
 
                 if (Input.GetMouseButton(0))
                 {
