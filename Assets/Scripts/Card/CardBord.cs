@@ -30,7 +30,7 @@ public class CardBord : MonoBehaviour {
     int centerCard;
 
     // スクロールの状態
-    float scrollStep;
+    int scrollStep;
 
     // 使用中のカードの進行状態
     public int stepUsing;
@@ -76,7 +76,7 @@ public class CardBord : MonoBehaviour {
         //numSet = 0;
         usingCard = stepUsing = 0;
         exceedFlag = false;
-        scrollStep = 0.0f;
+        scrollStep = 0;
 
         // MouseSystemコンポーネントの取得
         mouse_system = GameObject.Find("MouseSystem").GetComponent<MouseSystem>();
@@ -89,7 +89,7 @@ public class CardBord : MonoBehaviour {
     }
 
     //カードの初期座標取得関数
-    public void Coordinate()
+    public void Coordinate(bool isLerp = false)
     {
 
         centerCard = usingCard;
@@ -97,9 +97,17 @@ public class CardBord : MonoBehaviour {
         for (int i = 0; i < numSetMax; i++)
         {
             if (cards[i].obj == null) break;
-
-            cards[i].obj.transform.localPosition =
-                new Vector3(cardSize.x / 2 + (i - centerCard) * cardSize.x - GetComponent<RectTransform>().sizeDelta.x / 2 + scrollStep, 0.0f, zPos);
+            if (isLerp == false)
+            {
+                cards[i].obj.transform.localPosition =
+                    new Vector3(cardSize.x / 2 + (i - centerCard) * cardSize.x - GetComponent<RectTransform>().sizeDelta.x / 2 + scrollStep * cardSize.x, 0.0f, zPos);
+            }
+            else
+            {
+                cards[i].obj.transform.localPosition +=
+                (new Vector3(cardSize.x / 2 + (i - centerCard) * cardSize.x - GetComponent<RectTransform>().sizeDelta.x / 2 + scrollStep * cardSize.x, 0.0f, zPos) - cards[i].obj.transform.localPosition) / 10;
+            }
+           
         }
     }
 
@@ -118,8 +126,9 @@ public class CardBord : MonoBehaviour {
         //プレイフラグが立ったら
         if (PlayFlag == true)
         {
+            scrollStep = 0;
             //カードを初期位置に移動させる
-            Coordinate();
+            //Coordinate(true);
         }
 
         //プレイフラグが立っていないなら
@@ -150,7 +159,7 @@ public class CardBord : MonoBehaviour {
             if (cursor == CardManagement.CursorForcusTag.ActtionBord || (cursor == CardManagement.CursorForcusTag.HandsBord && flameCnt < 10))
             {
                 //初期座標へ移動
-                Coordinate();
+                //Coordinate();
             }
 
             //スクロールボタンが押されたら
@@ -220,6 +229,9 @@ public class CardBord : MonoBehaviour {
 
         Scroll();
 
+        Coordinate(true);
+
+
         if (true)
         {
             // 使用済みカードの非表示化
@@ -256,11 +268,9 @@ public class CardBord : MonoBehaviour {
     }
     public bool CheckRightEnd()
     {
+        Debug.Log(scrollStep + 6 - numSet );
         if (cards[numSet - 1].obj == null) return false;
-        if (numSet < GetComponent<RectTransform>().sizeDelta.x / cardSize.x + 1||
-            (cards[numSet - 1].obj.transform.localPosition.x + cardSize.x >=
-            transform.localPosition.x + GetComponent<RectTransform>().sizeDelta.x / 2 &&
-            cards[numSet - 1].obj.activeSelf))
+        if (numSet <= 6 || -scrollStep + 6 >= numSet)
             {
                 return true;
             }
@@ -270,10 +280,7 @@ public class CardBord : MonoBehaviour {
     public bool CheckLeftEnd()
     {
         if (cards[usingCard].obj == null) return false;
-        if (numSet < GetComponent<RectTransform>().sizeDelta.x / cardSize.x + 1||
-            (cards[usingCard].obj.transform.localPosition.x - cardSize.x <=
-            transform.localPosition.x - GetComponent<RectTransform>().sizeDelta.x / 2 &&
-            cards[usingCard].obj.activeSelf))
+        if (numSet <= 6 || -scrollStep <= usingCard)
         {
             return true;
         }
@@ -400,33 +407,18 @@ public class CardBord : MonoBehaviour {
 
     public void ScrollToLeft()
     {
-        //// カードの座標設定
-        //for (int i = 0; i < numSetMax; i++)
-        //{
-        //    //セットカードの枠を超えたら
-        //    if (cards[i].obj.transform.localPosition.x >= 0.5f)
-        //    {
-        //        //フラグを立てる
-        //        exceedFlag = true;
-        //    }
+        // カードの座標設定
+        for (int j = 0; j < numSetMax; j++)
+        {
+            if (cards[j].obj == null) continue;
 
-        //    //枠を超えたら
-        //    if (exceedFlag == true)
-        //    {
-                // カードの座標設定
-                for (int j = 0; j < numSetMax; j++)
-                {
-                    if (cards[j].obj == null) continue;
+            //左スクロール
+            //cards[j].obj.transform.localPosition -= new Vector3(cardSize.x, 0, 0);
+        }
+        scrollStep -= 1;
+//        Coordinate(true);
 
-                    //左スクロール
-                    cards[j].obj.transform.localPosition -= new Vector3(cardSize.x, 0, 0);
-                }
-    //        }
-                scrollStep -= cardSize.x;
-    //    }
-    //}
-
-}
+    }
 
 public void ScrollToRight()
     {
@@ -450,11 +442,11 @@ public void ScrollToRight()
             //            if (Input.GetAxis("CardScroll") > 0)
             //            {
             //右スクロール
-            cards[j].obj.transform.localPosition += new Vector3(cardSize.x, 0, 0);
+            //cards[j].obj.transform.localPosition += new Vector3(cardSize.x, 0, 0);
             //            }
             //            else if (Input.GetAxis("CardScroll") < 0)
         }
-        scrollStep += cardSize.x;
+        scrollStep += 1;
         //    }
         //}
     }
