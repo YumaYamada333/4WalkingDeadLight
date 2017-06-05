@@ -12840,7 +12840,7 @@ Prefab:
     - target: {fileID: 114575249270384532, guid: d04eb54197433d049ac6632cebd4aaab,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224406328909660434, guid: d04eb54197433d049ac6632cebd4aaab,
         type: 2}
@@ -12956,6 +12956,16 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575249270384532, guid: d04eb54197433d049ac6632cebd4aaab,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StageSelectSceneLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 114575249270384532, guid: d04eb54197433d049ac6632cebd4aaab,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StageButtonActive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d04eb54197433d049ac6632cebd4aaab, type: 2}
@@ -19213,7 +19223,7 @@ Prefab:
     - target: {fileID: 114389533523710886, guid: 412d40bef1f5d3848841e008730cd117,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224017180614681508, guid: 412d40bef1f5d3848841e008730cd117,
         type: 2}
