@@ -15191,8 +15191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollstart: 3
-  StartBlock: {fileID: 1565835065}
-  GoalBlock: {fileID: 1565835064}
+  targetPosX: 10
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
@@ -16032,6 +16031,8 @@ MonoBehaviour:
   ImageBord: {fileID: 2131642794}
   ImageBord2: {fileID: 1650275854}
   CanvasResetButton: {fileID: 356671889}
+  CanvasSetButton: {fileID: 0}
+  CanvasPlayButton: {fileID: 0}
   Attack: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
   Jump: {fileID: 8300000, guid: 940b1eafada9d644a901c8529e54fab2, type: 3}
   Hit: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
@@ -16039,6 +16040,7 @@ MonoBehaviour:
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
+  LiquidType: 0
 --- !u!82 &960909425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18890,6 +18892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136850363}
   - component: {fileID: 1136850362}
+  - component: {fileID: 1136850364}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -18925,6 +18928,8 @@ MonoBehaviour:
   attackNum: 1
   jumpNum: 1
   countNum: 0
+  Grip: {fileID: 8300000, guid: 6e32f87803bc22f4dbe0149a554fa726, type: 3}
+  release: {fileID: 8300000, guid: cb1b458cf8fd28546aac8832687cd0e3, type: 3}
 --- !u!4 &1136850363
 Transform:
   m_ObjectHideFlags: 0
@@ -18938,6 +18943,86 @@ Transform:
   m_Father: {fileID: 973379955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1136850364
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1136850361}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1138612124
 GameObject:
   m_ObjectHideFlags: 0
@@ -25780,7 +25865,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 14e3b52fb0bf15046918e7983264474f, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4605629c63b40d442b766555d203e51a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -26642,7 +26727,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: c8758ff93cee3324199588b5e0ffa006, type: 3}
+  m_Texture: {fileID: 2800000, guid: e4ceb390cb0656b44a29b69a6c44fd1a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
