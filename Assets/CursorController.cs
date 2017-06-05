@@ -20,12 +20,16 @@ public class CursorController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        // カーソル変更
+        // カーソル削除
         Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update () {
+        // カーソルの削除
+        if (Cursor.visible)
+            Cursor.visible = false;
+
         // マウスカーソルの移動
         transform.position = Input.mousePosition;
 
