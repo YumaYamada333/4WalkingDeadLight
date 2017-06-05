@@ -21,6 +21,9 @@ public class SetButton : MonoBehaviour {
     [SerializeField]
     private GameObject ScrollRifhtButton;
 
+    [SerializeField]
+    GameManager gameManager;
+
     private bool flag = true;
     //private float BordPosition_x;
     //private float BordPosition_y;
@@ -275,5 +278,11 @@ public class SetButton : MonoBehaviour {
 
                 break;
         }
+    }
+
+    public void SetButtonToFasle()
+    {
+        ScrollRifhtButton.SetActive(false);
+        ScrollLeftButton.SetActive(false);
     }
 }
