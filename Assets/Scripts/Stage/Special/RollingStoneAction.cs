@@ -74,6 +74,9 @@ public class RollingStoneAction : MonoBehaviour
     //GameObjectでColliderと触れているの要素数
     //private List<GameObject> ride = new List<GameObject>();
 
+    /*ギミック音*/
+    public AudioClip GimmickSound;
+
     //パーティクルフラグ取得
     public bool PartTim;
 
@@ -108,6 +111,10 @@ public class RollingStoneAction : MonoBehaviour
             }
             else
             {
+                /*ギミック音を鳴らす*/
+                AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+                audioSource.PlayOneShot(GimmickSound);
+
                 //フラグを上げる
                 m_action_flag = true;
             }

@@ -58,6 +58,9 @@ public class FallFruits : MonoBehaviour {
     //GameObjectでColliderと触れているの要素数
     //private List<GameObject> ride = new List<GameObject>();
 
+    /*ギミック音*/
+    public AudioClip DropSound;
+
     //パーティクルフラグ取得
     public bool PartTim;
 
@@ -135,6 +138,10 @@ public class FallFruits : MonoBehaviour {
             //移動時間になったらフラグを止める
             if (timeStep > 1.0f)
             {
+                /*ギミック音を鳴らす*/
+                AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+                audioSource.PlayOneShot(DropSound);
+
                 m_action_flag = false;
 
                 m_scale_action_flag = true;

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour {
 
-    //[SerializeField]
-    //GameObject m_cursorPrefab;                    // カーソルプレハブ
-    //GameObject m_cursor;                          // カーソル
     [SerializeField]
     private Texture m_defaultCursor;              // デフォルトカーソル
     [SerializeField]
@@ -20,12 +17,16 @@ public class CursorController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        // カーソル変更
+        // カーソル削除
         Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update () {
+        // カーソルの削除
+        if (Cursor.visible)
+            Cursor.visible = false;
+
         // マウスカーソルの移動
         transform.position = Input.mousePosition;
 
@@ -34,8 +35,10 @@ public class CursorController : MonoBehaviour {
 
         if (handsBoard != null)
         {
+                transform.FindChild("BatuImage").gameObject.GetComponent<RawImage>().enabled = GameObject.Find("GameManager").GetComponent<GameManager>().GetGimmickFlag();
             if (GameObject.Find("MouseSystem").GetComponent<MouseSystem>().GetMouseHit(handsBoard) >= 0 || m_grabFlag)
             {
+
                 if (Input.GetMouseButton(0))
                 {
                     image.texture = m_cardGrabCursor;

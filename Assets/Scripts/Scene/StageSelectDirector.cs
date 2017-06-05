@@ -84,6 +84,9 @@ public class StageSelectDirector : MonoBehaviour
     };
     StepDirction stepDir = StepDirction.Down;
 
+    public AudioClip PlaySound;
+    static private AudioClip PS;
+
     // Use this for initialization
     void Start()
     {
@@ -117,12 +120,13 @@ public class StageSelectDirector : MonoBehaviour
             m_pamphlet[i].transform.position = new Vector3(0, -80, 0) + (m_pos * i) + m_space[m_space[i].pamphlietIndex].pos;
             //m_pamphlet[i].GetComponent<Button>().
             // ボタンの非表示
-            GameObject childObject = m_pamphlet[i].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject;
+            GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
         }
 
-        FlashingUGui.SetPlayButton(m_pamphlet[0].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject);
+        /*音を入れる*/
+        PS = PlaySound;
 
         // クリア情報を削除したい場合のみコメント外してください =======================================
         //PlayerPrefs.DeleteAll();
@@ -213,7 +217,7 @@ public class StageSelectDirector : MonoBehaviour
                     }
                 }
                 // ボタンを表示　非表示
-                GameObject childObject = m_pamphlet[i].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject;
+                GameObject childObject = m_pamphlet[i].transform.FindChild("PamphletCanvas").transform.FindChild("PlayButton").gameObject;
                 if (changeStep > 0.95f) childObject.SetActive(false);
                 if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
 
@@ -242,6 +246,10 @@ public class StageSelectDirector : MonoBehaviour
     // ボタンを押したときの処理
     public void PlayButton()
     {
+        /*プレイ音を鳴らす*/
+        AudioSource audioSource = GameObject.Find("StageSelectDirector").GetComponent<AudioSource>();
+        audioSource.PlayOneShot(PS);
+
         if (SceneManager.GetActiveScene().name != "StageSelect")
         {
             CurtainControl CurtainSystem = GameObject.Find("Canvas").GetComponent<CurtainControl>();
@@ -273,7 +281,7 @@ public class StageSelectDirector : MonoBehaviour
             {
                 GameObject clearObj = Instantiate(m_clearPrefab);
                 clearObj.gameObject.transform.parent =
-                    m_pamphlet[i].gameObject.transform.Find("PamphletCanvas").transform;
+                    m_pamphlet[i].gameObject.transform.FindChild("PamphletCanvas").transform;
                 clearObj.transform.localPosition = new Vector3(6.8f, 6.9f, 0.0f);
             }
         }
@@ -289,6 +297,11 @@ public class StageSelectDirector : MonoBehaviour
                 m_space[i].pamphlietIndex = i;
             }
         }
+    }
+
+    static public void SetisEnd(bool isend)
+    {
+        isEnd = isend;
     }
 
 }

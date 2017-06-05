@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     }
     GameState gameState;
 
+    //プレイボタン音
     public AudioClip OK;
 
     SetButton flag;
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
         
         flag.MoveInLerp();
 
-        Debug.Log(flag.Move_cnt);
+        //Debug.Log(flag.Move_cnt);
 
         switch (gameState)
         {

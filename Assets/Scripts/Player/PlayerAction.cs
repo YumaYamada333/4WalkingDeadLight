@@ -30,7 +30,7 @@ static class Constants
 //アニメーション
 enum ANIMATION { MOVE, JUMP, ATTACK, OVER };
 //パーティクル
-enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING};
+enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON};
 public class PlayerAction : MonoBehaviour
 {
     private int effect_count = 0;   //エフェクト再生用のカウント
@@ -73,6 +73,8 @@ public class PlayerAction : MonoBehaviour
     public GameObject ImageBord;
     public GameObject ImageBord2;
     public GameObject CanvasResetButton;
+    public GameObject CanvasSetButton;
+    public GameObject CanvasPlayButton;
 
     //カメラのポジション
     Vector3 CameraPos;
@@ -123,6 +125,9 @@ public class PlayerAction : MonoBehaviour
     float clearButtonPosY = -83;
     float clearButtonPosZ = -1;
 
+    //液体ブロック種類判別用
+    public int LiquidType;
+
     void OnEnable() //objが生きている場合
     {
         if (time <= 0)
@@ -142,7 +147,10 @@ public class PlayerAction : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
-        child = transform.Find("AttackColl").gameObject;
+        ImageBord = GameObject.Find("Imagebord");
+        ImageBord2 = GameObject.Find("Imagebord2");
+        child = transform.FindChild("AttackColl").gameObject;
+        LiquidType = 0;
     }
 
     // Update is called once per frame
@@ -150,7 +158,6 @@ public class PlayerAction : MonoBehaviour
     {
         //カメラのポジション
         CameraPos = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
-
         //OverPosに代入
         FallPosY = CameraPos.y / 2 + 10;
         //真下にRayを飛ばして、当たっているかどうか
@@ -167,6 +174,17 @@ public class PlayerAction : MonoBehaviour
                 isSliding = false;
             }
         }
+        //走っている場合
+        if (animationFlag[(int)ANIMATION.MOVE])
+        {
+            if (isGround)       //地面についている
+                middlePosition.y = transform.position.y;    //中央地点yを今のプレイヤーの座標にする
+            if (!isGround)      //地面についていない
+                middlePosition.y -= 1.0f;                   //中央地点yを引く
+        }
+        //中央地点yがステージの高さより低い場合
+        if (middlePosition.y < Constants.StageHeight)
+            middlePosition.y = Constants.StageHeight;   //ステージの高さにする
 
         //敵の数を取得
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
@@ -217,6 +235,16 @@ public class PlayerAction : MonoBehaviour
         {
             child.SetActive(false);
         }
+        //if (Physics.Raycast(transform.position, Vector3.forward, out slideHit))
+        //{
+        //    //敵との当たり判定
+        //    for (int i = 0; i < enemy.Length; i++)
+        //    {
+        //        //attack
+        //        if (animationFlag[(int)ANIMATION.ATTACK] == true)
+        //            Destroy(enemy[i]);
+        //    }
+        //}
         //characterとgroundの判定
 
         if (controller.isGrounded)
@@ -237,6 +265,8 @@ public class PlayerAction : MonoBehaviour
             isGround = false;
         }
 
+        //液体パーティクル判別
+        GetLiquid();
 
         //ClearFlagがtrueだったら
         ClearControl();
@@ -260,12 +290,34 @@ public class PlayerAction : MonoBehaviour
         {
             if (isGround)       //地面についている
                 middlePosition.y = transform.position.y;    //中央地点yを今のプレイヤーの座標にする
+            if (!isGround)      //地面についていない
+                middlePosition.y -= 1.0f;                   //中央地点yを引く
         }
         //中央地点yがステージの高さより低い場合
         if (middlePosition.y < Constants.StageHeight)
             middlePosition.y = Constants.StageHeight;   //ステージの高さにする
         //今現在のy地点をに記憶させる
         endPosition.y = transform.position.y;
+    }
+    //----------------------------------------------------------------------
+    //! @brief プレイヤーの攻撃
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    void PlayerAttack(int i, int num)
+    {
+        //プレイヤーの攻撃範囲に敵がいる場合
+        if (enemy[i].transform.position.x - transform.position.x <= Constants.MassDistance * num
+            && transform.position.y > enemy[i].transform.position.y
+            && enemy[i].transform.position.y - transform.position.y >= -Constants.Adjustment)
+        {
+            //敵を消す
+            Destroy(enemy[i]);
+            //音を出す
+            audioSource.PlayOneShot(Hit);
+        }
     }
     //----------------------------------------------------------------------
     //! @brief 今待機中かどうか
@@ -412,7 +464,10 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                 //カードセットフラグ
                     animationNum = (int)ANIMATION.MOVE;  //アニメーションの番号
                     animationName = "Move";              //アニメーションの名前
-                    particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
+                    }
                     break;
                 //jump
                 case CardManagement.CardType.Jump:
@@ -428,7 +483,10 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                     //カードセットフラグ
                     animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
                     animationName = "Attack";               //アニメーションの名前
-                    particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    if (!OverFlag)
+                    {
+                        particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    }
                     break;
                 case CardManagement.CardType.Count:
                     audioSource.PlayOneShot(Attack);        //音
@@ -475,6 +533,7 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+
         }
         else
         {
@@ -525,6 +584,24 @@ public class PlayerAction : MonoBehaviour
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
         }
+
+        //液体ブロック判定
+        if (coll.gameObject.tag == "Water")
+        {
+            //水
+            LiquidType = (int)PARTICLE.WATER;
+        }
+        else if (coll.gameObject.tag == "Thorn")
+        {
+            //毒
+            LiquidType = (int)PARTICLE.POISON;
+        }
+        else
+        {
+            //なし
+            LiquidType = (int)PARTICLE.NONE;
+        }
+
     }
 
     //----------------------------------------------------------------------
@@ -688,6 +765,8 @@ public class PlayerAction : MonoBehaviour
     {
         CanvasBord.SetActive(false);
         CanvasResetButton.SetActive(false);
+        //CanvasSetButton.SetActive(false);
+        //CanvasPlayButton.SetActive(false);
         ImageBord.SetActive(false);
         ImageBord2.SetActive(false);
     }
@@ -724,6 +803,29 @@ public class PlayerAction : MonoBehaviour
             Invoke("SetButtonOn", 0.6f);
         }
     }
-}
 
+    //----------------------------------------------------------------------
+    //! @brief 液体ブッロクの判定取得
+    //!
+    //! @param[in] なし
+    //!
+    //! @return なし
+    //----------------------------------------------------------------------
+    private int GetLiquid()
+    {
+        switch (LiquidType)
+        {
+            case (int)PARTICLE.WATER:
+                //水のパーティクルを発生させる
+                particleType = (int)PARTICLE.WATER;
+                break;
+            case (int)PARTICLE.POISON:
+                //毒のパーティクルを発生させる
+                particleType = (int)PARTICLE.POISON;
+                break;
+        }
+        return LiquidType;
+    }
+
+}
 

@@ -134,6 +134,10 @@ public class SetButton : MonoBehaviour {
 
     public void OnClick()
     {
+
+        /*音を鳴らす*/
+        GetComponent<AudioSource>().Play();
+
         if (Move_cnt != 0)
         {
             return;

@@ -31,6 +31,9 @@ public class CountDown : MonoBehaviour {
     // カウントコンポーネント
     private Text T_count;
 
+    /*カウントダウン音*/
+    public AudioClip CountSound;
+
     // Use this for initialization
     void Start()
     {
@@ -151,6 +154,10 @@ public class CountDown : MonoBehaviour {
     //カウントを減らす
     public void CountMin()
     {
+        /*カウントダウン音を鳴らす*/
+        AudioSource audioSource = GameObject.Find("CountAudio").GetComponent<AudioSource>();
+        audioSource.PlayOneShot(CountSound);
+
         count--;
     }
 }

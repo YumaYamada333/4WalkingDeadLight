@@ -16,6 +16,12 @@ public class ToResultScene : MonoBehaviour {
     float timeStep;
     bool OverFlag = false;
     bool Flag = false;
+
+    //パーティクル継続時間計測用
+    private float WaiteTime;
+    //パーティクル継続時間
+    const float ParticleWaite = 2.0f;
+
     public enum OverType
     {
         NONE,
@@ -29,13 +35,19 @@ public class ToResultScene : MonoBehaviour {
         GameClear = GameObject.Find("CLEAR");
         timeStep = 0;
         resultTime = Time.time + 50;
-
+        WaiteTime = 0.0f;
     }
 
     // Update is called once per frame
     void Update () {
-        if(OverFlag)
+        if (OverFlag)
         {
+            //パーティクル継続時間計測
+            WaiteTime += 0.1f;
+            if(WaiteTime>=ParticleWaite)
+            {
+                player.GetComponent<PlayerAction>().particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
+            }
             timeStep = (Time.time - resultTime) / 0.3f;
             GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
         }

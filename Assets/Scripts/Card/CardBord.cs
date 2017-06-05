@@ -268,7 +268,7 @@ public class CardBord : MonoBehaviour {
     }
     public bool CheckRightEnd()
     {
-        Debug.Log(scrollStep + 6 - numSet );
+        //Debug.Log(scrollStep + 6 - numSet );
         if (cards[numSet - 1].obj == null) return false;
         if (numSet <= 6 || -scrollStep + 6 >= numSet)
             {
