@@ -91,8 +91,8 @@ public class CardBord : MonoBehaviour {
     //カードの初期座標取得関数
     public void Coordinate(bool isLerp = false)
     {
-
-        centerCard = usingCard;
+        if (usingCard == 0) centerCard = usingCard;
+        else centerCard = usingCard - 1;
         //カードの座標設定
         for (int i = 0; i < numSetMax; i++)
         {
@@ -235,12 +235,12 @@ public class CardBord : MonoBehaviour {
         if (true)
         {
             // 使用済みカードの非表示化
-            if (usingCard <= numSetMax && usingCard > 0)
+            if (usingCard <= numSetMax && usingCard > 1)
             {
-                if (cards[usingCard].obj && cards[usingCard - 1].obj)
+                if (cards[usingCard - 1].obj && cards[usingCard - 2].obj)
                 {
-                    cards[usingCard - 1].obj.SetActive(false);
-                    cards[usingCard].obj.SetActive(true);
+                    cards[usingCard - 2].obj.SetActive(false);
+                    cards[usingCard - 1].obj.SetActive(true);
 
                 }
             }
