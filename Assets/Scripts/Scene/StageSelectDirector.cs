@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.IO;
 using System;
 
@@ -123,6 +124,9 @@ public class StageSelectDirector : MonoBehaviour
             GameObject childObject = m_pamphlet[i].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject;
             childObject.SetActive(false);
             if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
+            // ボタンのサイズ調整
+            float size = childObject.GetComponent<RectTransform>().sizeDelta.y;
+            childObject.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
         }
 
        // FlashingUGui.SetPlayButton(m_pamphlet[0].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject);
