@@ -12,6 +12,7 @@ public class CursorController : MonoBehaviour {
     [SerializeField]
     private Texture m_cardGrabCursor;             // カードつかみ中カーソル
 
+    private GameObject handsBoard;
     private bool m_grabFlag = false;
     private bool m_oldGrabFlag = false;
 
@@ -19,6 +20,7 @@ public class CursorController : MonoBehaviour {
     void Start () {
         // カーソル削除
         Cursor.visible = false;
+        handsBoard = GameObject.Find("HandsBord");
     }
 
     // Update is called once per frame
@@ -30,7 +32,6 @@ public class CursorController : MonoBehaviour {
         // マウスカーソルの移動
         transform.position = Input.mousePosition;
 
-        GameObject handsBoard = GameObject.Find("HandsBord");
         RawImage image = GetComponent<RawImage>();
 
         if (handsBoard != null)
