@@ -88,6 +88,9 @@ public class StageSelectDirector : MonoBehaviour
     public AudioClip PlaySound;
     static private AudioClip PS;
 
+    // パンフレットをスワイプした回数
+    private int swipCount = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -151,6 +154,7 @@ public class StageSelectDirector : MonoBehaviour
 
         // マウスのドラック量を取得
         Vector2 dragVec = GetComponent<MouseSystem>().GetDragVec() - dragVecOld;
+
         // スワイプの距離を取得
         if (!(curtainUpStep < 1.0f))
         {
@@ -168,6 +172,7 @@ public class StageSelectDirector : MonoBehaviour
                     stepDir = StepDirction.Down;
                     m_selectPamphlet.Plus(1);
                     changeStep = 0.0f;
+                    swipCount++;
                 }
                 else if (MouseSystem.GetFlickDistance().y < -activityAreaFlick)
                 {
@@ -181,6 +186,7 @@ public class StageSelectDirector : MonoBehaviour
                     stepDir = StepDirction.Up;
                     m_selectPamphlet.Plus(1);
                     changeStep = 0.0f;
+                    swipCount++;
                 }
             }
             else
@@ -302,6 +308,11 @@ public class StageSelectDirector : MonoBehaviour
                 m_space[i].pamphlietIndex = i;
             }
         }
+    }
+
+    public int GetSwipCnt()
+    {
+        return swipCount;
     }
 
     static public void SetisEnd(bool isend)
