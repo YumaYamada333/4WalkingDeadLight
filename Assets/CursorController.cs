@@ -86,7 +86,7 @@ public class CursorController : MonoBehaviour {
                 image.texture = m_cardGrabCursor;
                 m_grabFlag = false;
                 transform.FindChild("BatuImage").gameObject.GetComponent<RawImage>().enabled = false;
-                if (gamemanager != null ? gamemanager.GetComponent<GameManager>().OverFlag() : false)
+                if (gamemanager != null ? gamemanager.GetComponent<GameManager>().OverFlag() || gamemanager.GetComponent<GameManager>().ClearFlag() : false)
                 {
                     image.texture = m_defaultCursor;
                 }

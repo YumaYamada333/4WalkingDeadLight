@@ -191,4 +191,9 @@ public class GameManager : MonoBehaviour
     {
         return playerAction.GetComponent<PlayerAction>().OverFlag;
     }
+    public bool ClearFlag()
+    {
+        return playerAction.GetComponent<PlayerAction>().ClearFlag;
+    }
+
 }
