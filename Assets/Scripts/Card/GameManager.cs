@@ -186,4 +186,9 @@ public class GameManager : MonoBehaviour
     {
         m_gimmick_move_flag = flag;
     }
+
+    public bool OverFlag()
+    {
+        return playerAction.GetComponent<PlayerAction>().OverFlag;
+    }
 }
