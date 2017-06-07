@@ -147,9 +147,9 @@ public class PlayerAction : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
         controller = GetComponent<CharacterController>();
+        child = transform.Find("AttackColl").gameObject;
         ImageBord = GameObject.Find("Imagebord");
         ImageBord2 = GameObject.Find("Imagebord2");
-        child = transform.FindChild("AttackColl").gameObject;
         LiquidType = 0;
     }
 
@@ -174,18 +174,6 @@ public class PlayerAction : MonoBehaviour
                 isSliding = false;
             }
         }
-        //走っている場合
-        if (animationFlag[(int)ANIMATION.MOVE])
-        {
-            if (isGround)       //地面についている
-                middlePosition.y = transform.position.y;    //中央地点yを今のプレイヤーの座標にする
-            if (!isGround)      //地面についていない
-                middlePosition.y -= 1.0f;                   //中央地点yを引く
-        }
-        //中央地点yがステージの高さより低い場合
-        if (middlePosition.y < Constants.StageHeight)
-            middlePosition.y = Constants.StageHeight;   //ステージの高さにする
-
         //敵の数を取得
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -285,17 +273,6 @@ public class PlayerAction : MonoBehaviour
     //----------------------------------------------------------------------
     void GravityForPlayer()
     {
-        //move
-        if (animationFlag[(int)ANIMATION.MOVE])
-        {
-            if (isGround)       //地面についている
-                middlePosition.y = transform.position.y;    //中央地点yを今のプレイヤーの座標にする
-            if (!isGround)      //地面についていない
-                middlePosition.y -= 1.0f;                   //中央地点yを引く
-        }
-        //中央地点yがステージの高さより低い場合
-        if (middlePosition.y < Constants.StageHeight)
-            middlePosition.y = Constants.StageHeight;   //ステージの高さにする
         //今現在のy地点をに記憶させる
         endPosition.y = transform.position.y;
     }

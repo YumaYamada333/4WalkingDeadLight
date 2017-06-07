@@ -26,19 +26,24 @@ public class DownFinger : MonoBehaviour {
 
     // Use this for initialization
     private RectTransform downFinger;                   //指
+    private GameObject SSDObj;                          //StageSelectDirectorのobj
     private float waitTime = 0;                         //待たせる時間
     private Vector3 startPos;                           //補完を始める場所
     private Vector3 endPos;                             //補完を終える場所
     private float timeStep = TimeCons.TouchTimeStep;    //何秒で補完するか
     private float startTime = 0;                        //補完が始まった時間
+    private float a = 1.0f;
     void Start()
     {
         //指の情報を取得
         downFinger = GameObject.Find("DownImage").GetComponent<RectTransform>();
+        //StageSelectDirectorを取得
+        SSDObj = GameObject.Find("StageSelectDirector");
         //初期化
         startTime = Time.timeSinceLevelLoad + TimeCons.WaitStartTime;          //補完が始まった時間
         startPos = new Vector3(LerpPos.VecX, LerpPos.StartVecY, LerpPos.VecZ); //補完を始める場所
-        endPos = new Vector3(LerpPos.VecX, LerpPos.StartVecY, 0);              //補完を終える場所
+        endPos = new Vector3(LerpPos.VecX, LerpPos.StartVecY, 0);               //補完を終える場所
+
     }
     void Update()
     {
@@ -64,30 +69,39 @@ public class DownFinger : MonoBehaviour {
     //----------------------------------------------------------------------
     private void MoveFinger()
     {
-        //経過時間
-        var diff = Time.timeSinceLevelLoad - startTime;
-        //進行率
-        var rate = diff / timeStep;
-        //補完
-        downFinger.localPosition = Vector3.Lerp(startPos, endPos, rate);
-        //補完を終えたら
-        if (diff > timeStep)
+        StageSelectDirector SSD = SSDObj.GetComponent<StageSelectDirector>();
+        if (SSD.GetSwipCnt() == 0)
         {
-            //次の補完のために情報を更新する
-            if (downFinger.localPosition.y >= LerpPos.MarginStartVecY)
+            //経過時間
+            var diff = Time.timeSinceLevelLoad - startTime;
+            //進行率
+            var rate = diff / timeStep;
+            //補完
+            downFinger.localPosition = Vector3.Lerp(startPos, endPos, rate);
+            //補完を終えたら
+            if (diff > timeStep)
             {
-                //スワイプ用
-                SetLerp(LerpPos.StartVecY, 0, LerpPos.EndVecY, 0, TimeCons.SwipeTimeStep);
-            }
-            else if (downFinger.localPosition.y <= LerpPos.MarginEndVecY)
-            {
-                //1.5秒待つ
-                if (waitTime > TimeCons.WaitTime)
+                //次の補完のために情報を更新する
+                if (downFinger.localPosition.y >= LerpPos.MarginStartVecY)
                 {
-                    //タッチ用
-                    SetLerp(LerpPos.StartVecY, LerpPos.VecZ, LerpPos.StartVecY, 0, TimeCons.TouchTimeStep);
+                    //スワイプ用
+                    SetLerp(LerpPos.StartVecY, 0, LerpPos.EndVecY, 0, TimeCons.SwipeTimeStep);
+                }
+                else if (downFinger.localPosition.y <= LerpPos.MarginEndVecY)
+                {
+                    //1.5秒待つ
+                    if (waitTime > TimeCons.WaitTime)
+                    {
+                        //タッチ用
+                        SetLerp(LerpPos.StartVecY, LerpPos.VecZ, LerpPos.StartVecY, 0, TimeCons.TouchTimeStep);
+                    }
                 }
             }
+        }
+        //スワイプされたら
+        else if (SSD.GetSwipCnt() > 0)
+        {
+            gameObject.SetActive(false);
         }
     }
 
