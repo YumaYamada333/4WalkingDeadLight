@@ -357,7 +357,7 @@ public class CardManagement : MonoBehaviour {
                 CardActive(true);
 
                 bord.selectedSpace = mouse_system.GetMouseHit(actionBord);
-                if (bord.selectedSpace >= 0)
+                if (bord.selectedSpace > 0)
                 {
                     releaseFlag = true;
 
