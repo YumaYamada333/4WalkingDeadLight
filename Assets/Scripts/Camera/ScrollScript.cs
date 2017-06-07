@@ -24,6 +24,8 @@ public class ScrollScript : MonoBehaviour
 
     CardManagement cardmanegement;      //カードマネジメント
 
+    GameManager gamemanager;
+
     // Use this for initialization
     void Start ()
     {
@@ -35,11 +37,15 @@ public class ScrollScript : MonoBehaviour
 
         //コンポーネントの取得
         cardmanegement = GameObject.Find("CardManager").GetComponent<CardManagement>();
+
+        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ギミックの動作中はスクロールさせない
+        isUpdate = isUpdate ? !gamemanager.GetGimmickFlag() : isUpdate;
         if (isUpdate)
         {
             //左クリック
