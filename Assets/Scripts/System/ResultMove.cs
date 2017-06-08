@@ -36,43 +36,43 @@ public class ResultMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //    ResultMoveFlag = SceneLoadScript.MoveFlag;
-        //    ClearFlag = ClearFunc.Clearflag();
-        //    OverFlag = OverFunc.Overflag();
+        ResultMoveFlag = SceneLoadScript.MoveFlag;
+        ClearFlag = ClearFunc.Clearflag();
+        OverFlag = ClearFunc.Overflag();
 
-        //    //クリアしたら通す
-        //    if (ClearFlag)
-        //    {
-        //        //OnClickで関数を呼んで切り替え
-        //        if (ResultMoveFlag == true)
-        //        {
-        //            timeStep = (Time.time - titleTime) / 1.5f;
-        //            //ゲームクリアの移動
-        //            GameClear.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
-        //            if (Input.GetMouseButtonUp(0))
-        //            {
-        //                timeStep = 0;
-        //                titleTime = Time.time;
-        //                ClearFlag = false;
-        //            }
-        //        }
-        //    }
-        //    //ゲームオーバーしたら
-        //    if (OverFlag)
-        //    {
-        //         //OnClickで関数を呼んで切り替え
-        //         if (ResultMoveFlag == true)
-        //        {
-        //            timeStep = (Time.time - titleTime) / 1.5f;
-        //            //ゲームオーバーの移動
-        //            GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
-        //            if (Input.GetMouseButtonUp(0))
-        //            {
-        //                timeStep = 0;
-        //                titleTime = Time.time;
-        //                OverFlag = false;
-        //            }
-        //        }
-        //    }
+        //クリアしたら通す
+        if (ClearFlag)
+        {
+            //OnClickで関数を呼んで切り替え
+            if (ResultMoveFlag == true)
+            {
+                timeStep = (Time.time - titleTime) / 1.5f;
+                //ゲームクリアの移動
+                GameClear.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
+                if (Input.GetMouseButtonUp(0))
+                {
+                    timeStep = 0;
+                    titleTime = Time.time;
+                    ClearFlag = false;
+                }
+            }
+        }
+        //ゲームオーバーしたら
+        if (OverFlag)
+        {
+            //OnClickで関数を呼んで切り替え
+            if (ResultMoveFlag == true)
+            {
+                timeStep = (Time.time - titleTime) / 1.5f;
+                //ゲームオーバーの移動
+                GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
+                if (Input.GetMouseButtonUp(0))
+                {
+                    timeStep = 0;
+                    titleTime = Time.time;
+                    OverFlag = false;
+                }
+            }
+        }
     }
 }

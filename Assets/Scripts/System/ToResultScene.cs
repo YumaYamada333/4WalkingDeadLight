@@ -15,7 +15,7 @@ public class ToResultScene : MonoBehaviour {
     private float resultTime;
     float timeStep;
     bool OverFlag = false;
-    bool Flag = false;
+    bool ClearFlag = false;
 
     //パーティクル継続時間計測用
     private float WaiteTime;
@@ -58,7 +58,7 @@ public class ToResultScene : MonoBehaviour {
             timeStep = (Time.time - resultTime) / 0.3f;
             GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
         }
-        if(Flag)
+        if(ClearFlag)
         {
             timeStep = 0;
 
@@ -76,7 +76,7 @@ public class ToResultScene : MonoBehaviour {
         player.GetComponent<Animator>().SetBool("Clear", true);
         player.GetComponent<PlayerAction>().enabled = false;
 
-        Flag = true;
+        ClearFlag = true;
 
         // クリア情報の書き込み
         ClearSave();
@@ -105,5 +105,14 @@ public class ToResultScene : MonoBehaviour {
     void ClearSave()
     {
         PlayerPrefs.SetInt(Application.loadedLevelName, 1);
+    }
+    public bool Clearflag()
+    {
+        return ClearFlag;
+    } 
+
+    public bool Overflag()
+    {
+        return OverFlag;
     }
 }
