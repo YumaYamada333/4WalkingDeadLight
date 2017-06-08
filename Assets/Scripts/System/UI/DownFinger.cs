@@ -22,6 +22,13 @@ static class LerpPos
     public const float VecZ            = -15;   //Vector3.y
 }
 
+//色関連の関数
+static class Tinge
+{
+    public const float DefaultColor = 1.0f;     //基底の色
+    public const float MinusAlpha   = 0.01f;    //減算させるアルファブレンド値
+}
+
 public class DownFinger : MonoBehaviour {
 
     // Use this for initialization
@@ -32,7 +39,7 @@ public class DownFinger : MonoBehaviour {
     private Vector3 endPos;                             //補完を終える場所
     private float timeStep = TimeCons.TouchTimeStep;    //何秒で補完するか
     private float startTime = 0;                        //補完が始まった時間
-    private float a = 1.0f;
+    private float alpha = Tinge.DefaultColor;           //アルファブレンド
     void Start()
     {
         //指の情報を取得
@@ -101,7 +108,9 @@ public class DownFinger : MonoBehaviour {
         //スワイプされたら
         else if (SSD.GetSwipCnt() > 0)
         {
-            gameObject.SetActive(false);
+            //アルファブレンド値の減算処理
+            alpha -= Tinge.MinusAlpha;
+            GetComponent<Image>().color = new Color(Tinge.DefaultColor, Tinge.DefaultColor, Tinge.DefaultColor, alpha);
         }
     }
 
