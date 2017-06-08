@@ -178,7 +178,6 @@ public class MouseSystem : MonoBehaviour {
         return -1;
     }
 
-
     // マウスカーソルとオブジェクトの当たり判定
     public bool Collider(GameObject obj)
     {
@@ -189,6 +188,24 @@ public class MouseSystem : MonoBehaviour {
             screen_pos.x <= obj.transform.position.x + halfSize.x &&
             screen_pos.y >= obj.transform.position.y - halfSize.y &&
             screen_pos.y <= obj.transform.position.y + halfSize.y)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // マウスカーソルとオブジェクトの当たり判定
+    public bool Collider(GameObject obj, Vector2 offset, Vector2 closeSize)
+    {
+        if (obj.activeSelf != true) return false;
+        // カードボードのサイズ取得
+        Vector2 halfSize = obj.GetComponent<RectTransform>().sizeDelta/* / 2*/;
+        halfSize.x -= closeSize.x / 2;
+        halfSize.y -= closeSize.y / 2;
+        if (screen_pos.x >= obj.transform.position.x - halfSize.x + offset.x &&
+            screen_pos.x <= obj.transform.position.x + halfSize.x + offset.x &&
+            screen_pos.y >= obj.transform.position.y - halfSize.y - offset.y &&
+            screen_pos.y <= obj.transform.position.y + halfSize.y - offset.y)
         {
             return true;
         }
