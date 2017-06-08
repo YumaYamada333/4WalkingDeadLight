@@ -124,7 +124,10 @@ public class MouseSystem : MonoBehaviour {
                 {
                     if (cards[i].front.obj != null)
                     {
-                        if (Collider(cards[i].front.obj))
+                        if (Collider(cards[i].front.obj, 
+                            new Vector2(0, 0),
+                            new Vector2(cards[i].front.obj.GetComponent<RectTransform>().sizeDelta.x - cards[i].front.obj.GetComponent<RectTransform>().sizeDelta.x / 5,
+                            cards[i].front.obj.GetComponent<RectTransform>().sizeDelta.y)))
                         {
                             return i;
                         }
