@@ -122,8 +122,9 @@ public class PlayerAction : MonoBehaviour
     bool isSlideLerp;       //補完するべきか
 
     //クリア時にだすボタンの座標 (y,z)
-    float clearButtonPosY = -83;
-    float clearButtonPosZ = -1;
+    float endButtonPosY = -103;
+    float endButtonPosZ = -1;
+    float endButtonPosX = 90;
 
     //液体ブロック種類判別用
     public int LiquidType;
@@ -702,6 +703,9 @@ public class PlayerAction : MonoBehaviour
     //----------------------------------------------------------------------
     public void SetButtonOn()
     {
+        RetryButton.transform.localPosition = new Vector3(endButtonPosX, endButtonPosY, endButtonPosZ);
+        SelectButton.transform.localPosition = new Vector3(-endButtonPosX, endButtonPosY, endButtonPosZ);
+
         RetryButton.SetActive(true);
         SelectButton.SetActive(true);
     }
@@ -715,7 +719,7 @@ public class PlayerAction : MonoBehaviour
     //----------------------------------------------------------------------
     public void SetButtonClear()
     {
-        SelectButton.transform.localPosition = new Vector3(0, clearButtonPosY, clearButtonPosZ);
+        SelectButton.transform.localPosition = new Vector3(endButtonPosX, endButtonPosY, endButtonPosZ);
         SelectButton.SetActive(true);
     }
 

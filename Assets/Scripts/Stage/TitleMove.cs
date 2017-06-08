@@ -45,6 +45,12 @@ public class TitleMove : MonoBehaviour {
             StartImage.transform.localPosition = MathClass.Lerp(ButtonStartPos, ButtonEndPos, timeStep);
             //exitの移動
             ExitImage.transform.localPosition = MathClass.Lerp(exitStartPos, exitEndPos, timeStep);
+            if (Input.GetMouseButtonUp(0))
+            {
+                timeStep = 0;
+                titleTime = Time.time;
+                MoveFlag = false;
+            }
         }
         else if (MoveFlag == false)
         {
@@ -55,12 +61,6 @@ public class TitleMove : MonoBehaviour {
             StartImage.transform.localPosition = MathClass.Lerp( ButtonEndPos, ButtonStartPos, timeStep);
             //exitの移動
             ExitImage.transform.localPosition = MathClass.Lerp( exitEndPos, exitStartPos, timeStep);
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            timeStep = 0;
-            titleTime = Time.time;
-            MoveFlag = false;
         }
     }
 }

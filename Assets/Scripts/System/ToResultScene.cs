@@ -10,8 +10,8 @@ public class ToResultScene : MonoBehaviour {
     GameObject GameClear;
 
     //"GAME OVER"と"CLEAR"を動かすための始点と終点と時間
-    Vector3 resultStartPos = new Vector3(0, 300, 0);
-    Vector3 resultEndPos = new Vector3(0, 20, 0);
+    Vector3 resultStartPos = new Vector3(0, 350, 0);
+    Vector3 resultEndPos = new Vector3(0, 50, 0);
     private float resultTime;
     float timeStep;
     bool OverFlag = false;
@@ -36,6 +36,13 @@ public class ToResultScene : MonoBehaviour {
         timeStep = 0;
         resultTime = Time.time + 50;
         WaiteTime = 0.0f;
+
+        GameOver.transform.localPosition = new Vector3(0, 350, 0);
+        GameClear.transform.localPosition = new Vector3(0, 350, 0);
+
+        GameOver.transform.localScale = new Vector3(5, 2.5f, 1);
+        GameClear.transform.localScale = new Vector3(5, 2.5f, 1);
+
     }
 
     // Update is called once per frame
