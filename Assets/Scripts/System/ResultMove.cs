@@ -23,14 +23,20 @@ public class ResultMove : MonoBehaviour
 
     bool ClearFlag;
     bool OverFlag;
+    bool isStartLerp;
     // Use this for initialization
     void Start()
     {
         GameOver = GameObject.Find("OVER");
         GameClear = GameObject.Find("CLEAR");
+        ClearFunc = GameObject.Find("GameManager").GetComponent<ToResultScene>();
+        OverFunc = ClearFunc;
         timeStep = 0;
+        ResultMoveFlag = false;
         titleTime = Time.time;
-
+        isStartLerp = false;
+        // 初期化がSceneLoadScriptで正常に出来ないため
+        SceneLoadScript.MoveFlag = false; 
     }
 
     // Update is called once per frame
@@ -39,7 +45,10 @@ public class ResultMove : MonoBehaviour
         ResultMoveFlag = SceneLoadScript.MoveFlag;
         ClearFlag = ClearFunc.Clearflag();
         OverFlag = ClearFunc.Overflag();
-
+        if (!isStartLerp)
+        {
+            titleTime = Time.time;
+        }
         //クリアしたら通す
         if (ClearFlag)
         {
@@ -51,9 +60,12 @@ public class ResultMove : MonoBehaviour
                 GameClear.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
                 if (Input.GetMouseButtonUp(0))
                 {
+                    isStartLerp = true;
                     timeStep = 0;
                     titleTime = Time.time;
+                    ClearFunc.isUpdate = false;
                     ClearFlag = false;
+
                 }
             }
         }
@@ -64,12 +76,15 @@ public class ResultMove : MonoBehaviour
             if (ResultMoveFlag == true)
             {
                 timeStep = (Time.time - titleTime) / 1.5f;
+                if (timeStep > 1.0f) timeStep = 1.0f;
                 //ゲームオーバーの移動
                 GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
                 if (Input.GetMouseButtonUp(0))
                 {
+                    isStartLerp = true;
                     timeStep = 0;
                     titleTime = Time.time;
+                    OverFunc.isUpdate = false;
                     OverFlag = false;
                 }
             }

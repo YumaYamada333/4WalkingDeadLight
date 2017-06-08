@@ -24,7 +24,7 @@ public class SceneLoadScript : MonoBehaviour
         GameClear = GameObject.Find("CLEAR");
         RetryButton = GameObject.Find("TitleButton");
         SelectButton = GameObject.Find("SelectButton");
-
+        MoveFlag = false;
     }
 
     //----------------------------------------------------------------------
