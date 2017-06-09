@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FlowerYellow
-  m_Shader: {fileID: 4800000, guid: 4b1ff492067829d47b3275f1cb16d875, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _FX1BLEND_ON _FX2BLEND_ON _FX3BLEND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
