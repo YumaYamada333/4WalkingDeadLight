@@ -104,7 +104,12 @@ public class BlockRot : BlockAction
     private float m_start_time = 0.0f;
     //スタート位置
     private Vector3 m_start_deg = Vector3.zero;
-
+    //1回だけ通る用変数
+    private bool m_rot_flag;
+    //今の角度
+    private float m_degree_x = 0.0f;
+    private float m_degree_y = 0.0f;
+    private float m_degree_z = 0.0f;
     //パーティクルフラグ取得
     //private bool PartTim;
 
@@ -122,7 +127,7 @@ public class BlockRot : BlockAction
     {
         //時間を取得
         m_start_time = Time.time;
-        m_start_deg =     
+        m_rot_flag = false;
     }
 
     public void Rot(ref GameObject obj)
@@ -134,8 +139,20 @@ public class BlockRot : BlockAction
             float timeStep = (Time.time - m_start_time) / obj.GetComponent<ActionCountDown>().m_act_time;
 
             //回転
-            Vector3 obj_deg = timeStep * (obj.GetComponent<ActionCountDown>().m_act_distance);
-            obj.transform.rotation = Quaternion.Euler(obj_deg);
+            //Vector3 obj_deg = timeStep * (obj.GetComponent<ActionCountDown>().m_act_distance);
+            //obj.transform.rotation = Quaternion.Euler(obj_deg);
+            if (!m_rot_flag)
+            {
+                m_degree_x = obj.transform.rotation.eulerAngles.x;
+                m_degree_y = obj.transform.rotation.eulerAngles.y;
+                m_degree_z = obj.transform.rotation.eulerAngles.z;
+
+                iTween.RotateTo(obj, iTween.Hash("y", m_degree_y + obj.GetComponent<ActionCountDown>().m_act_distance.y,
+                      "x", m_degree_x + obj.GetComponent<ActionCountDown>().m_act_distance.x,
+                      "z", m_degree_z + obj.GetComponent<ActionCountDown>().m_act_distance.z,
+                      "time", obj.GetComponent<ActionCountDown>().m_act_time));
+                m_rot_flag = true;
+            }
 
             //移動時間になったらフラグを止める
             if (timeStep > 1.0f)
@@ -279,6 +296,8 @@ public class ActionCountDown : MonoBehaviour
     //複数オブジェクトが同タイミングで動く場合に最後に動き終わるオブジェクト
     public GameObject m_final_move_obj;
 
+    
+
     //初期待機時間
     private float   m_init_wait_time;
 
@@ -329,6 +348,8 @@ public class ActionCountDown : MonoBehaviour
         m_obj = this.gameObject;
         //初期待機時間を取得
         m_init_wait_time = m_wait_time;
+
+        //iTween.RotateBy(m_obj, iTween.Hash("y", 90/*obj.GetComponent<ActionCountDown>().m_act_distance.y*//*"time", 1*//*obj.GetComponent<ActionCountDown>().m_act_time*/));
     }
 
     // Update is called once per frame
@@ -355,8 +376,9 @@ public class ActionCountDown : MonoBehaviour
                 if (m_game_manager.GetComponent<GameManager>().GetGimmickFlag())
                 {
                     //動く床の位置にObjectの座標を合わせる
+                    m_correction_value_ride = otherObj.transform.position - m_obj.GetComponent<Collider>().transform.position;
                     Vector3 v = otherObj.transform.position;
-                    otherObj.transform.position = new Vector3(m_obj.transform.position.x, m_obj.transform.position.y + m_correction_value_ride.y/*v.y*/, v.z);
+                    otherObj.transform.position = new Vector3(m_obj.GetComponent<Collider>().transform.position.x, m_obj.GetComponent<Collider>().transform.position.y + m_correction_value_ride.y/*v.y*/, v.z);
                 }
             }
             PartTim = true;
@@ -472,7 +494,7 @@ public class ActionCountDown : MonoBehaviour
     void OnTriggerEnter(Collider otherObj)
     {
         ride.Add(otherObj.gameObject);
-        m_correction_value_ride = otherObj.transform.position - m_obj.transform.position;
+        //m_correction_value_ride = otherObj.transform.position - m_obj.GetComponent<Collider>().transform.position;
     }
     //他のObjectが離れている時
     void OnTriggerExit(Collider otherObj)
