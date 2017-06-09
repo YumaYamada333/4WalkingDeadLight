@@ -16736,7 +16736,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollstart: 3
-  targetPosX: 10
+  targetPosX: 5
+  targetPosY: 5
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:

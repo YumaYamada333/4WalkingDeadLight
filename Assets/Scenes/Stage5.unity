@@ -2956,6 +2956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1e61d8792a99349b4d4b77abd7b493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUpdate: 1
 --- !u!114 &208914371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16108,7 +16109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollstart: 3
-  targetPosX: 10
+  targetPosX: 5
+  targetPosY: 5
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
