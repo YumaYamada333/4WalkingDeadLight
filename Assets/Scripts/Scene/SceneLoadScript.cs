@@ -15,6 +15,7 @@ public class SceneLoadScript : MonoBehaviour
     private GameObject RetryButton;
     private GameObject SelectButton;
 
+    public static bool MoveFlag = false;
     void Start()
     {
        
@@ -23,7 +24,7 @@ public class SceneLoadScript : MonoBehaviour
         GameClear = GameObject.Find("CLEAR");
         RetryButton = GameObject.Find("TitleButton");
         SelectButton = GameObject.Find("SelectButton");
-
+        MoveFlag = false;
     }
 
     //----------------------------------------------------------------------
@@ -105,6 +106,7 @@ public class SceneLoadScript : MonoBehaviour
         GetComponent<AudioSource>().Play();
 
         ButtonActive = GameObject.Find("unitychan").GetComponent<PlayerAction>();
+        MoveFlag = true;
         //ボタンとリザルトを消す
         Invoke("Active", 0.7f);
     }
