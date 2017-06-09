@@ -65,7 +65,6 @@ public class ScrollScript : MonoBehaviour
 
                 //マウス座標を取得
                 Vector3 mouse_pos = Input.mousePosition;
-                Debug.Log(CameraTmp.y);
 
                 //マウスクリック時カードをつかんでいないなら
                 if (cardmanegement.GetGripFlag() == false)
@@ -121,7 +120,6 @@ public class ScrollScript : MonoBehaviour
             //カメラの現在位置取得
             CameraTmp = GameObject.Find("MainCamera").transform.position;
 
-
             //実行ボタンが押されたら
             if (Input.GetButtonDown("Fire3"))
             {
@@ -129,4 +127,18 @@ public class ScrollScript : MonoBehaviour
                 GameObject.Find("Main Camera").transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z);
             }
         }
+
+    // タッチ開始時点の取得
+    //! スクリーン座標で取得する
+    // 左下基準 (スクリーンサイズによって右上の値は変わる)
+    public Vector2 GetTouchPos()
+    {
+        return start_mouse_pos;
+    }
+
+    //  タッチ中かを取得
+    public bool CheckTouch()
+    {
+        return click_flag;
+    }
 }
