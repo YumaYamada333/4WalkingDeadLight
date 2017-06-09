@@ -15,6 +15,8 @@ public class ScrollScript : MonoBehaviour
     private float targetPosX = 10.0f;   //スクロール範囲設定用変数
     [SerializeField]
     private float targetPosY = 10.0f;
+    [SerializeField]
+    private float underOffset = -1.0f;
 
     //public GameObject StartBlock;       //スタートブロック
     //public GameObject GoalBlock;        //ゴールブロック
@@ -92,17 +94,17 @@ public class ScrollScript : MonoBehaviour
                     if (CameraTmp.y <= targetPosY)
                     {
                         //上にスクロール
-                        if (start_mouse_pos.y + scrollstart >= mouse_pos.y)
+                        if (start_mouse_pos.y >= mouse_pos.y)
                         {
                             //カメラを上スクロールさせる
                             transform.Translate(0, 0.15f, 0);
                         }
                     }
-                    //カメラがターゲットポジションのより上にあるのならば
-                    if (CameraTmp.y >= CameraPos.y)
+                    //カメラが初期座標よりのy座標より上にあるのならば
+                    if (CameraTmp.y >= CameraPos.y + underOffset)
                     {
                         //下にスクロール
-                        if (start_mouse_pos.y + scrollstart <= mouse_pos.y)
+                        if (start_mouse_pos.y <= mouse_pos.y)
                         {
                             //カメラを下スクロールさせる
                             transform.Translate(0, -0.15f, 0);
