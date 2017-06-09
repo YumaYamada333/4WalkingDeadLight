@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: _66
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_ShaderKeywords: _EMISSION _FX1BLEND_ON _FX2BLEND_ON _FX3BLEND_ON
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -37,11 +37,39 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex:
+    - _FX1Mask:
+        m_Texture: {fileID: 2800000, guid: 1e2aed5c650e7a54b93cf6b4288b9668, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FX2Mask:
+        m_Texture: {fileID: 2800000, guid: 4c5a90b9ef1b42844b056aa5deb59647, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FX3Mask:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FXLayer1:
+        m_Texture: {fileID: 2800000, guid: 3fa4516ef40fb3c47b575227e2436ba8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FXLayer2:
+        m_Texture: {fileID: 2800000, guid: bdb30bc2e6e350f46b801f7b8f878097, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FXLayer3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: b2745c2e243d8d14d91d89302d1d301a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MultichannelDistortion:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -54,18 +82,60 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _BaseIntensity: 1.11
+    - _BaseRotation: 0
+    - _BaseXMov: 0
+    - _BaseYMov: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DistChannelFX1R: 0
+    - _DistChannelFX2G: 0
+    - _DistChannelFX3B: 0
     - _DstBlend: 0
+    - _FX1Blend: 1
+    - _FX1Distortion: 0
+    - _FX1Intensity: -3.58
+    - _FX1MIPBlur: 0
+    - _FX1PivotX: -0.45
+    - _FX1PivotY: 0.5
+    - _FX1Rotation: 1.2
+    - _FX1XMov: 0
+    - _FX1YMov: 0
+    - _FX2Blend: 1
+    - _FX2Distortion: 0.03
+    - _FX2Intensity: 0
+    - _FX2MIPBlur: -0
+    - _FX2PivotX: 1.2
+    - _FX2PivotY: 0.5
+    - _FX2Rotation: 1.61
+    - _FX2XMov: 1.59
+    - _FX2YMov: 0
+    - _FX3Blend: 1
+    - _FX3Distortion: 0
+    - _FX3Intensity: 0
+    - _FX3MIPBlur: 0
+    - _FX3PivotX: 0.5
+    - _FX3PivotY: 0.5
+    - _FX3Rotation: 0
+    - _FX3XMov: 0
+    - _FX3YMov: 0
+    - _GlossMapScale: 1
     - _Glossiness: 0.5
+    - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.49411765, g: 0.43137255, b: 0.24705882, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FX1Color: {r: 1, g: 1, b: 1, a: 1}
+    - _FX2Color: {r: 1, g: 1, b: 1, a: 1}
+    - _FX3Color: {r: 1, g: 1, b: 1, a: 1}

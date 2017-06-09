@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224694160560827886}
   - component: {fileID: 222864320724844522}
   - component: {fileID: 114716356422404118}
+  - component: {fileID: 114169485409010592}
   m_Layer: 5
   m_Name: JumpCard
   m_TagString: Untagged
@@ -28,6 +29,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114169485409010592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825495799527144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e489473363acc0468cd529effafa890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114716356422404118
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,11 +16,11 @@ public class MouseSystem : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        
+       
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         //マウスの座標を取得
         screen_pos = Input.mousePosition;
@@ -124,7 +124,10 @@ public class MouseSystem : MonoBehaviour {
                 {
                     if (cards[i].front.obj != null)
                     {
-                        if (Collider(cards[i].front.obj))
+                        if (Collider(cards[i].front.obj, 
+                            new Vector2(0, 0),
+                            new Vector2(cards[i].front.obj.GetComponent<RectTransform>().sizeDelta.x - cards[i].front.obj.GetComponent<RectTransform>().sizeDelta.x / 5,
+                            cards[i].front.obj.GetComponent<RectTransform>().sizeDelta.y)))
                         {
                             return i;
                         }
@@ -178,7 +181,6 @@ public class MouseSystem : MonoBehaviour {
         return -1;
     }
 
-
     // マウスカーソルとオブジェクトの当たり判定
     public bool Collider(GameObject obj)
     {
@@ -189,6 +191,24 @@ public class MouseSystem : MonoBehaviour {
             screen_pos.x <= obj.transform.position.x + halfSize.x &&
             screen_pos.y >= obj.transform.position.y - halfSize.y &&
             screen_pos.y <= obj.transform.position.y + halfSize.y)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // マウスカーソルとオブジェクトの当たり判定
+    public bool Collider(GameObject obj, Vector2 offset, Vector2 closeSize)
+    {
+        if (obj.activeSelf != true) return false;
+        // カードボードのサイズ取得
+        Vector2 halfSize = obj.GetComponent<RectTransform>().sizeDelta/* / 2*/;
+        halfSize.x -= closeSize.x / 2;
+        halfSize.y -= closeSize.y / 2;
+        if (screen_pos.x >= obj.transform.position.x - halfSize.x + offset.x &&
+            screen_pos.x <= obj.transform.position.x + halfSize.x + offset.x &&
+            screen_pos.y >= obj.transform.position.y - halfSize.y - offset.y &&
+            screen_pos.y <= obj.transform.position.y + halfSize.y - offset.y)
         {
             return true;
         }

@@ -66,6 +66,9 @@ public class ResetScript : MonoBehaviour
     {
         num = 0;
 
+        /*音を鳴らす*/
+        GetComponent<AudioSource>().Play();
+
         //初期カードを再生成
         cards.ReturnBoard(earlyCard[num]);
 

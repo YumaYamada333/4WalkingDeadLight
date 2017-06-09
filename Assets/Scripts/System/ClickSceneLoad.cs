@@ -50,6 +50,8 @@ public class ClickSceneLoad : MonoBehaviour {
     {
         if (SceneManager.GetActiveScene().name == "Title")
         {
+            // ステージセレクトの静的変数初期化
+            StageSelectDirector.StaticInitilize();
             SceneManager.LoadScene("StageSelect");
         }
     }

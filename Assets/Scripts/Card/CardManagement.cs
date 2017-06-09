@@ -102,6 +102,8 @@ public class CardManagement : MonoBehaviour {
 
     //カード掴み判定フラグ
     bool gripFlag;
+    //カード離す判定フラグ
+    bool releaseFlag;
 
     //初期所持カード判断ステージ番号
     //public int stageNum;
@@ -122,6 +124,13 @@ public class CardManagement : MonoBehaviour {
     private int m_oldSelectCard;
     // 左端のカード
     private int m_leftEdge = 0;
+
+    //オーディオソース
+    AudioSource audioSource;
+    //つかむボタン音
+    public AudioClip Grip;
+    //離すボタン音
+    public AudioClip release;
 
     // Use this for initialization
     void Start () {
@@ -195,13 +204,16 @@ public class CardManagement : MonoBehaviour {
         mouse_system = GameObject.Find("MouseSystem").GetComponent<MouseSystem>();
         m_boardButton = GameObject.Find("BoardButton");
 
+        audioSource = gameObject.GetComponent<AudioSource>();
         gripFlag = false;
+        releaseFlag = false;
     }
 
     // Update is called once per frame
     void Update () {
         //つかむ判定を初期地に戻す
         gripFlag = false;
+        //releaseFlag = false;
 
         // データの更新
         if (isUpdateData) UpdateData();
@@ -249,6 +261,25 @@ public class CardManagement : MonoBehaviour {
             //cards[i].numUI.transform.position = cards[i].back.obj.transform.position;
         }
         numSetting = 0;
+
+        //音を鳴らす
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (GetGripFlag())
+            {
+                //つかむ
+                audioSource.PlayOneShot(Grip);
+            }
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            if (GetGripFlag())
+            {
+                //離す
+                audioSource.PlayOneShot(release);
+            }
+        }
+
     }
 
     // 設定する際に使用するデータの更新
@@ -315,13 +346,21 @@ public class CardManagement : MonoBehaviour {
             // してない
             else
             {
+                //離すフラグを立てる
+                if(!gripFlag)
+                {
+                    gripFlag = true;
+                }
+
                 cursor = CursorForcusTag.HandsBord;
 
                 CardActive(true);
 
                 bord.selectedSpace = mouse_system.GetMouseHit(actionBord);
-                if (bord.selectedSpace >= 0)
+                if (bord.selectedSpace > 0)
                 {
+                    releaseFlag = true;
+
                     //CountDown.SetCountDown(CountDown.CountType.CardSet);
                     CountManager.GetComponent<CountDownManager>().ManagerCountDown(CountDown.CountType.CardSet);
 
@@ -553,6 +592,11 @@ public class CardManagement : MonoBehaviour {
         return gripFlag;
     }
 
+    //離し判定取得関数
+    public bool GetReleaseFlag()
+    {
+        return releaseFlag;
+    }
 
     void CloneCreate()
     {
@@ -589,7 +633,7 @@ public class CardManagement : MonoBehaviour {
         if (selectCard != m_oldSelectCard)
             CleneDelete();
 
-            Debug.Log(m_leftEdge);
+            //Debug.Log(m_leftEdge);
         // はさむ範囲内
         if (selectCard - m_leftEdge > 0 && selectCard - m_leftEdge < 6)
         {

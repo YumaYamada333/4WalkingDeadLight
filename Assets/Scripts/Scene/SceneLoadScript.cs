@@ -8,20 +8,23 @@ using UnityEngine.UI;
 
 public class SceneLoadScript : MonoBehaviour
 {
-    public AudioClip OK;
     CurtainControl CurtainSystem;
     PlayerAction ButtonActive;
     GameObject GameOver;
     GameObject GameClear;
+    private GameObject RetryButton;
+    private GameObject SelectButton;
 
+    public static bool MoveFlag = false;
     void Start()
     {
        
         CurtainSystem = GameObject.Find("Canvas").GetComponent<CurtainControl>();
         GameOver = GameObject.Find("OVER");
         GameClear = GameObject.Find("CLEAR");
-
-       
+        RetryButton = GameObject.Find("TitleButton");
+        SelectButton = GameObject.Find("SelectButton");
+        MoveFlag = false;
     }
 
     //----------------------------------------------------------------------
@@ -100,12 +103,23 @@ public class SceneLoadScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void StageButtonActive()
     {
+        GetComponent<AudioSource>().Play();
+
         ButtonActive = GameObject.Find("unitychan").GetComponent<PlayerAction>();
-        //ボタンを消す
-        ButtonActive.SetButtonOff();
+        MoveFlag = true;
+        //ボタンとリザルトを消す
+        Invoke("Active", 0.7f);
     }
     public void ResultActive()
     {
+        GameOver.SetActive(false);
+        GameClear.SetActive(false);
+    }
+
+    void Active()
+    {
+        RetryButton.SetActive(false);
+        SelectButton.SetActive(false);
         GameOver.SetActive(false);
         GameClear.SetActive(false);
     }
