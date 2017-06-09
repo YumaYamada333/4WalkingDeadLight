@@ -24,6 +24,7 @@ static class Constants
     public const int MaxTime     = 10; //最大時間
     public const int MoveCount   = 60; //移動エフェクトのループ再生する間隔
 
+    public const float FallVelocity = 0.06f;//落下速度
     public const float Adjustment   = 0.5f; //調整
     public const float MassDistance = 2.2f; //マスの距離
 }
@@ -261,7 +262,7 @@ public class PlayerAction : MonoBehaviour
 
         //OverFlagがtrueだったら
         OverControl();
-
+        Debug.Log(isGround);
     }
 
     //----------------------------------------------------------------------
@@ -274,7 +275,7 @@ public class PlayerAction : MonoBehaviour
     void GravityForPlayer()
     {
         //今現在のy地点をに記憶させる
-        endPosition.y = transform.position.y;
+            endPosition.y = transform.position.y;
     }
     //----------------------------------------------------------------------
     //! @brief プレイヤーの攻撃
@@ -396,25 +397,32 @@ public class PlayerAction : MonoBehaviour
                 //endPositionに到着
                 if (diff > time * 2)
                 {
-                    //animationを止めるフラグ
-                    animationFlag[animationFlagNum] = false;
-                    //アニメーションを止める
-                    animator.SetBool(animation, false);
-                    //カウントダウンフラグを立てる
-                    //CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();
-                    //CountDown.SetCountDown(board.GetCardType(board.usingCard - 1));
-                    CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();
-                    if (board.GetCardType(board.usingCard - 1) == CardManagement.CardType.Move)
+                    if (isGround)
                     {
-                        CountManager.GetComponent<CountDownManager>().ManagerCountDown(CountDown.CountType.ActionMove);
+                        CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();
+                        if (board.GetCardType(board.usingCard - 1) == CardManagement.CardType.Move)
+                        {
+                            CountManager.GetComponent<CountDownManager>().ManagerCountDown(CountDown.CountType.ActionMove);
+                        }
+                        if (board.GetCardType(board.usingCard - 1) == CardManagement.CardType.Count)
+                        {
+                            CountManager.GetComponent<CountDownManager>().ManagerCountDown(CountDown.CountType.ActionCountDown);
+                        }
+                        //animationを止めるフラグ
+                        animationFlag[animationFlagNum] = false;
+                        //アニメーションを止める
+                        animator.SetBool(animation, false);
+                        //カウントダウンフラグを立てる
+                        //CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();
+                        //CountDown.SetCountDown(board.GetCardType(board.usingCard - 1));
+                        //次の場所との差
+                        endPosition += nextPosition;
+                        particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
                     }
-                    if (board.GetCardType(board.usingCard - 1) == CardManagement.CardType.Count)
+                    else
                     {
-                        CountManager.GetComponent<CountDownManager>().ManagerCountDown(CountDown.CountType.ActionCountDown);
+                        transform.position -= new Vector3(0, Constants.FallVelocity, 0);
                     }
-                    //次の場所との差
-                    endPosition += nextPosition;
-                    particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
                 }
             }
 

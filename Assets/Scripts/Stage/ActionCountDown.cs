@@ -361,6 +361,7 @@ public class ActionCountDown : MonoBehaviour
                     //動く床の位置にObjectの座標を合わせる
                     Vector3 v = otherObj.transform.position;
                     otherObj.transform.position = new Vector3(m_obj.transform.position.x, m_obj.transform.position.y + m_correction_value_ride.y/*v.y*/, v.z);
+                    m_correction_value_ride = otherObj.transform.position - m_obj.transform.position;
                 }
             }
             PartTim = true;
@@ -480,7 +481,6 @@ public class ActionCountDown : MonoBehaviour
     void OnTriggerEnter(Collider otherObj)
     {
         ride.Add(otherObj.gameObject);
-        m_correction_value_ride = otherObj.transform.position - m_obj.transform.position;
     }
     //他のObjectが離れている時
     void OnTriggerExit(Collider otherObj)
