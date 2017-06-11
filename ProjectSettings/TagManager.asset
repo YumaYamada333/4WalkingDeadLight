@@ -12,6 +12,7 @@ TagManager:
   - Block
   - Break
   - Water
+  - Poison
   layers:
   - Default
   - TransparentFX

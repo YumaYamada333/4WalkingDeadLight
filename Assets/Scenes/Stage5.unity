@@ -10898,6 +10898,7 @@ GameObject:
   - component: {fileID: 683584505}
   - component: {fileID: 683584504}
   - component: {fileID: 683584503}
+  - component: {fileID: 683584507}
   m_Layer: 5
   m_Name: ActionBord
   m_TagString: Untagged
@@ -10974,6 +10975,86 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 307.5, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &683584507
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 683584502}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 207adcc385be8944cb009ba2aa517a6e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &692152188
 GameObject:
   m_ObjectHideFlags: 0
@@ -17304,6 +17385,7 @@ MonoBehaviour:
   Jump: {fileID: 8300000, guid: 940b1eafada9d644a901c8529e54fab2, type: 3}
   Hit: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
   Move: {fileID: 8300000, guid: a4c75e1b5820328419b48611eeb800f8, type: 3}
+  Water: {fileID: 8300000, guid: 02a5026b92f4f70439bccc160a28fa69, type: 3}
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
@@ -19712,6 +19794,7 @@ MonoBehaviour:
   countNum: 1
   Grip: {fileID: 8300000, guid: 6e32f87803bc22f4dbe0149a554fa726, type: 3}
   release: {fileID: 8300000, guid: cb1b458cf8fd28546aac8832687cd0e3, type: 3}
+  Scroll: {fileID: 8300000, guid: 207adcc385be8944cb009ba2aa517a6e, type: 3}
 --- !u!4 &1136850363
 Transform:
   m_ObjectHideFlags: 0
@@ -30610,7 +30693,7 @@ MonoBehaviour:
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 283501569}
   m_obj: {fileID: 0}
-  GimmickSound: {fileID: 8300000, guid: 2f8ee292c6ae23742ab31aaec9a4f435, type: 3}
+  GimmickSound: {fileID: 8300000, guid: ff4222e4b31817548b4b71653843dbd6, type: 3}
   PartTim: 0
 --- !u!65 &1969979313
 BoxCollider:

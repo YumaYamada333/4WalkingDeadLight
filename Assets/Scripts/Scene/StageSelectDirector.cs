@@ -86,7 +86,11 @@ public class StageSelectDirector : MonoBehaviour
     StepDirction stepDir = StepDirction.Down;
 
     public AudioClip PlaySound;
+    public AudioClip ScrollSound;
     static private AudioClip PS;
+    static private AudioClip SS;
+
+    private bool Sound_flag;
 
     // パンフレットをスワイプした回数
     private int swipCount = 0;
@@ -135,6 +139,9 @@ public class StageSelectDirector : MonoBehaviour
        // FlashingUGui.SetPlayButton(m_pamphlet[0].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject);
         /*音を入れる*/
         PS = PlaySound;
+        SS = ScrollSound;
+
+        Sound_flag = true;
 
         // クリア情報を削除したい場合のみコメント外してください =======================================
         //PlayerPrefs.DeleteAll();
@@ -191,8 +198,19 @@ public class StageSelectDirector : MonoBehaviour
             }
             else
             {
+                if (Sound_flag)
+                {
+                    /*プレイ音を鳴らす*/
+                    AudioSource audioSource = GameObject.Find("StageSelectDirector").GetComponent<AudioSource>();
+                    audioSource.PlayOneShot(SS);
+                    Sound_flag = false;
+                }
                 changeStep += 0.1f;
-                if (changeStep > 0.95f) changeStep = 1.0f;
+                if (changeStep > 0.95f)
+                {
+                    changeStep = 1.0f;
+                    Sound_flag = true;
+                }
             }
 
             // パンフレットのラープ処理

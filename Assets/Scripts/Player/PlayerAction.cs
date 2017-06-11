@@ -100,6 +100,8 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Jump;
     public AudioClip Hit;
     public AudioClip Move;
+    public AudioClip Water;
+
 
     //パーティカルの種類判別用
     public int particleType;
@@ -130,6 +132,9 @@ public class PlayerAction : MonoBehaviour
     //液体ブロック種類判別用
     public int LiquidType;
 
+    /*水の音フラグ*/
+    private bool water_flag;
+
     void OnEnable() //objが生きている場合
     {
         if (time <= 0)
@@ -153,6 +158,7 @@ public class PlayerAction : MonoBehaviour
         ImageBord = GameObject.Find("Imagebord");
         ImageBord2 = GameObject.Find("Imagebord2");
         LiquidType = 0;
+        water_flag = true;
     }
 
     // Update is called once per frame
@@ -454,6 +460,10 @@ public class PlayerAction : MonoBehaviour
                     {
                         particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
                     }
+                    else
+                    {
+                        audioSource.Stop();
+                    }
                     break;
                 //jump
                 case CardManagement.CardType.Jump:
@@ -462,6 +472,11 @@ public class PlayerAction : MonoBehaviour
                     animationNum = (int)ANIMATION.JUMP; //アニメーションの番号
                     animationName = "Jump";             //アニメーションの名前
                     particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
+                    if (OverFlag)
+                    {
+                        audioSource.Stop();
+                    }
+                    
                     break;
                 //attack
                 case CardManagement.CardType.Attack:
@@ -520,6 +535,8 @@ public class PlayerAction : MonoBehaviour
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
 
+            audioSource.Stop();
+
         }
         else
         {
@@ -546,6 +563,8 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+
+            audioSource.Stop();
         }
         // ブロック     回転すると死んじゃうよ～～～～
         if (coll.gameObject.tag == "Block")
@@ -557,7 +576,9 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
-           
+
+            audioSource.Stop();
+
         }
 
         //落下限界
@@ -576,11 +597,17 @@ public class PlayerAction : MonoBehaviour
         {
             //水
             LiquidType = (int)PARTICLE.WATER;
+            
         }
-        else if (coll.gameObject.tag == "Thorn")
+        else if (coll.gameObject.tag == "Poison")
         {
             //毒
             LiquidType = (int)PARTICLE.POISON;
+            if (water_flag)
+            {
+                audioSource.PlayOneShot(Water);
+                water_flag = false;
+            }
         }
         else
         {
@@ -807,10 +834,18 @@ public class PlayerAction : MonoBehaviour
             case (int)PARTICLE.WATER:
                 //水のパーティクルを発生させる
                 particleType = (int)PARTICLE.WATER;
+
+                if (water_flag)
+                {
+                    audioSource.PlayOneShot(Water);
+                    water_flag = false;
+                }
+
                 break;
             case (int)PARTICLE.POISON:
                 //毒のパーティクルを発生させる
                 particleType = (int)PARTICLE.POISON;
+
                 break;
         }
         return LiquidType;

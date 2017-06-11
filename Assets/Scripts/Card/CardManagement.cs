@@ -104,6 +104,8 @@ public class CardManagement : MonoBehaviour {
     bool gripFlag;
     //カード離す判定フラグ
     bool releaseFlag;
+    /*スクロール音フラグ*/
+    bool scrollFlag;
 
     //初期所持カード判断ステージ番号
     //public int stageNum;
@@ -131,6 +133,8 @@ public class CardManagement : MonoBehaviour {
     public AudioClip Grip;
     //離すボタン音
     public AudioClip release;
+    /*スクロール音*/
+    public AudioClip Scroll;
 
     // Use this for initialization
     void Start () {
@@ -207,6 +211,7 @@ public class CardManagement : MonoBehaviour {
         audioSource = gameObject.GetComponent<AudioSource>();
         gripFlag = false;
         releaseFlag = false;
+        scrollFlag = true;
     }
 
     // Update is called once per frame
@@ -631,9 +636,12 @@ public class CardManagement : MonoBehaviour {
 
         // 前のはさむ場所と違う場合
         if (selectCard != m_oldSelectCard)
+        {
             CleneDelete();
+            scrollFlag = true;
+        }
 
-            //Debug.Log(m_leftEdge);
+        //Debug.Log(m_leftEdge);
         // はさむ範囲内
         if (selectCard - m_leftEdge > 0 && selectCard - m_leftEdge < 6)
         {
@@ -651,6 +659,12 @@ public class CardManagement : MonoBehaviour {
 
                 for (int i = selectCard - m_leftEdge; i < card.Length; i++)
                     card[i].transform.localPosition += new Vector3(5, 0, 0);
+
+                if (scrollFlag)
+                {
+                    audioSource.PlayOneShot(Scroll);
+                    scrollFlag = false;
+                }
             }
         }
         m_oldSelectCard = selectCard;

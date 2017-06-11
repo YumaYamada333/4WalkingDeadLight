@@ -407,6 +407,9 @@ public class CardBord : MonoBehaviour {
 
     public void ScrollToLeft()
     {
+
+        GetComponent<AudioSource>().Play();
+
         // カードの座標設定
         for (int j = 0; j < numSetMax; j++)
         {
@@ -422,6 +425,9 @@ public class CardBord : MonoBehaviour {
 
 public void ScrollToRight()
     {
+
+        GetComponent<AudioSource>().Play();
+
         //// カードの座標設定
         //for (int i = 0; i < numSetMax; i++)
         //{
