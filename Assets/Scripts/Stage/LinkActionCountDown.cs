@@ -283,6 +283,8 @@ public class LinkActionCountDown : MonoBehaviour
     public GameObject m_game_manager;
     //複数オブジェクトが同タイミングで動く場合に最後に動き終わるオブジェクト
     public GameObject m_final_move_obj;
+    //リピートするかどうかのフラグ
+    public bool m_repeat_flag = true;
 
     //初期待機時間
     //private float m_init_wait_time;
@@ -467,7 +469,12 @@ public class LinkActionCountDown : MonoBehaviour
 
         //繰り返しフラグをセット
         m_old_flag = false;
-        
+        //繰り返さないなら
+        if (m_action_count == 0 && !m_repeat_flag)
+        {
+            m_old_flag = true;
+        }
+
         //続けて行動しないなら一旦アクションを止める
         if (!m_link_flag)
         {
@@ -476,6 +483,11 @@ public class LinkActionCountDown : MonoBehaviour
 
             //カウント初期化
             m_count_obj.GetComponent<CountDown>().SetCount();
+            //全アクション実行後繰り返さないなら
+            if (m_action_count == 0 && !m_repeat_flag)
+            {
+                m_count_obj.GetComponent<CountDown>().SetCount(0);
+            }
 
             //同タイミングで動くオブジェクトが動き終わっていたら
             if (m_final_move_obj != null)
@@ -544,6 +556,12 @@ public class LinkActionCountDown : MonoBehaviour
     public GameObject GetActObject()
     {
         return m_action_obj;
+    }
+
+    //アクションのカウントを取得
+    public int GetActionCount()
+    {
+        return m_action_count;
     }
 }
 

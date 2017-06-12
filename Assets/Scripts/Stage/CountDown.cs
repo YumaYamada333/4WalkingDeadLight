@@ -53,6 +53,10 @@ public class CountDown : MonoBehaviour {
         //// カウントダウンの条件
         //if (IsCountDown()&& count > 0)
         //    count--;
+        if (count < 0)
+        {
+            count = 0;
+        }
 
         // カウントの表示
         if (T_count != null)

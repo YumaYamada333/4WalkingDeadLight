@@ -24,6 +24,7 @@ public class RollPanelRide : MonoBehaviour {
             if (m_game_manager.GetComponent<GameManager>().GetGimmickFlag())
             {
                 //動く床の位置にObjectの座標を合わせる
+                m_correction_value_ride = otherObj.transform.position - m_coll.transform.position;
                 Vector3 v = otherObj.transform.position;
                 otherObj.transform.position = new Vector3(m_coll.transform.position.x, m_coll.transform.position.y + m_correction_value_ride.y/*v.y*/, m_coll.transform.position.z);
             }
@@ -34,7 +35,7 @@ public class RollPanelRide : MonoBehaviour {
     void OnTriggerEnter(Collider otherObj)
     {
         ride.Add(otherObj.gameObject);
-        m_correction_value_ride = otherObj.transform.position - m_coll.transform.position;
+        //m_correction_value_ride = otherObj.transform.position - m_coll.transform.position;
     }
     //他のObjectが離れている時
     void OnTriggerExit(Collider otherObj)
