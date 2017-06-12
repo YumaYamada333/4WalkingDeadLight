@@ -8886,6 +8886,7 @@ MonoBehaviour:
   m_count_obj: {fileID: 138897387}
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 0}
+  m_repeat_flag: 1
   PartTim: 0
 --- !u!65 &509787663
 BoxCollider:
@@ -16443,9 +16444,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f5f52c8136c5d479ae766e4c137e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollstart: 3
-  targetPosX: 5
-  targetPosY: 5
+  scrollstart: {x: 0, y: 0}
+  rangePosX: 10
+  rangePosY: 8
+  underOffset: -2
+  safityArea: 20
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
@@ -24212,6 +24215,7 @@ MonoBehaviour:
   m_count_obj: {fileID: 138897387}
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 0}
+  m_repeat_flag: 1
   PartTim: 0
 --- !u!65 &1251206090
 BoxCollider:

@@ -10699,9 +10699,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f5f52c8136c5d479ae766e4c137e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollstart: 3
-  targetPosX: 16
-  targetPosY: 5
+  scrollstart: {x: 0, y: 0}
+  rangePosX: 15
+  rangePosY: 0
+  underOffset: 0
+  safityArea: 20
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
@@ -11261,6 +11263,7 @@ MonoBehaviour:
   Jump: {fileID: 8300000, guid: 940b1eafada9d644a901c8529e54fab2, type: 3}
   Hit: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
   Move: {fileID: 8300000, guid: a4c75e1b5820328419b48611eeb800f8, type: 3}
+  Water: {fileID: 0}
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
@@ -12452,6 +12455,7 @@ MonoBehaviour:
   countNum: 1
   Grip: {fileID: 8300000, guid: 6e32f87803bc22f4dbe0149a554fa726, type: 3}
   release: {fileID: 8300000, guid: cb1b458cf8fd28546aac8832687cd0e3, type: 3}
+  Scroll: {fileID: 0}
 --- !u!4 &1136850363
 Transform:
   m_ObjectHideFlags: 0
