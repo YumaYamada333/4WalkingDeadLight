@@ -7,16 +7,18 @@ public class ScrollScript : MonoBehaviour
     Vector3 CameraPos;
     //カメラの現在位置
     Vector3 CameraTmp;
-    public int scrollstart = 3;         //スクロール開始座標
+    public Vector2 scrollstart;         //スクロール開始座標
     bool click_flag = false;            //クリックフラグ
-    Vector3 start_mouse_pos;            //初期マウス座標
+    Vector2 start_mouse_pos;            //初期マウス座標
 
     [SerializeField]
-    private float targetPosX = 10.0f;   //スクロール範囲設定用変数
+    private float rangePosX = 0.0f;   //スクロール範囲設定用変数
     [SerializeField]
-    private float targetPosY = 10.0f;
+    private float rangePosY = 0.0f;
     [SerializeField]
-    private float underOffset = -1.0f;
+    private float underOffset = 0.0f;
+    [SerializeField]
+    private float safityArea = 1.0f;    // スクロールの遊び
 
     //public GameObject StartBlock;       //スタートブロック
     //public GameObject GoalBlock;        //ゴールブロック
@@ -43,11 +45,15 @@ public class ScrollScript : MonoBehaviour
         cardmanegement = GameObject.Find("CardManager").GetComponent<CardManagement>();
 
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //scrollstart = CameraPos;
+        //scrollstart = new Vector2();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(CameraPos);
         // ギミックの動作中はスクロールさせない
         isUpdate = isUpdate ? !gamemanager.GetGimmickFlag() : isUpdate;
         if (isUpdate)
@@ -64,46 +70,46 @@ public class ScrollScript : MonoBehaviour
                 }
 
                 //マウス座標を取得
-                Vector3 mouse_pos = Input.mousePosition;
+                Vector2 mouse_pos = Input.mousePosition;
 
                 //マウスクリック時カードをつかんでいないなら
                 if (cardmanegement.GetGripFlag() == false)
                 {
                     //カメラがターゲットポジションのより左にあるのならば
-                    if (CameraTmp.x <= targetPosX)
+                    if (CameraTmp.x < rangePosX)
                     {
                         //右にスクロール
-                        if (start_mouse_pos.x + scrollstart >= mouse_pos.x)
+                        if (start_mouse_pos.x /*+ scrollstart.x*/> mouse_pos.x + safityArea)
                         {
                             //カメラを右スクロールさせる
                             transform.Translate(0.15f, 0, 0);
                         }
                     }
                     //カメラが初期座標よりのx座標より右にあるのならば
-                    if (CameraTmp.x >= CameraPos.x)
+                    if (CameraTmp.x > CameraPos.x)
                     {
                         //左にスクロール
-                        if (start_mouse_pos.x - scrollstart <= mouse_pos.x)
+                        if (start_mouse_pos.x /*- scrollstart.x */< mouse_pos.x - safityArea)
                         {
                             //カメラを左スクロールさせる
                             transform.Translate(-0.15f, 0, 0);
                         }
                     }
                     //カメラがターゲットポジションのより下にあるのならば
-                    if (CameraTmp.y <= targetPosY)
+                    if (CameraTmp.y < rangePosY + underOffset)
                     {
                         //上にスクロール
-                        if (start_mouse_pos.y >= mouse_pos.y)
+                        if (start_mouse_pos.y /*+ scrollstart.y*/> mouse_pos.y + safityArea)
                         {
                             //カメラを上スクロールさせる
                             transform.Translate(0, 0.15f, 0);
                         }
                     }
                     //カメラが初期座標よりのy座標より上にあるのならば
-                    if (CameraTmp.y >= CameraPos.y + underOffset)
+                    if (CameraTmp.y > CameraPos.y + underOffset)
                     {
                         //下にスクロール
-                        if (start_mouse_pos.y <= mouse_pos.y)
+                        if (start_mouse_pos.y /*- scrollstart.y*/< mouse_pos.y - safityArea)
                         {
                             //カメラを下スクロールさせる
                             transform.Translate(0, -0.15f, 0);
