@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222864320724844522}
   - component: {fileID: 114716356422404118}
   - component: {fileID: 114169485409010592}
+  - component: {fileID: 223475669340335776}
   m_Layer: 5
   m_Name: JumpCard
   m_TagString: Untagged
@@ -72,6 +73,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825495799527144}
+--- !u!223 &223475669340335776
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825495799527144}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!224 &224694160560827886
 RectTransform:
   m_ObjectHideFlags: 1

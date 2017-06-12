@@ -76,6 +76,7 @@ public class RollingStoneAction : MonoBehaviour
 
     /*ギミック音*/
     public AudioClip GimmickSound;
+    public AudioClip RockSound;
 
     //パーティクルフラグ取得
     public bool PartTim;
@@ -241,6 +242,8 @@ public class RollingStoneAction : MonoBehaviour
                 m_roll_action_flag = false;
 
                 m_fall_action_flag = true;
+
+               
                 //GameObject manager = GameObject.Find("GameManager");
                 /*manager*/
                 //obj.GetComponent<ActionCountDown>().m_game_manager.GetComponent<GameManager>().SetGimmickFlag(false);
@@ -266,6 +269,10 @@ public class RollingStoneAction : MonoBehaviour
                 Destroy(m_destroy_obj);
                 m_game_manager.GetComponent<GameManager>().SetGimmickFlag(false);
 
+
+                /*ギミック音を鳴らす*/
+                AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+                audioSource.PlayOneShot(RockSound);
 
                 //GameObject manager = GameObject.Find("GameManager");
                 /*manager*/

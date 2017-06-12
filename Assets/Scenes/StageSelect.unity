@@ -542,6 +542,7 @@ MonoBehaviour:
   stepSpd: 0.01
   activityAreaFlick: 15
   PlaySound: {fileID: 8300000, guid: 1542666c50be99c47bb19b898e227003, type: 3}
+  ScrollSound: {fileID: 8300000, guid: 207adcc385be8944cb009ba2aa517a6e, type: 3}
 --- !u!114 &380236763
 MonoBehaviour:
   m_ObjectHideFlags: 0

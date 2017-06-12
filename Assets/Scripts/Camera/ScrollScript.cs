@@ -15,6 +15,8 @@ public class ScrollScript : MonoBehaviour
     private float targetPosX = 10.0f;   //スクロール範囲設定用変数
     [SerializeField]
     private float targetPosY = 10.0f;
+    [SerializeField]
+    private float underOffset = -1.0f;
 
     //public GameObject StartBlock;       //スタートブロック
     //public GameObject GoalBlock;        //ゴールブロック
@@ -63,7 +65,6 @@ public class ScrollScript : MonoBehaviour
 
                 //マウス座標を取得
                 Vector3 mouse_pos = Input.mousePosition;
-                Debug.Log(CameraTmp.y);
 
                 //マウスクリック時カードをつかんでいないなら
                 if (cardmanegement.GetGripFlag() == false)
@@ -92,17 +93,17 @@ public class ScrollScript : MonoBehaviour
                     if (CameraTmp.y <= targetPosY)
                     {
                         //上にスクロール
-                        if (start_mouse_pos.y + scrollstart >= mouse_pos.y)
+                        if (start_mouse_pos.y >= mouse_pos.y)
                         {
                             //カメラを上スクロールさせる
                             transform.Translate(0, 0.15f, 0);
                         }
                     }
-                    //カメラがターゲットポジションのより上にあるのならば
-                    if (CameraTmp.y >= CameraPos.y)
+                    //カメラが初期座標よりのy座標より上にあるのならば
+                    if (CameraTmp.y >= CameraPos.y + underOffset)
                     {
                         //下にスクロール
-                        if (start_mouse_pos.y + scrollstart <= mouse_pos.y)
+                        if (start_mouse_pos.y <= mouse_pos.y)
                         {
                             //カメラを下スクロールさせる
                             transform.Translate(0, -0.15f, 0);
@@ -119,7 +120,6 @@ public class ScrollScript : MonoBehaviour
             //カメラの現在位置取得
             CameraTmp = GameObject.Find("MainCamera").transform.position;
 
-
             //実行ボタンが押されたら
             if (Input.GetButtonDown("Fire3"))
             {
@@ -127,4 +127,18 @@ public class ScrollScript : MonoBehaviour
                 GameObject.Find("Main Camera").transform.position = new Vector3(CameraPos.x, CameraPos.y, CameraPos.z);
             }
         }
+
+    // タッチ開始時点の取得
+    //! スクリーン座標で取得する
+    // 左下基準 (スクリーンサイズによって右上の値は変わる)
+    public Vector2 GetTouchPos()
+    {
+        return start_mouse_pos;
+    }
+
+    //  タッチ中かを取得
+    public bool CheckTouch()
+    {
+        return click_flag;
+    }
 }
