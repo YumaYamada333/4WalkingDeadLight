@@ -10754,6 +10754,7 @@ MonoBehaviour:
   scrollstart: 3
   targetPosX: 5
   targetPosY: 5
+  underOffset: -1
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
