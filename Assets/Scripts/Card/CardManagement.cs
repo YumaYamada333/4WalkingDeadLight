@@ -335,12 +335,19 @@ public class CardManagement : MonoBehaviour {
         {
             // ActionBoardの情報を取得
             CardBord bord = actionBord.GetComponent<CardBord>();
+            
+            // 選択中カードのキャンバスを取得
+            Canvas cardCanvas = tuckCard.front.obj.GetComponent<Canvas>();
 
             // 左クリックしてる
             if (Input.GetMouseButton(0))
             {
                 //つかむ判定を立てる
                 gripFlag = true;
+
+                // カードを一番前に描画
+                cardCanvas.overrideSorting = true;
+                cardCanvas.sortingOrder = 2;
 
                 // カードを移動
                 tuckCard.front.obj.transform.position = mouse_system.GetScreenPos();
@@ -351,8 +358,12 @@ public class CardManagement : MonoBehaviour {
             // してない
             else
             {
+                // カードの描画順を戻す
+                cardCanvas.sortingOrder = 1;
+                cardCanvas.overrideSorting = false;
+
                 //離すフラグを立てる
-                if(!gripFlag)
+                if (!gripFlag)
                 {
                     gripFlag = true;
                 }
