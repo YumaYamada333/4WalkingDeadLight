@@ -225,7 +225,7 @@ public class PlayerAction : MonoBehaviour
         //attack
         if (animationFlag[(int)ANIMATION.ATTACK] == true)
         {
-            Vector3 trans = new Vector3(0.0f, 0.8f, 0.68f);
+            Vector3 trans = new Vector3(1.0f, 0.8f, 0.68f);
             child.SetActive(true);
             child.transform.position = transform.position + trans;
         }
