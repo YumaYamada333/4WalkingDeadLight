@@ -756,7 +756,7 @@ public class PlayerAction : MonoBehaviour
     //----------------------------------------------------------------------
     public void SetButtonClear()
     {
-        SelectButton.transform.localPosition = new Vector3(endButtonPosX, endButtonPosY, endButtonPosZ);
+        SelectButton.transform.localPosition = new Vector3(0, endButtonPosY, endButtonPosZ);
         SelectButton.SetActive(true);
     }
 
