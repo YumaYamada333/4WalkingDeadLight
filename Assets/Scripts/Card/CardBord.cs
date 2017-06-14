@@ -410,7 +410,7 @@ public class CardBord : MonoBehaviour {
 
     public void ScrollToLeft()
     {
-
+        scrollFlag = true;
         GetComponent<AudioSource>().Play();
 
         // カードの座標設定
@@ -428,7 +428,7 @@ public class CardBord : MonoBehaviour {
 
 public void ScrollToRight()
     {
-
+        scrollFlag = true;
         GetComponent<AudioSource>().Play();
 
         //// カードの座標設定
