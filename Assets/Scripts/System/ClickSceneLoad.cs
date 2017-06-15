@@ -13,6 +13,8 @@ public class ClickSceneLoad : MonoBehaviour {
     private float Count;
     private const float limitTime = 1.5f;
 
+    private bool audio_flag;
+
     // Use this for initialization
     void Start () {
         //コンポーネント取得
@@ -20,6 +22,8 @@ public class ClickSceneLoad : MonoBehaviour {
 
         //変数の初期化
         ClickFlag = false;
+
+        audio_flag = true;
     }
 
     // Update is called once per frame
@@ -31,8 +35,17 @@ public class ClickSceneLoad : MonoBehaviour {
         {
             //フラグを立てる
             ClickFlag = true;
-            //音を再生
-            audioSource.Play();
+            if (audio_flag)
+            {
+                //音を再生
+                audioSource.Play();
+                audio_flag = false;
+            }
+            else
+            {
+                return;
+            }
+
         }
         if (ClickFlag)
         {

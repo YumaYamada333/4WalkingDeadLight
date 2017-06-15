@@ -283,6 +283,8 @@ public class LinkActionCountDown : MonoBehaviour
     public GameObject m_game_manager;
     //複数オブジェクトが同タイミングで動く場合に最後に動き終わるオブジェクト
     public GameObject m_final_move_obj;
+    /*移動音*/
+    public AudioClip MoveSound;
     //リピートするかどうかのフラグ
     public bool m_repeat_flag = true;
 
@@ -307,6 +309,7 @@ public class LinkActionCountDown : MonoBehaviour
     //GameObjectでColliderと触れているの要素数
     private List<GameObject> ride = new List<GameObject>();
     private Vector3 m_correction_value_ride;
+
 
     //パーティクルフラグ取得
     public bool PartTim;
@@ -351,6 +354,7 @@ public class LinkActionCountDown : MonoBehaviour
             {
                 if (m_game_manager.GetComponent<GameManager>().GetGimmickFlag())
                 {
+
                     //動く床の位置にObjectの座標を合わせる
                     m_correction_value_ride = otherObj.transform.position - m_obj.GetComponent<Collider>().transform.position;
                     Vector3 v = otherObj.transform.position;
@@ -374,6 +378,11 @@ public class LinkActionCountDown : MonoBehaviour
             m_action_flag == false &&
             m_old_flag == false)
         {
+
+            /*ギミック音を鳴らす*/
+            AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+            audioSource.PlayOneShot(MoveSound);
+
             //ゲームマネージャーのギミックが移動している判定用のフラグをあげる
             m_game_manager.GetComponent<GameManager>().SetGimmickFlag(true);
             //起動フラグを上げる
