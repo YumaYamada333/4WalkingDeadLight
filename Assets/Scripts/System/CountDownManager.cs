@@ -20,12 +20,16 @@ public class CountDownManager : MonoBehaviour {
     {
         for (int i = 0; i < m_countObj.Length; i++)
         {
-            for (int j = 0; j < m_countObj[i].GetComponent<CountDown>().m_countType.Length; j++)
+            //カウントオブジェクトがnullでないならカウント処理
+            if (m_countObj[i] != null)
             {
-                if (m_countObj[i].GetComponent<CountDown>().m_countType[j] == flag &&
-                      m_countObj[i].GetComponent<CountDown>().m_countType[j] != CountDown.CountType.Nothing)
+                for (int j = 0; j < m_countObj[i].GetComponent<CountDown>().m_countType.Length; j++)
                 {
-                    m_countObj[i].GetComponent<CountDown>().CountMin();
+                    if (m_countObj[i].GetComponent<CountDown>().m_countType[j] == flag &&
+                          m_countObj[i].GetComponent<CountDown>().m_countType[j] != CountDown.CountType.Nothing)
+                    {
+                        m_countObj[i].GetComponent<CountDown>().CountMin();
+                    }
                 }
             }
         }

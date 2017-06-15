@@ -334,35 +334,16 @@ public class LinkActionCountDown : MonoBehaviour
         //カウントダウン
         GetCountZero();
 
-        //アクションがnullでないならアクションを行う
-        if (action != null)
+        //フラグが立ったらアクションの準備
+        if (m_action_flag == true &&
+            m_action_flag != m_old_flag)
         {
-            //フラグが立ったらアクションの準備
-            if (m_action_flag == true &&
-                m_action_flag != m_old_flag)
-            {
-                action.Preparation(ref m_obj);
-                m_old_flag = m_action_flag;
-            }
-            //アクションの実行
-            action.Execute(ref m_obj);
-            //GameObjectの移動
-            foreach (GameObject otherObj in ride)
-            {
-                if (m_game_manager.GetComponent<GameManager>().GetGimmickFlag())
-                {
-                    //動く床の位置にObjectの座標を合わせる
-                    m_correction_value_ride = otherObj.transform.position - m_obj.GetComponent<Collider>().transform.position;
-                    Vector3 v = otherObj.transform.position;
-                    otherObj.transform.position = new Vector3(m_obj.GetComponent<Collider>().transform.position.x, m_obj.GetComponent<Collider>().transform.position.y + m_correction_value_ride.y/*v.y*/, v.z);
-                }
-            }
-            PartTim = true;
+            action.Preparation(ref m_obj);
+            m_old_flag = m_action_flag;
         }
-        else
-        {
-            PartTim = false;
-        }
+        //アクションの実行
+        action.Execute(ref m_obj);
+           
     }
 
 
