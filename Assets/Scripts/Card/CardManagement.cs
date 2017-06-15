@@ -97,6 +97,9 @@ public class CardManagement : MonoBehaviour {
     // マウスのコンポーネント
     MouseSystem mouse_system;
 
+    //カードボードコンポーネント
+    CardBord Cbord;
+
     // Rayに触れたオブジェクト
     RaycastHit[] hit;
 
@@ -207,6 +210,7 @@ public class CardManagement : MonoBehaviour {
         // MouseSystemコンポーネントの取得
         mouse_system = GameObject.Find("MouseSystem").GetComponent<MouseSystem>();
         m_boardButton = GameObject.Find("BoardButton");
+        Cbord = GameObject.Find("ActionBord").GetComponent<CardBord>();
 
         audioSource = gameObject.GetComponent<AudioSource>();
         gripFlag = false;
@@ -323,6 +327,9 @@ public class CardManagement : MonoBehaviour {
                 {
                     //つかむ判定を立てる
                     gripFlag = true;
+                    releaseFlag = false;
+
+                    Cbord.SetFlag(false);
 
                     tuckCard = cards[selectedCard];
                     cursor = CursorForcusTag.ActtionBord;

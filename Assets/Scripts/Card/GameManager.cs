@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
 
     GameObject Imagebord;
 
+    //プレイフラグ
+    private bool playFlag;
+
     // Use this for initialization
     void Start()
     {
@@ -158,6 +161,8 @@ public class GameManager : MonoBehaviour
             flag.Move_cnt = 2;
         }
 
+        playFlag = true;
+
         // スクロールボタンを非表示
         setButton.GetComponent<SetButton>().SetButtonToFasle();
 
@@ -194,6 +199,10 @@ public class GameManager : MonoBehaviour
     public bool ClearFlag()
     {
         return playerAction.GetComponent<PlayerAction>().ClearFlag;
+    }
+    public bool GetFlag()
+    {
+        return playFlag;
     }
 
 }
