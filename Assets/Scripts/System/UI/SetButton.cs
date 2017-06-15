@@ -73,6 +73,13 @@ public class SetButton : MonoBehaviour {
 
     private bool Start_flag;
 
+    //ボタン押下判定
+    private bool buttonFlag;
+
+    void Start()
+    {
+        buttonFlag = false;
+    }
 
     // Use this for initialization
     void Awake ()
@@ -130,6 +137,16 @@ public class SetButton : MonoBehaviour {
             StartMoveLerp();
         }
 
+        //アクションボードが上にある時だけフラグを立てる
+        if (imagebord.transform.localPosition.y > 160.0f)
+        {
+            buttonFlag = false;
+        }
+        else
+        {
+            buttonFlag = true;
+        }
+
         // actionboardの位置更新
         if (flag)
         {
@@ -163,7 +180,7 @@ public class SetButton : MonoBehaviour {
 
     public void OnClick()
     {
-
+        buttonFlag = true;
         /*音を鳴らす*/
         GetComponent<AudioSource>().Play();
 
@@ -323,4 +340,9 @@ public class SetButton : MonoBehaviour {
             new Vector3(0.0f, -LerpMovement_y2, 0f), startTimeStep);
 
     }
+    public bool GetFlag()
+    {
+        return buttonFlag;
+    }
+
 }

@@ -59,6 +59,8 @@ public class CardBord : MonoBehaviour {
     
     //実行フラグ
     bool PlayFlag = false;
+    //スクロールフラグ
+    private bool scrollFlag;
 
     //ゲームの状態
     GameManager state;
@@ -86,6 +88,7 @@ public class CardBord : MonoBehaviour {
 
         //プレイフラグ
         PlayFlag = false;
+        scrollFlag = false;
     }
 
     //カードの初期座標取得関数
@@ -407,7 +410,7 @@ public class CardBord : MonoBehaviour {
 
     public void ScrollToLeft()
     {
-
+        scrollFlag = true;
         GetComponent<AudioSource>().Play();
 
         // カードの座標設定
@@ -425,7 +428,7 @@ public class CardBord : MonoBehaviour {
 
 public void ScrollToRight()
     {
-
+        scrollFlag = true;
         GetComponent<AudioSource>().Play();
 
         //// カードの座標設定
@@ -465,4 +468,15 @@ public void ScrollToRight()
         else
             return cards[no].type;
     }
+
+    public void SetFlag(bool flag)
+    {
+        scrollFlag = flag;
+    }
+
+    public bool GetFlag()
+    {
+        return scrollFlag;
+    }
+
 }

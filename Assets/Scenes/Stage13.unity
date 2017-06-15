@@ -1232,6 +1232,7 @@ GameObject:
   - component: {fileID: 208914372}
   - component: {fileID: 208914371}
   - component: {fileID: 208914370}
+  - component: {fileID: 208914373}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1360,6 +1361,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &208914373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208914368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629f05eb02ffbff429d86b030346a6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226558877
 GameObject:
   m_ObjectHideFlags: 0
@@ -10751,10 +10763,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f5f52c8136c5d479ae766e4c137e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollstart: 3
-  targetPosX: 5
-  targetPosY: 5
+  scrollstart: {x: 0, y: 0}
+  rangePosX: 0
+  rangePosY: 0
   underOffset: -1
+  safityArea: 1
   isUpdate: 0
 --- !u!81 &875512387
 AudioListener:
@@ -11314,6 +11327,7 @@ MonoBehaviour:
   Jump: {fileID: 8300000, guid: 940b1eafada9d644a901c8529e54fab2, type: 3}
   Hit: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
   Move: {fileID: 8300000, guid: a4c75e1b5820328419b48611eeb800f8, type: 3}
+  Water: {fileID: 0}
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
@@ -12505,6 +12519,7 @@ MonoBehaviour:
   countNum: 1
   Grip: {fileID: 8300000, guid: 6e32f87803bc22f4dbe0149a554fa726, type: 3}
   release: {fileID: 8300000, guid: cb1b458cf8fd28546aac8832687cd0e3, type: 3}
+  Scroll: {fileID: 0}
 --- !u!4 &1136850363
 Transform:
   m_ObjectHideFlags: 0
@@ -16481,7 +16496,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.49411765, g: 0.49411765, b: 0.49411765, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -17165,7 +17180,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.49411765, g: 0.49411765, b: 0.49411765, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -17590,7 +17605,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.49411765, g: 0.49411765, b: 0.49411765, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1

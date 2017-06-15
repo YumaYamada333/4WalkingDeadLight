@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class ResultMove : MonoBehaviour
 {
-
     GameObject GameOver;
     GameObject GameClear;
+    GameObject SelectButton;
+    GameObject RetryButton;
     //タイトルを動かすための始点と終点と時間
     Vector3 resultStartPos = new Vector3(0, 50, 0);
     Vector3 resultEndPos = new Vector3(0, 350, 0);
+
+    //タイトルを動かすための始点と終点と時間
+    Vector3 selectStartPos = new Vector3(-90, -103, 0);
+    Vector3 selectEndPos = new Vector3(-90, -400, 0);
+
+    Vector3 C_selectStartPos = new Vector3(0, -103, 0);
+    Vector3 C_selectEndPos = new Vector3(0, -400, 0);
+
+    Vector3 retryStartPos = new Vector3(90, -103, 0);
+    Vector3 retryEndPos = new Vector3(90, -400, 0);
 
     private float titleTime;
     float timeStep;
@@ -42,6 +53,7 @@ public class ResultMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         ResultMoveFlag = SceneLoadScript.MoveFlag;
         ClearFlag = ClearFunc.Clearflag();
         OverFlag = ClearFunc.Overflag();
@@ -52,12 +64,15 @@ public class ResultMove : MonoBehaviour
         //クリアしたら通す
         if (ClearFlag)
         {
+            SelectButton = GameObject.Find("SelectButton");
+
             //OnClickで関数を呼んで切り替え
             if (ResultMoveFlag == true)
             {
-                timeStep = (Time.time - titleTime) / 1.5f;
+                timeStep = (Time.time - titleTime) / 0.5f;
                 //ゲームクリアの移動
                 GameClear.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
+                SelectButton.transform.localPosition = MathClass.Lerp(C_selectStartPos, C_selectEndPos, timeStep);
                 if (Input.GetMouseButtonUp(0))
                 {
                     isStartLerp = true;
@@ -72,13 +87,18 @@ public class ResultMove : MonoBehaviour
         //ゲームオーバーしたら
         if (OverFlag)
         {
+            SelectButton = GameObject.Find("SelectButton");
+            RetryButton = GameObject.Find("TitleButton");
+
             //OnClickで関数を呼んで切り替え
             if (ResultMoveFlag == true)
             {
-                timeStep = (Time.time - titleTime) / 1.5f;
+                timeStep = (Time.time - titleTime) / 0.5f;
                 if (timeStep > 1.0f) timeStep = 1.0f;
                 //ゲームオーバーの移動
                 GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
+                SelectButton.transform.localPosition = MathClass.Lerp(selectStartPos, selectEndPos, timeStep);
+                RetryButton.transform.localPosition = MathClass.Lerp(retryStartPos, retryEndPos, timeStep);
                 if (Input.GetMouseButtonUp(0))
                 {
                     isStartLerp = true;
