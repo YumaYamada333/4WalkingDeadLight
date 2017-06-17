@@ -817,6 +817,8 @@ public class PlayerAction : MonoBehaviour
         //OverFlagがtrueだったら
         if (OverFlag)
         {
+            // カメラの追尾をやめる
+            GameObject.Find("MainCamera").GetComponent<CameraControl>().SetFollow(false);
             GameObject.Find("GameManager").GetComponent<ToResultScene>().ToOver(0);
             Invoke("SetButtonOn", 0.6f);
         }

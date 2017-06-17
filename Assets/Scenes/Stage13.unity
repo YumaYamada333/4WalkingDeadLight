@@ -1055,6 +1055,10 @@ Prefab:
       propertyPath: GimmickSound
       value: 
       objectReference: {fileID: 8300000, guid: f90729e7b7db1744793f54f8ab5de786, type: 3}
+    - target: {fileID: 4925799061162242, guid: e453dc3e4ae5bc94c8a8d2bc7432aa09, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e453dc3e4ae5bc94c8a8d2bc7432aa09, type: 2}
   m_IsPrefabParent: 0
