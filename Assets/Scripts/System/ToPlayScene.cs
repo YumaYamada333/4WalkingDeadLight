@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ToPlayScene : MonoBehaviour {
 
-    public AudioClip OK;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -15,12 +13,11 @@ public class ToPlayScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.PlayOneShot(OK);
+        
+    }
 
-            Application.LoadLevel("newStage1");
-        }
+    public void OnClick()
+    {
+        GameObject.Find("StageSelectDirector").GetComponent<StageSelectDirector>().PlayButton();
     }
 }
