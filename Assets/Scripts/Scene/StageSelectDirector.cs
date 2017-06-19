@@ -159,8 +159,8 @@ public class StageSelectDirector : MonoBehaviour
         if (curtainUpStep > 1.0f) curtainUpStep = 1.0f;
         if (curtainUpStep < 0.0f) curtainUpStep = 0.0f;
 
-        // マウスのドラック量を取得
-        Vector2 dragVec = GetComponent<MouseSystem>().GetDragVec() - dragVecOld;
+        //// マウスのドラック量を取得
+        //Vector2 dragVec = GetComponent<MouseSystem>().GetDragVec() - dragVecOld;
 
         // スワイプの距離を取得
         if (!(curtainUpStep < 1.0f))
@@ -247,7 +247,7 @@ public class StageSelectDirector : MonoBehaviour
                 }
                 // ボタンを表示　非表示
                 GameObject childObject = m_pamphlet[i].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject;
-                if (changeStep > 0.95f) childObject.SetActive(false);
+                if (changeStep > 0.95f && i != m_space[0].pamphlietIndex) childObject.SetActive(false);
                 if (i == m_space[0].pamphlietIndex) childObject.SetActive(true);
 
             }
