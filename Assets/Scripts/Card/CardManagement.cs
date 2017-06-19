@@ -207,6 +207,8 @@ public class CardManagement : MonoBehaviour {
         bord.SetCard(Instantiate(moveCard), CardType.Move);
         bord.SetCard(Instantiate(finishCard), CardType.Finish);
 
+        bord.Coordinate();
+
         // MouseSystemコンポーネントの取得
         mouse_system = GameObject.Find("MouseSystem").GetComponent<MouseSystem>();
         m_boardButton = GameObject.Find("BoardButton");
