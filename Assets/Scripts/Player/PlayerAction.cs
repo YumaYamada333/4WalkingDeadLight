@@ -20,7 +20,7 @@ static class Constants
     public const int SuperAttack = 3;  //superattack
     public const int MaxEnemy    = 4;  //敵の数
     public const int MaxJumpPow  = 5;  //最大のジャンプ力
-    public const int MaxAnimation= 6;  //最大のアニメーションの数
+    public const int MaxAnimation= 7;  //最大のアニメーションの数
     public const int MaxTime     = 10; //最大時間
     public const int MoveCount   = 60; //移動エフェクトのループ再生する間隔
 
@@ -29,7 +29,7 @@ static class Constants
     public const float MassDistance = 2.2f; //マスの距離
 }
 //アニメーション
-enum ANIMATION { MOVE, JUMP, ATTACK, OVER };
+enum ANIMATION { MOVE, JUMP, ATTACK, COUNT, OVER, };
 //パーティクル
 enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON};
 public class PlayerAction : MonoBehaviour
@@ -316,7 +316,8 @@ public class PlayerAction : MonoBehaviour
     public bool IsIdle()
     {
         //待機中の場合
-        if (animationFlag[(int)ANIMATION.MOVE] == false && animationFlag[(int)ANIMATION.JUMP] == false && animationFlag[(int)ANIMATION.ATTACK] == false)
+        if (animationFlag[(int)ANIMATION.MOVE] == false && animationFlag[(int)ANIMATION.JUMP] == false && animationFlag[(int)ANIMATION.ATTACK] == false
+            && animationFlag[(int)ANIMATION.COUNT] == false)
         {
             idleFlag = true;
         }
@@ -363,6 +364,7 @@ public class PlayerAction : MonoBehaviour
                     break;
                 //attack
                 case (int)ANIMATION.ATTACK:
+                case (int)ANIMATION.COUNT:
                     //移動しない
                     middlePosition = new Vector3(transform.position.x, middlePosition.y, 0);
                     //移動しない
@@ -388,6 +390,7 @@ public class PlayerAction : MonoBehaviour
             //カードセットの処理を止める
             cardSetFlag = false;
             //アニメーション
+            //animator.Play(animation, 0, 0.0f);
             animator.SetBool(animation, true);
             //経過時間
             diff = Time.timeSinceLevelLoad - startTime;
@@ -492,12 +495,12 @@ public class PlayerAction : MonoBehaviour
                     }
                     break;
                 case CardManagement.CardType.Count:
-                    audioSource.PlayOneShot(Attack);        //音
+                    //audioSource.PlayOneShot(Attack);        //音
                     cardSetFlag = true;                     //カードセットフラグ
-                    animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
-                    animationName = "Attack";               //アニメーションの名前
+                    animationNum = (int)ANIMATION.COUNT;   //アニメーションの番号
+                    animationName = "Count";               //アニメーションの名前
                     //EffekseerHandle attack = EffekseerSystem.PlayEffect("attake", transform.position);
-                    particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    //particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     //CountDown.SetCountDown(type);
                     break;
                 //finish
