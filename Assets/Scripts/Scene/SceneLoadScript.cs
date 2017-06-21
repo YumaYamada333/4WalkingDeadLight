@@ -103,6 +103,10 @@ public class SceneLoadScript : MonoBehaviour
     //----------------------------------------------------------------------
     public void StageButtonActive()
     {
+        // ボタン二回目クリック
+        if (MoveFlag)
+            return;
+
         GetComponent<AudioSource>().Play();
 
         ButtonActive = GameObject.Find("unitychan").GetComponent<PlayerAction>();

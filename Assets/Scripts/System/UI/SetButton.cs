@@ -54,10 +54,6 @@ public class SetButton : MonoBehaviour {
 
     private GameObject imagebord2;
 
-    private GameObject imagebord3;
-
-    private GameObject imagebord4;
-
     public  int Move_cnt;
 
     private float m_autoMoveTime = 0.0f;
@@ -104,7 +100,7 @@ public class SetButton : MonoBehaviour {
 
         m_autoMoveTime = Time.time ;
         
-        timeStep = 1;
+        timeStep = 0;
         
         // actionboardの配置
         ActionBord.transform.localPosition = actPosActionBord;
@@ -112,7 +108,7 @@ public class SetButton : MonoBehaviour {
         // 初期位置取得
         firstPos = mainCamera.transform.position;
 
-        HandsBord.SetActive(false);
+        //HandsBord.SetActive(false);
 
         /*初期化*/
         LerpMovement_x = 350.0f;
@@ -127,14 +123,19 @@ public class SetButton : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (imagebord.transform.localPosition.y >= -187.0f)
-        {
-            Start_flag = true;
-        }
+        //if (imagebord.transform.localPosition.y >= -187.0f)
+        //{
+        //    Start_flag = true;
+        //}
 
-        if (Start_flag == false)
+        if (!Start_flag)
         {
             StartMoveLerp();
+        }
+
+        if(ActionBord.transform.localPosition.y <=171)
+        {
+            Start_flag = true;
         }
 
         //アクションボードが上にある時だけフラグを立てる
@@ -150,7 +151,7 @@ public class SetButton : MonoBehaviour {
         // actionboardの位置更新
         if (flag)
         {
-            ActionBord.transform.localPosition = actPosActionBord/* + mainCamera.transform.position - firstPos*/;
+            //ActionBord.transform.localPosition = actPosActionBord/* + mainCamera.transform.position - firstPos*/;
         }
         CardBord board = ActionBord.GetComponent<CardBord>();
 
@@ -174,7 +175,7 @@ public class SetButton : MonoBehaviour {
             startTimeStep = 1.0f;
         }
 
-        MoveInLerp();
+        //MoveInLerp();
         
     }
 
@@ -182,7 +183,7 @@ public class SetButton : MonoBehaviour {
     {
         buttonFlag = true;
         /*音を鳴らす*/
-        GetComponent<AudioSource>().Play();
+        //GetComponent<AudioSource>().Play();
 
         if (Move_cnt != 0)
         {
@@ -192,14 +193,14 @@ public class SetButton : MonoBehaviour {
         //timeStep = (Time.time - m_autoMoveTime);
         m_autoMoveTime = Time.time;
         
-        if(imagebord.transform.localPosition.y <= -170.0f)
-        {
-            Move_cnt = 1;
-        }
-        else if(imagebord.transform.localPosition.y >= 160.0f)
-        {
-            Move_cnt = 2;
-        }
+        //if(imagebord.transform.localPosition.y <= -170.0f)
+        //{
+        //    Move_cnt = 1;
+        //}
+        //if(imagebord.transform.localPosition.y >= 160.0f)
+        //{
+        //    Move_cnt = 2;
+        //}
 
         if (flag)
         {
@@ -215,8 +216,8 @@ public class SetButton : MonoBehaviour {
             
 
             // boardの配置
-            HandsBord.transform.localPosition = setPosHandsBord;
-            ActionBord.transform.localPosition = setPosActionBord;
+            //HandsBord.transform.localPosition = setPosHandsBord;
+            //ActionBord.transform.localPosition = setPosActionBord;
             // HandsBordを表示
             HandsBord.SetActive(true);
 
@@ -263,30 +264,30 @@ public class SetButton : MonoBehaviour {
 
          case 1:
 
-                HandsBord.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0.0f, -110, 0),
-                    new Vector3(0, 0, 0), timeStep);
+                //HandsBord.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(0.0f, -110, 0),
+                //    new Vector3(0, 0, 0), timeStep);
 
 
 
-                ResetButton.transform.localPosition =
-                    MathClass.Lerp(new Vector3(LerpMovement_x, -LerpMovement_y3, 0),
-                    new Vector3(350.0f, -LerpMovement_y2, 0), timeStep);
+                //ResetButton.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(LerpMovement_x, -LerpMovement_y3, 0),
+                //    new Vector3(350.0f, -LerpMovement_y2, 0), timeStep);
 
 
-                ActionBord.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0, 0, 0),
-                    new Vector3(0.0f, LerpMovement_y3 + 57, 0), timeStep);
+                //ActionBord.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(0, 0, 0),
+                //    new Vector3(0.0f, LerpMovement_y3 + 57, 0), timeStep);
 
 
-                imagebord.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y2, 0),
-                    new Vector3(0.0f, LerpMovement_y1, 0), timeStep);
+                //imagebord.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y2, 0),
+                //    new Vector3(0.0f, LerpMovement_y1, 0), timeStep);
 
 
-                imagebord2.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y3, 0),
-                    new Vector3(0.0f, -LerpMovement_y2, 0), timeStep);
+                //imagebord2.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y3, 0),
+                //    new Vector3(0.0f, -LerpMovement_y2, 0), timeStep);
 
 
                 //Move_flag = true;
@@ -295,19 +296,19 @@ public class SetButton : MonoBehaviour {
                 break;
 
             case 2:
-                HandsBord.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0, 0, 0),
-                    new Vector3(0.0f, -110, 0), timeStep);
+                //HandsBord.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(0, 0, 0),
+                //    new Vector3(0.0f, -110, 0), timeStep);
 
 
-                ResetButton.transform.localPosition =
-                    MathClass.Lerp(new Vector3(LerpMovement_x, -LerpMovement_y2, 0),
-                    new Vector3(LerpMovement_x, -LerpMovement_y3, 0), timeStep);
+                //ResetButton.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(LerpMovement_x, -LerpMovement_y2, 0),
+                //    new Vector3(LerpMovement_x, -LerpMovement_y3, 0), timeStep);
 
 
                 ActionBord.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0.0f, LerpMovement_y3 + 57, 0),
-                    new Vector3(0, 0, 0), timeStep);
+                    MathClass.Lerp(new Vector3(0.0f, LerpMovement_y1 + 57, 0),
+                    new Vector3(0, -LerpMovement_y2, 0), timeStep);
 
 
                 imagebord.transform.localPosition =
@@ -315,9 +316,9 @@ public class SetButton : MonoBehaviour {
                     new Vector3(0.0f, -LerpMovement_y2, 0), timeStep);
 
 
-                imagebord2.transform.localPosition =
-                    MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y2, 0),
-                    new Vector3(0.0f, -LerpMovement_y3, 0), timeStep);
+                //imagebord2.transform.localPosition =
+                //    MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y2, 0),
+                //    new Vector3(0.0f, -LerpMovement_y3, 0), timeStep);
 
                 break;
         }
@@ -331,11 +332,19 @@ public class SetButton : MonoBehaviour {
 
     void StartMoveLerp()
     {
-        Bord.transform.localPosition =
+        imagebord.transform.localPosition =
+            MathClass.Lerp(new Vector3(0.0f, LerpMovement_y3, 0),
+            new Vector3(0.0f, LerpMovement_y1, 0f), startTimeStep);
+
+        imagebord2.transform.localPosition =
             MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y3, 0),
             new Vector3(0.0f, -LerpMovement_y2, 0f), startTimeStep);
 
-        imagebord.transform.localPosition =
+        ActionBord.transform.localPosition =
+            MathClass.Lerp(new Vector3(0.0f, LerpMovement_y3, 0),
+            new Vector3(0.0f, LerpMovement_y1, 0f), startTimeStep);
+
+        HandsBord.transform.localPosition =
             MathClass.Lerp(new Vector3(0.0f, -LerpMovement_y3, 0),
             new Vector3(0.0f, -LerpMovement_y2, 0f), startTimeStep);
 

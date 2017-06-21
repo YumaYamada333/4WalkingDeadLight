@@ -42,7 +42,7 @@ public class CardEffect : MonoBehaviour {
         cardmane = GameObject.Find("CardManager").GetComponent<CardManagement>();
         gamemane = GameObject.Find("GameManager").GetComponent<GameManager>();
         cardBord = GameObject.Find("ActionBord").GetComponent<CardBord>();
-        button = GameObject.Find("ToCardSetButton").GetComponent<SetButton>();
+       // button = GameObject.Find("ToCardSetButton").GetComponent<SetButton>();
         tmp = gameObject.transform.position;
         
     }
@@ -57,7 +57,7 @@ public class CardEffect : MonoBehaviour {
         pos = gameObject.transform.position;
 
         //各種ボタンを押していなかったら
-        if (!gamemane.GetFlag() || !cardBord.GetFlag() || !button.GetFlag())
+        if (!gamemane.GetFlag() || !cardBord.GetFlag())
         {
             if (pos == tmp)
             {
@@ -65,7 +65,7 @@ public class CardEffect : MonoBehaviour {
                 StarEffect();
             }
         }
-        if (gamemane.GetFlag() || cardBord.GetFlag() || button.GetFlag())
+        if (gamemane.GetFlag() || cardBord.GetFlag())
         {
             alfa = 0.0f;
             //エフェクトを非表示にさせる
