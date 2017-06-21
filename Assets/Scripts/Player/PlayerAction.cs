@@ -388,6 +388,7 @@ public class PlayerAction : MonoBehaviour
             //カードセットの処理を止める
             cardSetFlag = false;
             //アニメーション
+            //animator.Play(animation, 0, 0.0f);
             animator.SetBool(animation, true);
             //経過時間
             diff = Time.timeSinceLevelLoad - startTime;
