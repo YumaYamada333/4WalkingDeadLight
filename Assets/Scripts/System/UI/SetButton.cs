@@ -133,6 +133,11 @@ public class SetButton : MonoBehaviour {
             StartMoveLerp();
         }
 
+        if(ActionBord.transform.localPosition.y <=171)
+        {
+            Start_flag = true;
+        }
+
         //アクションボードが上にある時だけフラグを立てる
         if (imagebord.transform.localPosition.y > 160.0f)
         {
@@ -178,7 +183,7 @@ public class SetButton : MonoBehaviour {
     {
         buttonFlag = true;
         /*音を鳴らす*/
-        GetComponent<AudioSource>().Play();
+        //GetComponent<AudioSource>().Play();
 
         if (Move_cnt != 0)
         {

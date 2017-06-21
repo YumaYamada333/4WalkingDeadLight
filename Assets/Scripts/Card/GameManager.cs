@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     //プレイフラグ
     private bool playFlag;
 
-    private bool Move_flag;
+    public int Move_num;
 
     private float m_autoMoveTime = 0.0f;
 
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
         timeStep = 0;
 
-        Move_flag = false;
+        Move_num = 0;
 
     }
 
@@ -173,24 +173,14 @@ public class GameManager : MonoBehaviour
 
         }
 
-        timeStep = (Time.time - m_autoMoveTime) /*/ 10.0f*/;
-        if (timeStep > 1.0f)
-        {
-            timeStep = 1.0f;
-        }
+            timeStep = (Time.time - m_autoMoveTime) /*/ 10.0f*/;
+            if (timeStep > 1.0f)
+            {
+                timeStep = 1.0f;
+            }
+        
 
-        if (Move_flag)
-        {
-
-            
-           // ActionBord.transform.localPosition =
-           //MathClass.Lerp(new Vector3(0.0f, 170.0f, 0),
-           //new Vector3(0.0f, -188.0f, 0f), timeStep);
-
-           // Imagebord.transform.localPosition =
-           //MathClass.Lerp(new Vector3(0.0f, 170.0f, 0),
-           //new Vector3(0.0f, -188.0f, 0f), timeStep);
-        }
+        
 
     }
 
@@ -207,6 +197,8 @@ public class GameManager : MonoBehaviour
         //    flag.Move_cnt = 2;
         //}
 
+        //Move_flag = true;
+
         playFlag = true;
 
         // スクロールボタンを非表示
@@ -222,7 +214,16 @@ public class GameManager : MonoBehaviour
 
         HandsBord.SetActive(false);
 
-        ActionBord.transform.localPosition = (new Vector3(0.0f, -188.0f, 0f));
+        //if (Move_num == 1)
+        //{
+        //    ActionBord.transform.localPosition =
+        //       MathClass.Lerp(new Vector3(0, 171.0f, 0), new Vector3(0, -188.0f, 0), timeStep);
+
+        //    Imagebord.transform.localPosition =
+        //       MathClass.Lerp(new Vector3(0, 171.0f, 0), new Vector3(0, -188.0f, 0), timeStep);
+        //}
+
+        
 
 
         gameState++;
@@ -230,7 +231,7 @@ public class GameManager : MonoBehaviour
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.PlayOneShot(OK);
 
-        Move_flag = true;
+        
 
 
     }
