@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClockVive : MonoBehaviour {
+public class EarthQuake : MonoBehaviour {
 
     //カウントオブジェ
     public GameObject m_count_obj;
+    public GameObject m_count_obj2;
+    public GameObject m_count_obj3;
+    //今のカウントオブジェ
+    private GameObject m_now_count;
+    //アクションカウント
+    private int m_act_count = 0;
 
     //初期ポジション
     private Vector3 m_init_pos;
@@ -20,17 +26,19 @@ public class ClockVive : MonoBehaviour {
     public bool m_repeat_flag = false;
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        m_now_count = m_count_obj;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //カウントダウン
         GetCountZero();
 
         //アクションがnullでないならアクションを行う
-       
+
         //フラグが立ったらアクションの準備
         if (m_action_flag == true &&
             m_action_flag != m_old_flag)
@@ -50,7 +58,7 @@ public class ClockVive : MonoBehaviour {
             if (m_time_count >= 360) m_time_count = 0;
 
             //移動量
-            Vector3 move_dis = new Vector3(Mathf.Sin(m_time_count * Mathf.Deg2Rad)* 0.1f, 0.0f, 0.0f);
+            Vector3 move_dis = new Vector3(Mathf.Sin(m_time_count * Mathf.Deg2Rad) * 0.1f, 0.0f, 0.0f);
             this.transform.position = m_init_pos + move_dis;
 
             //移動時間になったらフラグを止める
@@ -60,20 +68,33 @@ public class ClockVive : MonoBehaviour {
                 this.transform.position = m_init_pos;
 
                 m_action_flag = false;
-                if(m_repeat_flag)
+                if (m_repeat_flag)
                 {
                     m_old_flag = false;
+                    m_act_count++;
+                    if(m_act_count == 1)
+                    {
+                        m_now_count = m_count_obj2;
+                    }
+                    else if(m_act_count == 2)
+                    {
+                        m_now_count = m_count_obj3;
+                    }
+                    else
+                    {
+                        m_old_flag = true;
+                    }
                 }
             }
         }
-       
+
     }
 
     //カウントダウンによってフラグをあげる
     void GetCountZero()
     {
         //カウントが0になり、フラグがたっておらず、いままで一度もフラグが立っていなかったら
-        if (m_count_obj.GetComponent<CountDown>().GetCount() == 0 &&
+        if (m_now_count.GetComponent<CountDown>().GetCount() == 0 &&
             m_action_flag == false &&
             m_old_flag == false)
         {

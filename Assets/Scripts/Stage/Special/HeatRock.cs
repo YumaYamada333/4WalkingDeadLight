@@ -14,6 +14,8 @@ public class HeatRock : MonoBehaviour {
     public GameObject m_game_manager;
     //変更用マテリアル
     public Material m_material;
+    //複数オブジェクトが同タイミングで動く場合に最後に動き終わるオブジェクト
+    public GameObject m_final_move_obj;
     /*ギミック音*/
     public AudioClip GimmickSound;
 
@@ -69,21 +71,21 @@ public class HeatRock : MonoBehaviour {
             //経過時間を移動時間で割る
             float timeStep = (Time.time - m_start_time) / 1;
 
-            //色を徐々に変える
-            m_material.color = new Color( (1 - timeStep) * m_start_color.r + timeStep * m_dis_color.r,
-                                            (1 - timeStep) * m_start_color.g + timeStep * m_dis_color.g,
-                                            (1 - timeStep) * m_start_color.b + timeStep * m_dis_color.b,
-                                            1.0f);
+            if (timeStep <= 1.0f)
+            {
+                //色を徐々に変える
+                m_material.color = new Color((1 - timeStep) * m_start_color.r + timeStep * m_dis_color.r,
+                                                (1 - timeStep) * m_start_color.g + timeStep * m_dis_color.g,
+                                                (1 - timeStep) * m_start_color.b + timeStep * m_dis_color.b,
+                                                1.0f);
+            }
                
            
 
             //移動時間になったらフラグを止める
             if (timeStep > 1.0f)
             {
-                m_isHeat = m_isHeat ? false : true;
-                m_dis_color = m_isHeat ? new Color(0.6f, 0.6f, 0.6f, 1.0f) 
-                                        : new Color(1.0f, 0.0f, 0.0f, 1.0f);
-                m_start_color = m_material.color;
+               
                 //if (m_isHeat){
                 //    m_dis_color = new Color(150.0f, 150.0f, 150.0f, 255.0f);
                 //}
@@ -92,14 +94,35 @@ public class HeatRock : MonoBehaviour {
                 //}
 
                 //各値初期化
-                m_action_flag = false;
-                m_old_flag = false;
-                m_game_manager.GetComponent<GameManager>().SetGimmickFlag(false);
-                m_count_obj.GetComponent<CountDown>().SetCount();
-                m_wait_time = 1.0f;
+                //同タイミングで動くオブジェクトが動き終わっていたら
+                if (m_final_move_obj != null)
+                {
+                    if (!m_final_move_obj.GetComponent<FallLava>().m_awake_flag)
+                    {
+                        m_action_flag = false;
+                        m_old_flag = false;
+                        m_game_manager.GetComponent<GameManager>().SetGimmickFlag(false);
+                        m_count_obj.GetComponent<CountDown>().SetCount();
+                        m_wait_time = 1.0f;
+                        m_isHeat = m_isHeat ? false : true;
+                        m_dis_color = m_isHeat ? new Color(0.6f, 0.6f, 0.6f, 1.0f)
+                                                : new Color(1.0f, 0.0f, 0.0f, 1.0f);
+                        m_start_color = m_material.color;
+                    }
+                }
+                else
+                {
+                    m_action_flag = false;
+                    m_old_flag = false;
+                    m_game_manager.GetComponent<GameManager>().SetGimmickFlag(false);
+                    m_count_obj.GetComponent<CountDown>().SetCount();
+                    m_wait_time = 1.0f;
+                    m_isHeat = m_isHeat ? false : true;
+                    m_dis_color = m_isHeat ? new Color(0.6f, 0.6f, 0.6f, 1.0f)
+                                            : new Color(1.0f, 0.0f, 0.0f, 1.0f);
+                    m_start_color = m_material.color;
+                }
             }
-            
-
         }
 
         //石の状態で各要素を変更
