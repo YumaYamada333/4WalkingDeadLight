@@ -35,6 +35,12 @@ public class ResultMove : MonoBehaviour
     bool ClearFlag;
     bool OverFlag;
     bool isStartLerp;
+    bool SoundFlag;
+
+    public AudioClip CrearSound;
+    public AudioClip OverSound;
+
+    AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
@@ -46,8 +52,11 @@ public class ResultMove : MonoBehaviour
         ResultMoveFlag = false;
         titleTime = Time.time;
         isStartLerp = false;
+        SoundFlag = true;
         // 初期化がSceneLoadScriptで正常に出来ないため
-        SceneLoadScript.MoveFlag = false; 
+        SceneLoadScript.MoveFlag = false;
+
+        audioSource =GameObject.Find("GimmickAudio") .GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -66,6 +75,12 @@ public class ResultMove : MonoBehaviour
         {
             SelectButton = GameObject.Find("SelectButton");
 
+            if (SoundFlag)
+            {
+                GetComponent<AudioSource>().Stop();
+                audioSource.PlayOneShot(CrearSound);
+                SoundFlag = false;
+            }
             //OnClickで関数を呼んで切り替え
             if (ResultMoveFlag == true)
             {
@@ -89,6 +104,13 @@ public class ResultMove : MonoBehaviour
         {
             SelectButton = GameObject.Find("SelectButton");
             RetryButton = GameObject.Find("TitleButton");
+
+            if (SoundFlag)
+            {
+                GetComponent<AudioSource>().Stop();
+                audioSource.PlayOneShot(OverSound);
+                SoundFlag = false;
+            }
 
             //OnClickで関数を呼んで切り替え
             if (ResultMoveFlag == true)
