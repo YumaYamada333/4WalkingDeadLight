@@ -608,8 +608,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.02, z: 0.005}
-  m_Center: {x: 0, y: 0.01, z: 0}
+  m_Size: {x: 0.01, y: 0.01, z: 0.009}
+  m_Center: {x: 0, y: 0.014, z: 0}
 --- !u!1 &114642241
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 5, y: -229.42}
+  m_AnchoredPosition: {x: 5, y: -229.41998}
   m_SizeDelta: {x: 737, y: 441.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130047520
