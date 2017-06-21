@@ -88,7 +88,7 @@ public class ResultMove : MonoBehaviour
                 //ゲームクリアの移動
                 GameClear.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
                 SelectButton.transform.localPosition = MathClass.Lerp(C_selectStartPos, C_selectEndPos, timeStep);
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0) && !isStartLerp)
                 {
                     isStartLerp = true;
                     timeStep = 0;
@@ -121,7 +121,7 @@ public class ResultMove : MonoBehaviour
                 GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
                 SelectButton.transform.localPosition = MathClass.Lerp(selectStartPos, selectEndPos, timeStep);
                 RetryButton.transform.localPosition = MathClass.Lerp(retryStartPos, retryEndPos, timeStep);
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0)&& !isStartLerp)
                 {
                     isStartLerp = true;
                     timeStep = 0;
