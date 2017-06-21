@@ -29,7 +29,7 @@ static class Constants
     public const float MassDistance = 2.2f; //マスの距離
 }
 //アニメーション
-enum ANIMATION { MOVE, JUMP, ATTACK, OVER };
+enum ANIMATION { MOVE, JUMP, ATTACK, COUNT, OVER };
 //パーティクル
 enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON};
 public class PlayerAction : MonoBehaviour
@@ -363,11 +363,19 @@ public class PlayerAction : MonoBehaviour
                     break;
                 //attack
                 case (int)ANIMATION.ATTACK:
+                //case (int)ANIMATION.COUNT:
                     //移動しない
                     middlePosition = new Vector3(transform.position.x, middlePosition.y, 0);
                     //移動しない
                     endPosition = new Vector3(transform.position.x, endPosition.y, 0);
                     break;
+                case (int)ANIMATION.COUNT:
+                    //移動しない
+                    middlePosition = new Vector3(transform.position.x, middlePosition.y, 0);
+                    //移動しない
+                    endPosition = new Vector3(transform.position.x, endPosition.y, 0);
+                    break;
+
             }
 
         }
@@ -493,12 +501,12 @@ public class PlayerAction : MonoBehaviour
                     }
                     break;
                 case CardManagement.CardType.Count:
-                    audioSource.PlayOneShot(Attack);        //音
+                    //audioSource.PlayOneShot(Attack);        //音
                     cardSetFlag = true;                     //カードセットフラグ
-                    animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
-                    animationName = "Attack";               //アニメーションの名前
+                    animationNum = (int)ANIMATION.COUNT;   //アニメーションの番号
+                    animationName = "Count";               //アニメーションの名前
                     //EffekseerHandle attack = EffekseerSystem.PlayEffect("attake", transform.position);
-                    particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    //particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     //CountDown.SetCountDown(type);
                     break;
                 //finish
