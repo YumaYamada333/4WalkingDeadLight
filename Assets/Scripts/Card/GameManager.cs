@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         m_camera = GameObject.Find("MainCamera").GetComponent<CameraControl>();
         //flag = GameObject.Find("MoveManager").GetComponent<SetButton>();
         MoveManager = GameObject.Find("MoveManager");
+        //MoveManager = GameObject.Find("MoveManager");
         playButton = GameObject.Find("PlayButton");
         ResetButton = GameObject.Find("Reset");
         //上イメージボード
