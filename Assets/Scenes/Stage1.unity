@@ -17709,7 +17709,7 @@ MonoBehaviour:
   isUpdateData: 0
   isControlCard: 0
   attackNum: 0
-  jumpNum: 3
+  jumpNum: 1
   countNum: 0
   Grip: {fileID: 8300000, guid: 6e32f87803bc22f4dbe0149a554fa726, type: 3}
   release: {fileID: 8300000, guid: cb1b458cf8fd28546aac8832687cd0e3, type: 3}
@@ -26055,7 +26055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1367896724
 Transform:
   m_ObjectHideFlags: 0
