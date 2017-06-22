@@ -176,7 +176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 5, y: -229.41998}
+  m_AnchoredPosition: {x: 5, y: -229.42}
   m_SizeDelta: {x: 737, y: 441.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130047520
@@ -314,6 +314,10 @@ Prefab:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: afe50f4b6857eb441aa13ba963b8851c, type: 3}
+    - target: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d20e0eac9218fdd4497d075d4f246f6a, type: 2}
   m_IsPrefabParent: 0
@@ -3647,8 +3651,7 @@ Prefab:
         type: 2}
       propertyPath: CanvasResetButton
       value: 
-      objectReference: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a,
-        type: 2}
+      objectReference: {fileID: 356671889}
     - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
         type: 2}
       propertyPath: CountManager

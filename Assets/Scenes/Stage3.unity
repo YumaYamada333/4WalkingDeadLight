@@ -1404,6 +1404,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d20e0eac9218fdd4497d075d4f246f6a, type: 2}
   m_IsPrefabParent: 0
@@ -1760,6 +1764,7 @@ MonoBehaviour:
   m_gimmick_move_flag: 0
   m_set_button: {fileID: 0}
   OK: {fileID: 8300000, guid: c99f96fd355ee8343ae6a6de5e255863, type: 3}
+  Move_num: 0
   timeStep: 0
 --- !u!82 &208914372
 AudioSource:
@@ -15038,8 +15043,7 @@ Prefab:
         type: 2}
       propertyPath: CanvasResetButton
       value: 
-      objectReference: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a,
-        type: 2}
+      objectReference: {fileID: 356671889}
     - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
         type: 2}
       propertyPath: CountManager

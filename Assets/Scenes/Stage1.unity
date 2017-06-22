@@ -1619,6 +1619,7 @@ MonoBehaviour:
   m_gimmick_move_flag: 0
   m_set_button: {fileID: 870654982}
   OK: {fileID: 8300000, guid: c99f96fd355ee8343ae6a6de5e255863, type: 3}
+  Move_num: 0
   timeStep: 0
 --- !u!82 &208914372
 AudioSource:
@@ -3274,11 +3275,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 352204055}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &356671889 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a,
-    type: 2}
-  m_PrefabInternal: {fileID: 160150893}
 --- !u!1 &358983748
 GameObject:
   m_ObjectHideFlags: 0
@@ -16183,7 +16179,8 @@ MonoBehaviour:
   CanvasBord: {fileID: 48090186}
   ImageBord: {fileID: 2131642794}
   ImageBord2: {fileID: 1650275854}
-  CanvasResetButton: {fileID: 356671889}
+  CanvasResetButton: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a,
+    type: 2}
   CanvasSetButton: {fileID: 0}
   CanvasPlayButton: {fileID: 0}
   Attack: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
