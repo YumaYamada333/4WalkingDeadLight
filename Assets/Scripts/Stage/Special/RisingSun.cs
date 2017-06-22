@@ -22,6 +22,10 @@ public class RisingSun : MonoBehaviour {
     //オブジェクトを格納するための変数
     public GameObject m_obj;
 
+    /*BGM*/
+    public AudioClip night;
+    public AudioClip morning;
+
     //スタートの時間
     private float m_start_time = 0.0f;
     //スタート位置
@@ -30,6 +34,12 @@ public class RisingSun : MonoBehaviour {
     private SkinnedMeshRenderer[] m_mesh = new SkinnedMeshRenderer[4];
     private Color[] m_color = new Color[4];
 
+    private float SoundVolume;
+
+    /*ギミック音を鳴らす*/
+    AudioSource Nightaudio;
+    AudioSource Morningaudio;
+
     // Use this for initialization
     void Start () {
         for(int i =0;i<4;i++)
@@ -37,7 +47,17 @@ public class RisingSun : MonoBehaviour {
             m_mesh[i] = m_ghost[i].GetComponent<SkinnedMeshRenderer>();
             m_color[i] = m_mesh[i].material.color;
         }
-	}
+
+        SoundVolume = 0.1f;
+
+        Nightaudio = GameObject.Find("NightAudio").GetComponent<AudioSource>();
+        Morningaudio = GameObject.Find("MorningAudio").GetComponent<AudioSource>();
+
+        /*ギミック音を鳴らす*/
+        Nightaudio.PlayOneShot(night);
+        Morningaudio.PlayOneShot(morning);
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -59,6 +79,10 @@ public class RisingSun : MonoBehaviour {
         //フラグがたっていたら移動(補間)
         if (m_action_flag)
         {
+
+            if (Nightaudio.volume > 0) Nightaudio.volume -= SoundVolume;
+            if (Morningaudio.volume < 1) Morningaudio.volume += SoundVolume;
+
             //経過時間を移動時間で割る
             float timeStep = (Time.time - m_start_time) / m_act_time;
 
@@ -87,6 +111,9 @@ public class RisingSun : MonoBehaviour {
             m_action_flag == false &&
             m_old_flag == false)
         {
+
+            
+
             //ゲームマネージャーのギミックが移動している判定用のフラグをあげる
             m_game_manager.GetComponent<GameManager>().SetGimmickFlag(true);
             //起動フラグを上げる

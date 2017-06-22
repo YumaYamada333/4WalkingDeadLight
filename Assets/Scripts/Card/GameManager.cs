@@ -46,14 +46,29 @@ public class GameManager : MonoBehaviour
 
     SetButton flag;
 
-    GameObject setButton;
+    GameObject MoveManager;
 
     GameObject playButton;
 
+    GameObject ResetButton;
+
     GameObject Imagebord;
+
+    GameObject Imagebord2;
+
+    GameObject ActionBord;
+
+    GameObject HandsBord;
+
 
     //プレイフラグ
     private bool playFlag;
+
+    public int Move_num;
+
+    private float m_autoMoveTime = 0.0f;
+
+    public float timeStep;
 
     // Use this for initialization
     void Start()
@@ -61,11 +76,23 @@ public class GameManager : MonoBehaviour
         gameState = GameState.SetCard;
         playerAction = GameObject.Find("unitychan");
         m_camera = GameObject.Find("MainCamera").GetComponent<CameraControl>();
-        flag = GameObject.Find("ToCardSetButton").GetComponent<SetButton>();
-        setButton = GameObject.Find("ToCardSetButton");
+        //flag = GameObject.Find("MoveManager").GetComponent<SetButton>();
+        MoveManager = GameObject.Find("MoveManager");
+        //MoveManager = GameObject.Find("MoveManager");
         playButton = GameObject.Find("PlayButton");
+        ResetButton = GameObject.Find("Reset");
         //上イメージボード
         Imagebord = GameObject.Find("Imagebord");
+        Imagebord2 = GameObject.Find("Imagebord2");
+        ActionBord = GameObject.Find("ActionBord");
+        HandsBord = GameObject.Find("HandsBord");
+
+        m_autoMoveTime = Time.time;
+
+        timeStep = 0;
+
+        Move_num = 0;
+
     }
 
     // Update is called once per frame
@@ -83,8 +110,8 @@ public class GameManager : MonoBehaviour
 
         //flag.Move_cnt = 2;
 
-        
-        flag.MoveInLerp();
+
+        //flag.MoveInLerp();
 
         //Debug.Log(flag.Move_cnt);
 
@@ -146,36 +173,67 @@ public class GameManager : MonoBehaviour
 
         }
 
+            timeStep = (Time.time - m_autoMoveTime) /*/ 10.0f*/;
+            if (timeStep > 1.0f)
+            {
+                timeStep = 1.0f;
+            }
+        
+
+        
+
     }
 
     public void Play()
     {
-        //ボードが移動中は通らない
-        if(m_set_button.GetComponent<SetButton>().Move_cnt != 0)
-        {
-            return;
-        }
+        ////ボードが移動中は通らない
+        //if (MoveManager.GetComponent<SetButton>().Move_cnt != 0)
+        //{
+        //    return;
+        //}
 
-        if (Imagebord.transform.localPosition.y >= 160.0f)
-        {
-            flag.Move_cnt = 2;
-        }
+        //if (Imagebord.transform.localPosition.y >= 160.0f)
+        //{
+        //    flag.Move_cnt = 2;
+        //}
+
+        //Move_flag = true;
 
         playFlag = true;
 
         // スクロールボタンを非表示
-        setButton.GetComponent<SetButton>().SetButtonToFasle();
+        MoveManager.GetComponent<SetButton>().SetButtonToFasle();
 
-        Destroy(setButton);
+        ResetButton.SetActive(false);
+
+        playButton.SetActive(false);
+
+        //Imagebord.SetActive(false);
+
+        Imagebord2.SetActive(false);
+
+        HandsBord.SetActive(false);
+
+        //if (Move_num == 1)
+        //{
+        //    ActionBord.transform.localPosition =
+        //       MathClass.Lerp(new Vector3(0, 171.0f, 0), new Vector3(0, -188.0f, 0), timeStep);
+
+        //    Imagebord.transform.localPosition =
+        //       MathClass.Lerp(new Vector3(0, 171.0f, 0), new Vector3(0, -188.0f, 0), timeStep);
+        //}
+
         
-        Destroy(playButton);
-        
+
+
         gameState++;
         if (gameState == GameState.Acttion + 1) gameState = GameState.SetCard;
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.PlayOneShot(OK);
 
         
+
+
     }
     public GameState GetGameState()
     {

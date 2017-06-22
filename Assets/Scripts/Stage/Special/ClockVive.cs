@@ -17,6 +17,9 @@ public class ClockVive : MonoBehaviour {
     //フラグ
     private bool m_old_flag = false;
     private bool m_action_flag = false;
+    public bool m_repeat_flag = false;
+
+    public AudioClip ClockSound;
 
     // Use this for initialization
     void Start () {
@@ -59,6 +62,10 @@ public class ClockVive : MonoBehaviour {
                 this.transform.position = m_init_pos;
 
                 m_action_flag = false;
+                if(m_repeat_flag)
+                {
+                    m_old_flag = false;
+                }
             }
         }
        
@@ -72,6 +79,9 @@ public class ClockVive : MonoBehaviour {
             m_action_flag == false &&
             m_old_flag == false)
         {
+            /*ギミック音を鳴らす*/
+            AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+            audioSource.PlayOneShot(ClockSound);
             //フラグを上げる
             m_action_flag = true;
         }

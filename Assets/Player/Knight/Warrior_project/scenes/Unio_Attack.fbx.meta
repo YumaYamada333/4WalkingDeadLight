@@ -1,0 +1,320 @@
+fileFormatVersion: 2
+guid: 7b2e366e6e097ff448ecfa69e491eca6
+timeCreated: 1497859665
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: back
+    100004: group10
+    100006: group11
+    100008: group12
+    100010: group12 1
+    100012: group13
+    100014: group14
+    100016: group14_group6_polySurface25
+    100018: group16
+    100020: group17
+    100022: group18_polySurface30
+    100024: group2
+    100026: group22
+    100028: group23
+    100030: group24
+    100032: group25
+    100034: group26
+    100036: group27
+    100038: group28
+    100040: group29
+    100042: group30
+    100044: group31
+    100046: group32
+    100048: group34
+    100050: group34_polySurface44
+    100052: group35
+    100054: group36
+    100056: group37
+    100058: group38
+    100060: group39
+    100062: group4
+    100064: group40
+    100066: group42
+    100068: group42_group14_group6_polySurface25
+    100070: group43
+    100072: group7
+    100074: group7 1
+    100076: group8
+    100078: group8 1
+    100080: group9
+    100082: joint1
+    100084: joint10
+    100086: joint11
+    100088: joint12
+    100090: joint13
+    100092: joint17
+    100094: joint18
+    100096: joint19
+    100098: joint2
+    100100: joint20
+    100102: joint21
+    100104: joint22
+    100106: joint3
+    100108: joint4
+    100110: joint5
+    100112: joint6
+    100114: joint7
+    100116: joint8
+    100118: joint9
+    100120: left
+    100122: Mesh
+    100124: Mesh1
+    100126: meshbody
+    100128: nurbsCircle1
+    100130: polySurface101
+    100132: polySurface129
+    100134: polySurface1906
+    100136: polySurface1906 1
+    100138: polySurface1913
+    100140: polySurface1915
+    100142: polySurface1916
+    100144: polySurface1916 1
+    100146: polySurface1939
+    100148: polySurface1940
+    100150: polySurface36
+    100152: polySurface44
+    100154: polySurface47
+    100156: polySurface47 1
+    100158: polySurface48
+    100160: pPlane1
+    100162: pPlane2
+    100164: pPlane3
+    100166: sowd
+    100168: transform1
+    100170: transform2
+    100172: transform5
+    100174: transform6
+    100176: transform7
+    100178: ude:LowLowstep2:group1
+    100180: ude:LowLowstep2:pPlane1
+    100182: ude:LowLowstep2:pPlane19
+    100184: ude:LowLowstep2:transform9
+    100186: //RootNode
+    400000: Armature
+    400002: back
+    400004: group10
+    400006: group11
+    400008: group12
+    400010: group12 1
+    400012: group13
+    400014: group14
+    400016: group14_group6_polySurface25
+    400018: group16
+    400020: group17
+    400022: group18_polySurface30
+    400024: group2
+    400026: group22
+    400028: group23
+    400030: group24
+    400032: group25
+    400034: group26
+    400036: group27
+    400038: group28
+    400040: group29
+    400042: group30
+    400044: group31
+    400046: group32
+    400048: group34
+    400050: group34_polySurface44
+    400052: group35
+    400054: group36
+    400056: group37
+    400058: group38
+    400060: group39
+    400062: group4
+    400064: group40
+    400066: group42
+    400068: group42_group14_group6_polySurface25
+    400070: group43
+    400072: group7
+    400074: group7 1
+    400076: group8
+    400078: group8 1
+    400080: group9
+    400082: joint1
+    400084: joint10
+    400086: joint11
+    400088: joint12
+    400090: joint13
+    400092: joint17
+    400094: joint18
+    400096: joint19
+    400098: joint2
+    400100: joint20
+    400102: joint21
+    400104: joint22
+    400106: joint3
+    400108: joint4
+    400110: joint5
+    400112: joint6
+    400114: joint7
+    400116: joint8
+    400118: joint9
+    400120: left
+    400122: Mesh
+    400124: Mesh1
+    400126: meshbody
+    400128: nurbsCircle1
+    400130: polySurface101
+    400132: polySurface129
+    400134: polySurface1906
+    400136: polySurface1906 1
+    400138: polySurface1913
+    400140: polySurface1915
+    400142: polySurface1916
+    400144: polySurface1916 1
+    400146: polySurface1939
+    400148: polySurface1940
+    400150: polySurface36
+    400152: polySurface44
+    400154: polySurface47
+    400156: polySurface47 1
+    400158: polySurface48
+    400160: pPlane1
+    400162: pPlane2
+    400164: pPlane3
+    400166: sowd
+    400168: transform1
+    400170: transform2
+    400172: transform5
+    400174: transform6
+    400176: transform7
+    400178: ude:LowLowstep2:group1
+    400180: ude:LowLowstep2:pPlane1
+    400182: ude:LowLowstep2:pPlane19
+    400184: ude:LowLowstep2:transform9
+    400186: //RootNode
+    2300000: group18_polySurface30
+    2300002: group34_polySurface44
+    2300004: group42_group14_group6_polySurface25
+    2300006: polySurface101
+    2300008: polySurface129
+    2300010: polySurface1906
+    2300012: polySurface1906 1
+    2300014: polySurface1913
+    2300016: polySurface1915
+    2300018: polySurface1916
+    2300020: polySurface1916 1
+    2300022: polySurface36
+    2300024: pPlane1
+    2300026: pPlane2
+    2300028: pPlane3
+    2300030: sowd
+    2300032: ude:LowLowstep2:pPlane19
+    3300000: group18_polySurface30
+    3300002: group34_polySurface44
+    3300004: group42_group14_group6_polySurface25
+    3300006: polySurface101
+    3300008: polySurface129
+    3300010: polySurface1906
+    3300012: polySurface1906 1
+    3300014: polySurface1913
+    3300016: polySurface1915
+    3300018: polySurface1916
+    3300020: polySurface1916 1
+    3300022: polySurface36
+    3300024: pPlane1
+    3300026: pPlane2
+    3300028: pPlane3
+    3300030: sowd
+    3300032: ude:LowLowstep2:pPlane19
+    4300000: group18_polySurface30
+    4300002: sowd
+    4300004: polySurface1913
+    4300006: polySurface1915
+    4300008: polySurface1916
+    4300010: polySurface1916
+    4300012: group34_polySurface44
+    4300014: polySurface1906
+    4300016: polySurface1906
+    4300018: group42_group14_group6_polySurface25
+    4300020: polySurface129
+    4300022: polySurface36
+    4300024: polySurface101
+    4300026: polySurface1940
+    4300028: pPlane1
+    4300030: pPlane2
+    4300032: pPlane3
+    4300034: ude:LowLowstep2:pPlane19
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: polySurface1940
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
