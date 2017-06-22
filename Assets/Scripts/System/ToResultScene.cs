@@ -23,6 +23,8 @@ public class ToResultScene : MonoBehaviour {
     //パーティクル継続時間
     const float ParticleWaite = 2.0f;
 
+    public ParticleSystem Confetti;
+
     public enum OverType
     {
         NONE,
@@ -44,6 +46,9 @@ public class ToResultScene : MonoBehaviour {
         GameOver.transform.localScale = new Vector3(5, 2.5f, 1);
         GameClear.transform.localScale = new Vector3(5, 2.5f, 1);
         isUpdate = true;
+        Confetti.Stop();
+
+
     }
 
     // Update is called once per frame
@@ -79,6 +84,7 @@ public class ToResultScene : MonoBehaviour {
             player.GetComponent<PlayerAction>().AnimationStop();
         player.GetComponent<Animator>().SetBool("Clear", true);
         player.GetComponent<PlayerAction>().enabled = false;
+        Confetti.Play();
 
         ClearFlag = true;
 

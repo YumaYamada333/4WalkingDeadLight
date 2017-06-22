@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: ff11ed51b3b37c0469580eb13ca01b9e
-timeCreated: 1491320522
+timeCreated: 1498118958
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - scroolScript: {instanceID: 0}
+  - FrameImage: {fileID: 1825514300039182, guid: 7b5521e9d405f444bada32ae60a63d8d,
+      type: 2}
+  - ParentObj: {instanceID: 0}
+  - FrameImageDown: {fileID: 1996158218658228, guid: 6eee9d6d4d1ab4548b1edb6e215418da,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
