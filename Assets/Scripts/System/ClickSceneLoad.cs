@@ -29,7 +29,7 @@ public class ClickSceneLoad : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        Debug.Log(Count);
+        //Debug.Log(Count);
         //タイトルシーン内の画面内でクリックしたらシーン遷移
         if (Input.GetMouseButtonUp(0))
         {

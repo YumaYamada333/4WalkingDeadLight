@@ -17,6 +17,7 @@ public class ParticaleScript : MonoBehaviour
     const int WATER = 5;
     const int POISON = 6;
     const int HIT = 7;
+    const int LAVA = 8;
 
     //const int GIMMICK = 2;
     //const int BREAK = 1;
@@ -158,7 +159,17 @@ public class ParticaleScript : MonoBehaviour
                 }
                 break;
             case HIT:
-                if (particle.name == "ColliderParticle")
+                if (particle.name == "ColliderParticle" || particle.name == "ColliderParticle 1")
+                {
+                    particle.Play();
+                }
+                else
+                {
+                    particle.Stop();
+                }
+                break;
+            case LAVA:
+                if (particle.name == "LavaParticle")
                 {
                     particle.Play();
                 }

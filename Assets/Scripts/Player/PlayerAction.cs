@@ -31,7 +31,7 @@ static class Constants
 //アニメーション
 enum ANIMATION { MOVE, JUMP, ATTACK, COUNT, OVER, };
 //パーティクル
-enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON,HIT};
+enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON,HIT,LAVA};
 public class PlayerAction : MonoBehaviour
 {
     private int effect_count = 0;   //エフェクト再生用のカウント
@@ -630,6 +630,11 @@ public class PlayerAction : MonoBehaviour
                 water_flag = false;
             }
         }
+        else if(coll.gameObject.tag=="Lava")
+        {
+            //溶岩
+            LiquidType = (int)PARTICLE.LAVA;
+        }
         else
         {
             //なし
@@ -869,6 +874,10 @@ public class PlayerAction : MonoBehaviour
                 //毒のパーティクルを発生させる
                 particleType = (int)PARTICLE.POISON;
 
+                break;
+            case (int)PARTICLE.LAVA:
+                //溶岩のパーティクルを発生させる
+                particleType = (int)PARTICLE.LAVA;
                 break;
         }
         return LiquidType;

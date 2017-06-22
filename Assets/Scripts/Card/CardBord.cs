@@ -117,6 +117,7 @@ public class CardBord : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        scrollFlag = false;
         cardSize = cards[0].obj.GetComponent<RectTransform>().sizeDelta;
 
         //アクションモードになったら
