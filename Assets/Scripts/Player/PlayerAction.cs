@@ -135,6 +135,9 @@ public class PlayerAction : MonoBehaviour
     /*水の音フラグ*/
     private bool water_flag;
 
+    // カウント演出UI
+    private GameObject watchController;
+
     void OnEnable() //objが生きている場合
     {
         if (time <= 0)
@@ -143,6 +146,11 @@ public class PlayerAction : MonoBehaviour
         }
         //シーンが呼ばれた時点からの経過時間を取得
         startPosition = transform.position;
+    }
+
+    private void Awake()
+    {
+        watchController = GameObject.Find("WatchPrefab");
     }
 
     // Use this for initialization
@@ -502,6 +510,7 @@ public class PlayerAction : MonoBehaviour
                     //EffekseerHandle attack = EffekseerSystem.PlayEffect("attake", transform.position);
                     //particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     //CountDown.SetCountDown(type);
+                    watchController.GetComponent<WatchController>().CountWatchEffect();
                     break;
                 //finish
                 case CardManagement.CardType.Finish:
