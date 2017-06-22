@@ -630,7 +630,7 @@ public class PlayerAction : MonoBehaviour
                 water_flag = false;
             }
         }
-        else if(coll.gameObject.tag=="Lava")
+        else if(coll.gameObject.tag=="magma")
         {
             //溶岩
             LiquidType = (int)PARTICLE.LAVA;
