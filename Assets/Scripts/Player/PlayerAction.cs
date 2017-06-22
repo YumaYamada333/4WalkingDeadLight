@@ -412,14 +412,11 @@ public class PlayerAction : MonoBehaviour
                     child.SetActive(true);
                     child.transform.position = transform.position + trans;
                 }
-                else
-                {
-                    child.SetActive(false);
-                }
                 //endPositionに到着
                 if (diff > time * 2)
                 {
-
+                    if (animationFlag[(int)ANIMATION.ATTACK] == true)
+                        child.SetActive(false);
                     if (isGround)
                     {
                         CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();
