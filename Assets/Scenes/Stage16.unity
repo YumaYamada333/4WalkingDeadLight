@@ -460,7 +460,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 539f79d6dfefe84409c29474d4b07ab2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f3894b80e2918cf43b74f0d0f847939b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1116,6 +1116,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3d4fbaed568122745b9b2f777712e382, type: 2}
+    - target: {fileID: 114988120695474370, guid: 47ca8544e3b292f4aa789be066cbe553,
+        type: 2}
+      propertyPath: GimmickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ab9c92806ddb38448b2c06c4446fc911, type: 3}
     m_RemovedComponents:
     - {fileID: 65881361052437296, guid: 47ca8544e3b292f4aa789be066cbe553, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 47ca8544e3b292f4aa789be066cbe553, type: 2}

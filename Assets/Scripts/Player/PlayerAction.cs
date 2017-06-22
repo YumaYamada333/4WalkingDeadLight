@@ -101,6 +101,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Hit;
     public AudioClip Move;
     public AudioClip Water;
+    public AudioClip Magma;
 
 
     //パーティカルの種類判別用
@@ -624,6 +625,17 @@ public class PlayerAction : MonoBehaviour
                 audioSource.PlayOneShot(Water);
                 water_flag = false;
             }
+        }
+        else if(coll.gameObject.tag == "magma")
+        {
+            /*マグマ*/
+            
+            audioSource.PlayOneShot(Magma);
+            audioSource.PlayOneShot(Magma);
+            audioSource.PlayOneShot(Magma);
+            audioSource.PlayOneShot(Magma);
+            water_flag = false;
+            
         }
         else
         {

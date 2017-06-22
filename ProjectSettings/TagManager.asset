@@ -13,6 +13,7 @@ TagManager:
   - Break
   - Water
   - Poison
+  - magma
   layers:
   - Default
   - TransparentFX

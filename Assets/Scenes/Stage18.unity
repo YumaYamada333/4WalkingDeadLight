@@ -460,7 +460,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 539f79d6dfefe84409c29474d4b07ab2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 696c7e21926ded0438d445a2d2018634, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1471,6 +1471,55 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3d4fbaed568122745b9b2f777712e382, type: 2}
+    - target: {fileID: 114662875635361562, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: CountSound
+      value: 
+      objectReference: {fileID: 8300000, guid: de9e23d6f28b6d44da0c05137ccac95e, type: 3}
+    - target: {fileID: 114253505486946768, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: CountSound
+      value: 
+      objectReference: {fileID: 8300000, guid: de9e23d6f28b6d44da0c05137ccac95e, type: 3}
+    - target: {fileID: 114170933560201106, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: CountSound
+      value: 
+      objectReference: {fileID: 8300000, guid: de9e23d6f28b6d44da0c05137ccac95e, type: 3}
+    - target: {fileID: 114352512070359306, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: GimmickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c96160e67b17bd249a25c04c738434fe, type: 3}
+    - target: {fileID: 114957219748218086, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: GimmickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c96160e67b17bd249a25c04c738434fe, type: 3}
+    - target: {fileID: 114468211677754010, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: GimmickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c96160e67b17bd249a25c04c738434fe, type: 3}
+    - target: {fileID: 114432973155955942, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: GimmickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c96160e67b17bd249a25c04c738434fe, type: 3}
+    - target: {fileID: 1090402525925876, guid: 24a7bbc235317004fa9bbf314ac5b4c5, type: 2}
+      propertyPath: m_TagString
+      value: magma
+      objectReference: {fileID: 0}
+    - target: {fileID: 65637939391557652, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65637939391557652, guid: 24a7bbc235317004fa9bbf314ac5b4c5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24a7bbc235317004fa9bbf314ac5b4c5, type: 2}
   m_IsPrefabParent: 0
@@ -3699,6 +3748,11 @@ Prefab:
       propertyPath: CountManager
       value: 
       objectReference: {fileID: 2112663738}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Magma
+      value: 
+      objectReference: {fileID: 8300000, guid: de51a681481b49d4d921dd5d3c868fdf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0
