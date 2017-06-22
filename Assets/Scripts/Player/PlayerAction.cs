@@ -632,8 +632,7 @@ public class PlayerAction : MonoBehaviour
             
             audioSource.PlayOneShot(Magma);
             audioSource.PlayOneShot(Magma);
-            audioSource.PlayOneShot(Magma);
-            audioSource.PlayOneShot(Magma);
+            
             water_flag = false;
             
         }
