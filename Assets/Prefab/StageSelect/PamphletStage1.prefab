@@ -38,8 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224924719989415478}
   - component: {fileID: 222675337124512298}
-  - component: {fileID: 114177413092901940}
   - component: {fileID: 114568969895702186}
+  - component: {fileID: 114522014474907836}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114177413092901940
+--- !u!114 &114522014474907836
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 114177413092901940}
+  m_TargetGraphic: {fileID: 114522014474907836}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:

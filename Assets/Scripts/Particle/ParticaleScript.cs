@@ -16,18 +16,24 @@ public class ParticaleScript : MonoBehaviour
     const int LANDING = 4;
     const int WATER = 5;
     const int POISON = 6;
+    const int HIT = 7;
 
     //const int GIMMICK = 2;
     //const int BREAK = 1;
 
     //パーティカル種類の判別用
     private int particleCnt;
+    //private bool particleEnemy;
     //private int BlockPartical;
     //private bool flag = false;
 
     //プレイヤー取得用
     GameObject player;
     PlayerAction act;
+
+    ////ダメージスクリプト取得用
+    //GameObject attack;
+    //AttackCollider atk;
 
     //アクションブロック取得用
     //GameObject block;
@@ -57,14 +63,26 @@ public class ParticaleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ////スクリプトの取得
+        //attack = GameObject.Find("AttackColl");
+        ////攻撃判定がアクティブ状態のときに判定
+        //if (attack.activeSelf)
+        //{
+        //    atk = attack.GetComponent<AttackCollider>();
+        //    //パーティカル発生判定
+        //    particleEnemy = atk.GetFlag();
+        //}
+
         //プレイヤーのアクションを判別
         particleCnt = act.particleType;
-
         //BlockPartical = actDown.GetActionType();
         //flag = blockAct.GetFlag();
 
         //プレイヤーのパーティカルを発生
         PlayerParticle(particleCnt);
+
+        ////敵のパーティカルを発生
+        //EnemyParticle(particleEnemy);
 
         ////ギミックのパーティカルを発生
         //GimmickParticle(int ParticleType)
@@ -139,9 +157,39 @@ public class ParticaleScript : MonoBehaviour
                     particle.Stop();
                 }
                 break;
+            case HIT:
+                if (particle.name == "ColliderParticle")
+                {
+                    particle.Play();
+                }
+                else
+                {
+                    particle.Stop();
+                }
+                break;
 
         }
     }
+
+    ////破壊可能オブジェクトのパーティカル発生判定関数
+    //void EnemyParticle(bool particleEnemy)
+    //{
+    //    if (particleEnemy)
+    //    {
+    //        if (particle.name == "HitParticle")
+    //        {
+    //            particle.Play();
+    //        }
+    //        else
+    //        {
+    //            particle.Stop();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        particle.Stop();
+    //    }
+    //}
 
     ////ギミックの種類によってパーティクルを発生させる関数
     //void GimmickParticle(int ParticleType)

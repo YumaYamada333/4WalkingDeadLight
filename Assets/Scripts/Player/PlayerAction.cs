@@ -31,7 +31,7 @@ static class Constants
 //アニメーション
 enum ANIMATION { MOVE, JUMP, ATTACK, OVER };
 //パーティクル
-enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON};
+enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON,HIT};
 public class PlayerAction : MonoBehaviour
 {
     private int effect_count = 0;   //エフェクト再生用のカウント
@@ -157,6 +157,7 @@ public class PlayerAction : MonoBehaviour
         child = transform.Find("AttackColl").gameObject;
         ImageBord = GameObject.Find("Imagebord");
         ImageBord2 = GameObject.Find("Imagebord2");
+        particleType = (int)PARTICLE.NONE;
         LiquidType = 0;
         water_flag = true;
     }
@@ -271,7 +272,7 @@ public class PlayerAction : MonoBehaviour
 
         //OverFlagがtrueだったら
         OverControl();
-        Debug.Log(isGround);
+        //Debug.Log(isGround);
     }
 
     //----------------------------------------------------------------------
@@ -565,6 +566,8 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+            //専用のパーティカルを設定
+            particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
         }
@@ -578,6 +581,8 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+            //専用のパーティカルを設定
+            particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
 
