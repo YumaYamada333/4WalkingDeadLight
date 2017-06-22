@@ -230,17 +230,6 @@ public class PlayerAction : MonoBehaviour
             }
         }
 
-        //attack
-        if (animationFlag[(int)ANIMATION.ATTACK] == true)
-        {
-            Vector3 trans = new Vector3(1.0f, 0.8f, 0.68f);
-            child.SetActive(true);
-            child.transform.position = transform.position + trans;
-        }
-        else
-        {
-            child.SetActive(false);
-        }
         //if (Physics.Raycast(transform.position, Vector3.forward, out slideHit))
         //{
         //    //敵との当たり判定
@@ -414,9 +403,22 @@ public class PlayerAction : MonoBehaviour
                 startPosition.y = middlePosition.y;
                 //等速で移動させる
                 transform.position = Vector3.Lerp(startPosition, endPosition, rate / 2);
+                //attack
+                if (animationFlag[(int)ANIMATION.ATTACK] == true)
+                {
+
+                    Vector3 trans = new Vector3(1.0f, 0.8f, 0.68f);
+                    child.SetActive(true);
+                    child.transform.position = transform.position + trans;
+                }
+                else
+                {
+                    child.SetActive(false);
+                }
                 //endPositionに到着
                 if (diff > time * 2)
                 {
+
                     if (isGround)
                     {
                         CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();

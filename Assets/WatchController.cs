@@ -27,11 +27,13 @@ public class WatchController : MonoBehaviour {
         if (m_effectFlag)
         {
             float timeStep = (Time.time - m_time) / 1;
+            float timeStep2 = (Time.time - m_time) / 0.5f;
+
             if (timeStep <= 1)
             {
                 m_minuteHand.transform.rotation = Quaternion.Euler(Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, 363), timeStep) * -1);
-                transform.localScale = Vector3.Lerp(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(1, 1, 1), timeStep * 2);
-                transform.localPosition = Vector3.Lerp(m_pos + new Vector3(0, 1, 0), m_pos + new Vector3(0, 3, 0), timeStep * 2);
+                transform.localScale = Vector3.Lerp(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(1, 1, 1), timeStep2);
+                transform.localPosition = Vector3.Lerp(m_pos + new Vector3(0, 1, 0), m_pos + new Vector3(0, 3, 0), timeStep2);
             }
             else
             {
