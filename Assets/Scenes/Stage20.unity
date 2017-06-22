@@ -3344,6 +3344,24 @@ Prefab:
       propertyPath: m_game_manager
       value: 
       objectReference: {fileID: 208914368}
+    - target: {fileID: 114462404312510696, guid: 1188920473cc15f45867ac926846a0ae,
+        type: 2}
+      propertyPath: m_act_distance.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462404312510696, guid: 1188920473cc15f45867ac926846a0ae,
+        type: 2}
+      propertyPath: m_act_time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070495380793130, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070495380793130, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -60
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114103006008907652, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
     - {fileID: 114429943557672386, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
