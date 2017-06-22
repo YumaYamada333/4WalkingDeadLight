@@ -826,7 +826,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4334423317266892, guid: 6c082cd46ffd4ca4d964912928f81b47, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c082cd46ffd4ca4d964912928f81b47, type: 2}
@@ -2534,6 +2534,7 @@ MonoBehaviour:
   m_gimmick_move_flag: 0
   m_set_button: {fileID: 0}
   OK: {fileID: 8300000, guid: c99f96fd355ee8343ae6a6de5e255863, type: 3}
+  Move_num: 0
   timeStep: 0
 --- !u!82 &208914372
 AudioSource:
@@ -11458,7 +11459,7 @@ Transform:
   m_Children:
   - {fileID: 960909423}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740070717
 GameObject:
@@ -17637,7 +17638,7 @@ Transform:
   - {fileID: 406794951}
   - {fileID: 397543933}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977976962
 GameObject:
@@ -17835,7 +17836,7 @@ Prefab:
     - target: {fileID: 224406328909660434, guid: d04eb54197433d049ac6632cebd4aaab,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224406328909660434, guid: d04eb54197433d049ac6632cebd4aaab,
         type: 2}
@@ -25395,7 +25396,7 @@ Prefab:
     - target: {fileID: 224017180614681508, guid: 412d40bef1f5d3848841e008730cd117,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224017180614681508, guid: 412d40bef1f5d3848841e008730cd117,
         type: 2}
@@ -32502,5 +32503,5 @@ Transform:
   - {fileID: 1934990016}
   - {fileID: 1924914420}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
