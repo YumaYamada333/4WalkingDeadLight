@@ -1214,6 +1214,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d20e0eac9218fdd4497d075d4f246f6a, type: 2}
   m_IsPrefabParent: 0
@@ -2888,6 +2892,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 319885790}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &332615963 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 160150893}
 --- !u!1 &338407493
 GameObject:
   m_ObjectHideFlags: 0
@@ -16025,8 +16034,7 @@ MonoBehaviour:
   CanvasBord: {fileID: 48090186}
   ImageBord: {fileID: 2131642794}
   ImageBord2: {fileID: 1650275854}
-  CanvasResetButton: {fileID: 1615373520726824, guid: d20e0eac9218fdd4497d075d4f246f6a,
-    type: 2}
+  CanvasResetButton: {fileID: 332615963}
   CanvasSetButton: {fileID: 0}
   CanvasPlayButton: {fileID: 0}
   Attack: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
