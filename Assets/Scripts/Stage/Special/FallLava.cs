@@ -51,6 +51,7 @@ public class FallLava : MonoBehaviour
 
     /*ギミック音*/
     public AudioClip DropSound;
+    public AudioClip MagmaSound;
 
     //パーティクルフラグ取得
     public bool PartTim;
@@ -133,7 +134,10 @@ public class FallLava : MonoBehaviour
             {
                 /*ギミック音を鳴らす*/
                 AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
-                audioSource.PlayOneShot(DropSound);
+                audioSource.PlayOneShot(MagmaSound);
+                audioSource.PlayOneShot(MagmaSound);
+                audioSource.PlayOneShot(MagmaSound);
+                audioSource.PlayOneShot(MagmaSound);
 
                 //パーティクルを再生
                 m_particle.GetComponent<ParticleSystem>().Play();
