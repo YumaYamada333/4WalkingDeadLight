@@ -805,6 +805,11 @@ Prefab:
       propertyPath: CountManager
       value: 
       objectReference: {fileID: 2112663738}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Magma
+      value: 
+      objectReference: {fileID: 8300000, guid: de51a681481b49d4d921dd5d3c868fdf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0
@@ -3449,6 +3454,10 @@ Prefab:
       propertyPath: MagmaSound
       value: 
       objectReference: {fileID: 8300000, guid: de51a681481b49d4d921dd5d3c868fdf, type: 3}
+    - target: {fileID: 1689578081475402, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
+      propertyPath: m_TagString
+      value: magma
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114103006008907652, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
     - {fileID: 114429943557672386, guid: 1188920473cc15f45867ac926846a0ae, type: 2}
