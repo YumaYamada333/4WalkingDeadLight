@@ -69,6 +69,29 @@ public class CardBord : MonoBehaviour {
     [SerializeField]
     ScrollScript scroolScript;
 
+
+    //　フレーム関連
+    private float frameTime;
+    float timeStep;
+    float timeStep2;
+    GameObject Frameobj;
+    public GameObject FrameImage;
+    public GameObject ParentObj;
+
+    public GameObject FrameImageDown;
+    GameObject FrameobjDown;
+
+    Vector3 startFrameUp = new Vector3(-127.5f, 20.0f, 0);
+    Vector3 endFrameUp = new Vector3(-127.5f, 10.0f, 0);
+
+    Vector3 startFrameDown = new Vector3(-127.5f, -20.0f, 0);
+    Vector3 endFrameDown = new Vector3(-127.5f, -10.0f, 0);
+
+    bool Frameflag;
+    bool Upflag;
+    bool Downflag;
+    int frameMove = 1;      //0:動いてない　1：カードに向かう　2：カードから離れる
+
     // Use this for initialization
     void Start ()
     {
@@ -79,6 +102,13 @@ public class CardBord : MonoBehaviour {
         usingCard = stepUsing = 0;
         exceedFlag = false;
         scrollStep = 0;
+
+        timeStep = 0;
+        timeStep2 = 0;
+        frameTime = Time.time;
+        Frameflag = false;
+        Upflag = false;
+        Downflag = false;
 
         // MouseSystemコンポーネントの取得
         mouse_system = GameObject.Find("MouseSystem").GetComponent<MouseSystem>();
@@ -130,6 +160,74 @@ public class CardBord : MonoBehaviour {
         //プレイフラグが立ったら
         if (PlayFlag == true)
         {
+            //フレーム(上)
+            if (Frameobj == null)
+            {
+                Frameobj = Instantiate(FrameImage);
+                Frameobj.transform.SetParent(ParentObj.transform);
+            }
+            //フレーム(下)
+            if (FrameobjDown == null)
+            {
+                FrameobjDown = Instantiate(FrameImageDown);
+                FrameobjDown.transform.SetParent(ParentObj.transform);
+            }
+            //フレーム(上)(下)の移動
+            if (!Frameflag)
+            {
+                frameTime = Time.time;
+                Frameflag = true;
+            }
+
+            if (Frameflag)
+            {
+                if (frameMove == 1)
+                {
+                    if (timeStep > 1.0f) timeStep = 1.0f;
+
+                    timeStep = (Time.time - frameTime) / 0.5f;
+
+                    Frameobj.transform.localPosition = MathClass.Lerp(startFrameUp, endFrameUp, timeStep);
+                    FrameobjDown.transform.localPosition = MathClass.Lerp(startFrameDown, endFrameDown, timeStep);
+                    if (timeStep >= 1.0f)
+                    {
+                        frameMove = 0;
+                        Upflag = true;
+                    }
+                }
+                if (frameMove == 2)
+                {
+                    if (timeStep2 > 1.0f) timeStep2 = 1.0f;
+
+                    timeStep2 = (Time.time - frameTime) / 0.5f;
+
+                    Frameobj.transform.localPosition = MathClass.Lerp(endFrameUp, startFrameUp, timeStep2);
+                    FrameobjDown.transform.localPosition = MathClass.Lerp(endFrameDown, startFrameDown, timeStep2);
+                    if (timeStep2 >= 1.0f)
+                    {
+                        frameMove = 0;
+                        Downflag = true;
+                    }
+                }
+                if (frameMove == 0)
+                {
+                    if (Upflag)
+                    {
+                        Frameflag = false;
+                        frameMove = 2;
+                        Upflag = false;
+                    }
+
+                    if (Downflag)
+                    {
+                        Frameflag = false;
+
+                        frameMove = 1;
+                        Downflag = false;
+                    }
+                }
+            }
+
             scrollStep = 0;
             //カードを初期位置に移動させる
             //Coordinate(true);
