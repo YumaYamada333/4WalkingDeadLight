@@ -543,6 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629f05eb02ffbff429d86b030346a6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 208914368}
+  audio2: {fileID: 0}
   CrearSound: {fileID: 8300000, guid: fbea93973b7820c4ea3c4c2e8c3e92d7, type: 3}
   OverSound: {fileID: 8300000, guid: e6054f4e7ff09ba4495d5fae96793093, type: 3}
 --- !u!1 &230296530
@@ -3393,7 +3395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1675270373
 RectTransform:
   m_ObjectHideFlags: 0
