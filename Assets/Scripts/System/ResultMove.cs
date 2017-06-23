@@ -11,17 +11,17 @@ public class ResultMove : MonoBehaviour
     public GameObject audio;
     public GameObject audio2;
     //タイトルを動かすための始点と終点と時間
-    Vector3 resultStartPos = new Vector3(0, 50, 0);
+    Vector3 resultStartPos = new Vector3(0, 15, 0);
     Vector3 resultEndPos = new Vector3(0, 350, 0);
 
     //タイトルを動かすための始点と終点と時間
-    Vector3 selectStartPos = new Vector3(-90, -103, 0);
+    Vector3 selectStartPos = new Vector3(-90, -210, 0);
     Vector3 selectEndPos = new Vector3(-90, -400, 0);
 
-    Vector3 C_selectStartPos = new Vector3(0, -103, 0);
+    Vector3 C_selectStartPos = new Vector3(0, -210, 0);
     Vector3 C_selectEndPos = new Vector3(0, -400, 0);
 
-    Vector3 retryStartPos = new Vector3(90, -103, 0);
+    Vector3 retryStartPos = new Vector3(90, -210, 0);
     Vector3 retryEndPos = new Vector3(90, -400, 0);
 
     private float titleTime;

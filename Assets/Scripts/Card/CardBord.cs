@@ -165,12 +165,15 @@ public class CardBord : MonoBehaviour {
             {
                 Frameobj = Instantiate(FrameImage);
                 Frameobj.transform.SetParent(ParentObj.transform);
+                Frameobj.transform.localScale = new Vector3(1.15f, 1.0f, 1.0f);
             }
             //フレーム(下)
             if (FrameobjDown == null)
             {
                 FrameobjDown = Instantiate(FrameImageDown);
                 FrameobjDown.transform.SetParent(ParentObj.transform);
+                FrameobjDown.transform.localScale = new Vector3(1.15f, 1.0f, 1.0f);
+
             }
             //フレーム(上)(下)の移動
             if (!Frameflag)

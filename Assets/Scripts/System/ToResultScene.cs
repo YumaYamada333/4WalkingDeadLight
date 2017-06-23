@@ -84,6 +84,7 @@ public class ToResultScene : MonoBehaviour {
             player.GetComponent<PlayerAction>().AnimationStop();
         player.GetComponent<Animator>().SetBool("Clear", true);
         player.GetComponent<PlayerAction>().enabled = false;
+        //Confetti.transform.localPosition = new Vector3(-2.5f,4,6);
         Confetti.Play();
 
         ClearFlag = true;
