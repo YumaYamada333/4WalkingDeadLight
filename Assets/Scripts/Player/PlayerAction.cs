@@ -31,7 +31,7 @@ static class Constants
 //アニメーション
 enum ANIMATION { MOVE, JUMP, ATTACK, COUNT, OVER, };
 //パーティクル
-enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON};
+enum PARTICLE { NONE, MOVE,ATTACK,DAMAGE,LANDING,WATER,POISON,HIT,LAVA};
 public class PlayerAction : MonoBehaviour
 {
     private int effect_count = 0;   //エフェクト再生用のカウント
@@ -135,6 +135,9 @@ public class PlayerAction : MonoBehaviour
     /*水の音フラグ*/
     private bool water_flag;
 
+    // カウント演出UI
+    private GameObject watchController;
+
     void OnEnable() //objが生きている場合
     {
         if (time <= 0)
@@ -143,6 +146,11 @@ public class PlayerAction : MonoBehaviour
         }
         //シーンが呼ばれた時点からの経過時間を取得
         startPosition = transform.position;
+    }
+
+    private void Awake()
+    {
+        watchController = GameObject.Find("WatchPrefab");
     }
 
     // Use this for initialization
@@ -157,6 +165,7 @@ public class PlayerAction : MonoBehaviour
         child = transform.Find("AttackColl").gameObject;
         ImageBord = GameObject.Find("Imagebord");
         ImageBord2 = GameObject.Find("Imagebord2");
+        particleType = (int)PARTICLE.NONE;
         LiquidType = 0;
         water_flag = true;
     }
@@ -260,7 +269,7 @@ public class PlayerAction : MonoBehaviour
 
         //OverFlagがtrueだったら
         OverControl();
-        Debug.Log(isGround);
+        //Debug.Log(isGround);
     }
 
     //----------------------------------------------------------------------
@@ -403,14 +412,11 @@ public class PlayerAction : MonoBehaviour
                     child.SetActive(true);
                     child.transform.position = transform.position + trans;
                 }
-                else
-                {
-                    child.SetActive(false);
-                }
                 //endPositionに到着
                 if (diff > time * 2)
                 {
-
+                    if (animationFlag[(int)ANIMATION.ATTACK] == true)
+                        child.SetActive(false);
                     if (isGround)
                     {
                         CardBord board = GameObject.Find("ActionBord").GetComponent<CardBord>();
@@ -504,6 +510,7 @@ public class PlayerAction : MonoBehaviour
                     //EffekseerHandle attack = EffekseerSystem.PlayEffect("attake", transform.position);
                     //particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     //CountDown.SetCountDown(type);
+                    watchController.GetComponent<WatchController>().CountWatchEffect();
                     break;
                 //finish
                 case CardManagement.CardType.Finish:
@@ -570,6 +577,8 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+            //専用のパーティカルを設定
+            particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
         }
@@ -583,6 +592,8 @@ public class PlayerAction : MonoBehaviour
             AnimationStop();
             //Overの文字を移動するためのフラグをonに
             OverFlag = true;
+            //専用のパーティカルを設定
+            particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
 
@@ -615,6 +626,11 @@ public class PlayerAction : MonoBehaviour
                 audioSource.PlayOneShot(Water);
                 water_flag = false;
             }
+        }
+        else if(coll.gameObject.tag=="magma")
+        {
+            //溶岩
+            LiquidType = (int)PARTICLE.LAVA;
         }
         else
         {
@@ -855,6 +871,10 @@ public class PlayerAction : MonoBehaviour
                 //毒のパーティクルを発生させる
                 particleType = (int)PARTICLE.POISON;
 
+                break;
+            case (int)PARTICLE.LAVA:
+                //溶岩のパーティクルを発生させる
+                particleType = (int)PARTICLE.LAVA;
                 break;
         }
         return LiquidType;

@@ -53,7 +53,7 @@ public class ScrollScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CameraPos);
+        //Debug.Log(CameraPos);
         // ギミックの動作中はスクロールさせない
         isUpdate = isUpdate ? !gamemanager.GetGimmickFlag() : isUpdate;
         if (isUpdate)

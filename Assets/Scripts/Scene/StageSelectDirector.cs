@@ -95,6 +95,10 @@ public class StageSelectDirector : MonoBehaviour
     // パンフレットをスワイプした回数
     private int swipCount = 0;
 
+    [SerializeField]
+    Button butto;
+
+
     // Use this for initialization
     void Start()
     {

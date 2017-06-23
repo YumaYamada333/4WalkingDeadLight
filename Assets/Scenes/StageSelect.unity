@@ -170,7 +170,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 7951a5ad7bff2454a8f8d0d46a727ff6, type: 3}
+  m_Texture: {fileID: 2800000, guid: 393dc1878288b92408e080cca25dff1d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -543,6 +543,7 @@ MonoBehaviour:
   activityAreaFlick: 15
   PlaySound: {fileID: 8300000, guid: 1542666c50be99c47bb19b898e227003, type: 3}
   ScrollSound: {fileID: 8300000, guid: 207adcc385be8944cb009ba2aa517a6e, type: 3}
+  butto: {fileID: 0}
 --- !u!114 &380236763
 MonoBehaviour:
   m_ObjectHideFlags: 0

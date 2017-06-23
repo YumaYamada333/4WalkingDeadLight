@@ -329,9 +329,9 @@ public class CardManagement : MonoBehaviour {
                 {
                     //つかむ判定を立てる
                     gripFlag = true;
-                    releaseFlag = false;
+                    //releaseFlag = false;
 
-                    Cbord.SetFlag(false);
+                    //Cbord.SetFlag(false);
 
                     tuckCard = cards[selectedCard];
                     cursor = CursorForcusTag.ActtionBord;

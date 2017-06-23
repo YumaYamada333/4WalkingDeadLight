@@ -3,10 +3,10 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class CardEffect : MonoBehaviour {
-    float alfa = 1.0f;          //透明度
+    float alfa = 0.0f;          //透明度
     float redl, greenl, bluel;  //左絵の原色
     float redr, greenr, bluer;  //右絵の原色
-    float Fspeed = 0.01f;       //フェード速度
+    float Fspeed = 0.025f;       //フェード速度
     bool fadeState = false;     //フェードフラグ
     bool counfFlag = false;     // カウントフラグ
     int fadeCount = 0;          //フェード回数カウント用
@@ -42,7 +42,7 @@ public class CardEffect : MonoBehaviour {
         cardmane = GameObject.Find("CardManager").GetComponent<CardManagement>();
         gamemane = GameObject.Find("GameManager").GetComponent<GameManager>();
         cardBord = GameObject.Find("ActionBord").GetComponent<CardBord>();
-       // button = GameObject.Find("ToCardSetButton").GetComponent<SetButton>();
+        //button = GameObject.Find("ToCardSetButton").GetComponent<SetButton>();
         tmp = gameObject.transform.position;
         
     }
@@ -67,10 +67,7 @@ public class CardEffect : MonoBehaviour {
         }
         if (gamemane.GetFlag() || cardBord.GetFlag())
         {
-            alfa = 0.0f;
-            //エフェクトを非表示にさせる
-            StarL.SetActive(false);
-            StarR.SetActive(false);
+            alfa = -1.0f;
         }
     }
 
@@ -82,32 +79,24 @@ public class CardEffect : MonoBehaviour {
         }
         else if(!cardmane.GetReleaseFlag())
         {
+            alfa = -1.0f;
             counfFlag = false;
-            //エフェクト非表示
-            StarL.SetActive(false);
-            StarR.SetActive(false);
-            alfa = 0.0f;
         }
 
         if (counfFlag)
         {
-            //エフェクトの表示
-            StarL.SetActive(true);
-            StarR.SetActive(true);
-        }
+            //エフェクト表示
+            if (alfa == 0.0f) 
+            {
+                alfa = 1.0f;
+            }
 
-        if (StarL.activeSelf && StarR.activeSelf)
-        {
             //フェードアウト
             alfa -= Fspeed;
             if (alfa <= 0.0f)
             {
-                StarL.SetActive(false);
-                StarR.SetActive(false);
+                Fspeed = 0.0f;
             }
-        }
-        
-        
+        }          
     }
-
 }
