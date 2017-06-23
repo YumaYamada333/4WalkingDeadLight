@@ -11,7 +11,7 @@ public class ToResultScene : MonoBehaviour {
 
     //"GAME OVER"と"CLEAR"を動かすための始点と終点と時間
     Vector3 resultStartPos = new Vector3(0, 350, 0);
-    Vector3 resultEndPos = new Vector3(0, 50, 0);
+    Vector3 resultEndPos = new Vector3(0, 15, 0);
     private float resultTime;
     float timeStep;
     bool OverFlag = false;

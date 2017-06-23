@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
                     if (GetGimmickFlag())
                         m_camera.ResetCamera(0.5f);
                     else
-                        m_camera.SetFocusObject(playerAction, new Vector3(0, 1, -10), true, 0.5f);
+                        m_camera.SetFocusObject(playerAction, new Vector3(0, 3, -10), true, 0.5f);
 
                     m_oldGimmickMoveFlag = m_gimmick_move_flag;
                 }
