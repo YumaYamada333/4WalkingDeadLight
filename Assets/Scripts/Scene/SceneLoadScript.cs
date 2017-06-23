@@ -111,8 +111,8 @@ public class SceneLoadScript : MonoBehaviour
 
         ButtonActive = GameObject.Find("unitychan").GetComponent<PlayerAction>();
         MoveFlag = true;
-        //ボタンとリザルトを消す
-        Invoke("Active", 0.7f);
+        ////ボタンとリザルトを消す
+        //Invoke("Active", 0.7f);
     }
     public void ResultActive()
     {
@@ -120,11 +120,11 @@ public class SceneLoadScript : MonoBehaviour
         GameClear.SetActive(false);
     }
 
-    void Active()
-    {
-        RetryButton.SetActive(false);
-        SelectButton.SetActive(false);
-        GameOver.SetActive(false);
-        GameClear.SetActive(false);
-    }
+    //void Active()
+    //{
+    //    RetryButton.SetActive(false);
+    //    SelectButton.SetActive(false);
+    //    GameOver.SetActive(false);
+    //    GameClear.SetActive(false);
+    //}
 }

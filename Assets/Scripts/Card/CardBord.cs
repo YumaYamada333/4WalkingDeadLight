@@ -184,6 +184,7 @@ public class CardBord : MonoBehaviour {
 
             if (Frameflag)
             {
+                //カードまで移動した時
                 if (frameMove == 1)
                 {
                     if (timeStep > 1.0f) timeStep = 1.0f;
@@ -198,6 +199,7 @@ public class CardBord : MonoBehaviour {
                         Upflag = true;
                     }
                 }
+                //カードから離れた時
                 if (frameMove == 2)
                 {
                     if (timeStep2 > 1.0f) timeStep2 = 1.0f;
@@ -212,15 +214,17 @@ public class CardBord : MonoBehaviour {
                         Downflag = true;
                     }
                 }
+                //動いてないとき
                 if (frameMove == 0)
                 {
+                    //カードに移動し切った時
                     if (Upflag)
                     {
                         Frameflag = false;
                         frameMove = 2;
                         Upflag = false;
                     }
-
+                    //カードから離れ切った時
                     if (Downflag)
                     {
                         Frameflag = false;
