@@ -174,6 +174,7 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //カメラのポジション
         CameraPos = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
         //OverPosに代入
@@ -369,7 +370,10 @@ public class PlayerAction : MonoBehaviour
                     middlePosition = new Vector3(transform.position.x, middlePosition.y, 0);
                     //移動しない
                     endPosition = new Vector3(transform.position.x, endPosition.y, 0);
-                    particleType = (int)PARTICLE.NONE;
+                    if (animationFlagNum == (int)ANIMATION.COUNT)
+                    {
+                        particleType = (int)PARTICLE.NONE;
+                    }
                     break;
             }
 
@@ -472,7 +476,7 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                 //カードセットフラグ
                     animationNum = (int)ANIMATION.MOVE;  //アニメーションの番号
                     animationName = "Move";              //アニメーションの名前
-                    if (!OverFlag)
+                    if (!OverFlag || isGround)
                     {
                         particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
                     }
