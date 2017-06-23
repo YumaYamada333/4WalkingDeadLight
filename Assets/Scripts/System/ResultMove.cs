@@ -8,6 +8,8 @@ public class ResultMove : MonoBehaviour
     GameObject GameClear;
     GameObject SelectButton;
     GameObject RetryButton;
+    public GameObject audio;
+    public GameObject audio2;
     //タイトルを動かすための始点と終点と時間
     Vector3 resultStartPos = new Vector3(0, 50, 0);
     Vector3 resultEndPos = new Vector3(0, 350, 0);
@@ -57,6 +59,8 @@ public class ResultMove : MonoBehaviour
         SceneLoadScript.MoveFlag = false;
 
         audioSource =GameObject.Find("GimmickAudio") .GetComponent<AudioSource>();
+
+        //audio2 = null;
     }
 
     // Update is called once per frame
@@ -77,7 +81,7 @@ public class ResultMove : MonoBehaviour
 
             if (SoundFlag)
             {
-                GetComponent<AudioSource>().Stop();
+                audio.GetComponent<AudioSource>().Stop();
                 audioSource.PlayOneShot(CrearSound);
                 SoundFlag = false;
             }
@@ -107,7 +111,12 @@ public class ResultMove : MonoBehaviour
 
             if (SoundFlag)
             {
-                GetComponent<AudioSource>().Stop();
+                if (audio2 != null)
+                {
+                    audio2.GetComponent<AudioSource>().Stop();
+                }
+                audio.GetComponent<AudioSource>().Stop();
+
                 audioSource.PlayOneShot(OverSound);
                 SoundFlag = false;
             }

@@ -101,6 +101,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Hit;
     public AudioClip Move;
     public AudioClip Water;
+    public AudioClip Magma;
 
 
     //パーティカルの種類判別用
@@ -125,7 +126,7 @@ public class PlayerAction : MonoBehaviour
     bool isSlideLerp;       //補完するべきか
 
     //クリア時にだすボタンの座標 (y,z)
-    float endButtonPosY = -103;
+    float endButtonPosY = -210;
     float endButtonPosZ = -1;
     float endButtonPosX = 90;
 
@@ -208,6 +209,7 @@ public class PlayerAction : MonoBehaviour
 
             //中間地点xを取得
             middlePosition.x = endPosition.x - nextPosition.x / 2;
+
         }
         //アクションを決める
         SetAction(animationNum);
@@ -367,6 +369,7 @@ public class PlayerAction : MonoBehaviour
                     middlePosition = new Vector3(transform.position.x, middlePosition.y, 0);
                     //移動しない
                     endPosition = new Vector3(transform.position.x, endPosition.y, 0);
+                    particleType = (int)PARTICLE.NONE;
                     break;
             }
 
@@ -524,6 +527,10 @@ public class PlayerAction : MonoBehaviour
             
 
                     break;
+                default:
+                    particleType = (int)PARTICLE.NONE;
+                    break;
+
             }
         }
     }
@@ -629,6 +636,9 @@ public class PlayerAction : MonoBehaviour
         }
         else if(coll.gameObject.tag=="magma")
         {
+
+            audioSource.PlayOneShot(Magma);
+            audioSource.PlayOneShot(Magma);
             //溶岩
             LiquidType = (int)PARTICLE.LAVA;
         }
