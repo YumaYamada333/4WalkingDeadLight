@@ -40,6 +40,10 @@ public class AttackCollider : MonoBehaviour {
             PlayerAudio.Stop();
             audioSource.PlayOneShot(block);
         }
+        if(coll.gameObject.tag == "Break")
+        {
+            audioSource.Stop();
+        }
     }
 
     public bool GetFlag()
