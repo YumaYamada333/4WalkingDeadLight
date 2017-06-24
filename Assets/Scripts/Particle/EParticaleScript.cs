@@ -73,12 +73,12 @@ public class EParticaleScript : MonoBehaviour {
             hit = false;
         }
 
-        if (!attack.activeSelf)
+        if (!attack.activeSelf && !hit)
         {
             //パーティクルの発生
             particle.Play();
         }
-        else if(!hit)
+        else if(hit && !attack.activeSelf)
         {
             //パーティクルの停止
             particle.Stop();
