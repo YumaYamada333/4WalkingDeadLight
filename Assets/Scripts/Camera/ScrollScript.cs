@@ -56,6 +56,7 @@ public class ScrollScript : MonoBehaviour
         //Debug.Log(CameraPos);
         // ギミックの動作中はスクロールさせない
         isUpdate = isUpdate ? !gamemanager.GetGimmickFlag() : isUpdate;
+        isUpdate = isUpdate ? !gamemanager.OverFlag() : isUpdate;
         if (isUpdate)
         {
             //左クリック
