@@ -16168,12 +16168,13 @@ MonoBehaviour:
   CanvasResetButton: {fileID: 332615963}
   CanvasSetButton: {fileID: 0}
   CanvasPlayButton: {fileID: 0}
-  Attack: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
+  Attack: {fileID: 8300000, guid: 0d6beccf0af730b4b85bbc707a74b3d3, type: 3}
   Jump: {fileID: 8300000, guid: 940b1eafada9d644a901c8529e54fab2, type: 3}
   Hit: {fileID: 8300000, guid: 8f98ae1b9b0801f48b609fee7b85a553, type: 3}
   Move: {fileID: 8300000, guid: a4c75e1b5820328419b48611eeb800f8, type: 3}
   Water: {fileID: 8300000, guid: 02a5026b92f4f70439bccc160a28fa69, type: 3}
   Magma: {fileID: 0}
+  Wall: {fileID: 8300000, guid: 9c284ff6b0ec17947846dea256e578a0, type: 3}
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8

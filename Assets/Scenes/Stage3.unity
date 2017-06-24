@@ -15443,6 +15443,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Attack
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d6beccf0af730b4b85bbc707a74b3d3, type: 3}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Wall
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c284ff6b0ec17947846dea256e578a0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0

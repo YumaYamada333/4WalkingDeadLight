@@ -102,6 +102,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Move;
     public AudioClip Water;
     public AudioClip Magma;
+    public AudioClip Wall;
 
 
     //パーティカルの種類判別用
@@ -607,6 +608,9 @@ public class PlayerAction : MonoBehaviour
             particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
+            audioSource.PlayOneShot(Wall);
+            audioSource.PlayOneShot(Wall);
+
 
         }
 
