@@ -509,6 +509,10 @@ public class PlayerAction : MonoBehaviour
                     {
                         particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     }
+                    else
+                    {
+                        audioSource.Stop();
+                    }
                     break;
                 case CardManagement.CardType.Count:
                     //audioSource.PlayOneShot(Attack);        //音
@@ -562,6 +566,8 @@ public class PlayerAction : MonoBehaviour
             OverFlag = true;
 
             audioSource.Stop();
+            
+
 
         }
         else

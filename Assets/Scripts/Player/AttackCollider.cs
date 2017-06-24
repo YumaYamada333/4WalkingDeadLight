@@ -7,13 +7,23 @@ public class AttackCollider : MonoBehaviour {
     //当たった判定
     bool Flag;
 
-	// Use this for initialization
-	void Start () {
+    /*音*/
+    public AudioClip block;
+    AudioSource audioSource;
+    AudioSource PlayerAudio;
+
+    // Use this for initialization
+    void Start ()
+    {
         Flag = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+        PlayerAudio = GameObject.Find("unitychan").GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
         Flag = false;
 	}
 
@@ -24,6 +34,11 @@ public class AttackCollider : MonoBehaviour {
         {
             Flag = true;
             Destroy(coll.gameObject);
+        }
+        if(coll.gameObject.tag == "Block")
+        {
+            PlayerAudio.Stop();
+            audioSource.PlayOneShot(block);
         }
     }
 
