@@ -23,6 +23,16 @@ public class StageSelectDirector : MonoBehaviour
         Stage8,
         Stage9,
         Stage10,
+        Stage11,
+        Stage12,
+        Stage13,
+        Stage14,
+        Stage15,
+        Stage16,
+        Stage17,
+        Stage18,
+        Stage19,
+        Stage20,
     }
 
     [System.Serializable]
