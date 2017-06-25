@@ -25,6 +25,7 @@ public class RisingSun : MonoBehaviour {
     /*BGM*/
     public AudioClip night;
     public AudioClip morning;
+    public AudioClip Bard;
 
     //スタートの時間
     private float m_start_time = 0.0f;
@@ -36,9 +37,13 @@ public class RisingSun : MonoBehaviour {
 
     private float SoundVolume;
 
+    private int bard_Cnt;
+    private bool bard_Flag;
+
     /*ギミック音を鳴らす*/
     AudioSource Nightaudio;
     AudioSource Morningaudio;
+    AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
@@ -52,11 +57,15 @@ public class RisingSun : MonoBehaviour {
 
         Nightaudio = GameObject.Find("NightAudio").GetComponent<AudioSource>();
         Morningaudio = GameObject.Find("MorningAudio").GetComponent<AudioSource>();
+        audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
 
         /*ギミック音を鳴らす*/
         Nightaudio.PlayOneShot(night);
         Morningaudio.PlayOneShot(morning);
 
+        bard_Cnt = 0;
+
+        bard_Flag = false;
     }
 
     // Update is called once per frame
@@ -80,8 +89,29 @@ public class RisingSun : MonoBehaviour {
         if (m_action_flag)
         {
 
-            if (Nightaudio.volume > 0) Nightaudio.volume -= SoundVolume;
-            if (Morningaudio.volume < 1) Morningaudio.volume += SoundVolume;
+            if (Nightaudio.volume > 0)
+            {
+                Nightaudio.volume -= SoundVolume;
+            }
+            if (bard_Cnt == 0)
+            {
+                    bard_Flag = true;
+            }
+           
+            if(bard_Cnt <= 70)
+            {
+                if (bard_Flag)
+                {
+                    audioSource.PlayOneShot(Bard, 0.5f);
+                    bard_Flag = false;
+                }
+                bard_Cnt++;
+            }
+
+            if (bard_Cnt >= 50)
+            {
+                if (Morningaudio.volume < 1) Morningaudio.volume += SoundVolume;
+            }
 
             //経過時間を移動時間で割る
             float timeStep = (Time.time - m_start_time) / m_act_time;

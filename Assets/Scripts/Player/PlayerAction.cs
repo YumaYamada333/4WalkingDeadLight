@@ -102,6 +102,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Move;
     public AudioClip Water;
     public AudioClip Magma;
+    public AudioClip Wall;
 
 
     //パーティカルの種類判別用
@@ -174,6 +175,7 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //カメラのポジション
         CameraPos = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
         //OverPosに代入
@@ -369,7 +371,10 @@ public class PlayerAction : MonoBehaviour
                     middlePosition = new Vector3(transform.position.x, middlePosition.y, 0);
                     //移動しない
                     endPosition = new Vector3(transform.position.x, endPosition.y, 0);
-                    particleType = (int)PARTICLE.NONE;
+                    if (animationFlagNum == (int)ANIMATION.COUNT)
+                    {
+                        particleType = (int)PARTICLE.NONE;
+                    }
                     break;
             }
 
@@ -472,7 +477,7 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                 //カードセットフラグ
                     animationNum = (int)ANIMATION.MOVE;  //アニメーションの番号
                     animationName = "Move";              //アニメーションの名前
-                    if (!OverFlag)
+                    if (!OverFlag || isGround)
                     {
                         particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
                     }
@@ -503,6 +508,10 @@ public class PlayerAction : MonoBehaviour
                     if (!OverFlag)
                     {
                         particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
+                    }
+                    else
+                    {
+                        audioSource.Stop();
                     }
                     break;
                 case CardManagement.CardType.Count:
@@ -557,6 +566,8 @@ public class PlayerAction : MonoBehaviour
             OverFlag = true;
 
             audioSource.Stop();
+            
+
 
         }
         else
@@ -603,6 +614,9 @@ public class PlayerAction : MonoBehaviour
             particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
+            audioSource.PlayOneShot(Wall);
+            audioSource.PlayOneShot(Wall);
+
 
         }
 

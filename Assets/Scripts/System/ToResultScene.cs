@@ -40,12 +40,15 @@ public class ToResultScene : MonoBehaviour {
         resultTime = Time.time + 50;
         WaiteTime = 0.0f;
 
+        //ゲームクリアとゲームオーバーの座標
         GameOver.transform.localPosition = new Vector3(0, 350, 0);
         GameClear.transform.localPosition = new Vector3(0, 350, 0);
 
+        //ゲームクリアとゲームオーバーのスケール
         GameOver.transform.localScale = new Vector3(5, 2.5f, 1);
         GameClear.transform.localScale = new Vector3(5, 2.5f, 1);
         isUpdate = true;
+        //紙吹雪エフェクトの停止
         Confetti.Stop();
 
 
@@ -62,14 +65,15 @@ public class ToResultScene : MonoBehaviour {
             {
                 player.GetComponent<PlayerAction>().particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
             }
+            //ゲームオーバーしたら指定位置までラープ
             timeStep = (Time.time - resultTime) / 0.3f;
             if (timeStep > 1.0f) timeStep = 1.0f;
             GameOver.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
         }
-        if(ClearFlag)
+        if (ClearFlag)
         {
             timeStep = 0;
-
+            //ゲームクリアしたら指定位置までラープ
             timeStep = (Time.time - resultTime) / 0.3f;
             if (timeStep > 1.0f) timeStep = 1.0f;
             GameClear.transform.localPosition = MathClass.Lerp(resultStartPos, resultEndPos, timeStep);
@@ -84,6 +88,9 @@ public class ToResultScene : MonoBehaviour {
             player.GetComponent<PlayerAction>().AnimationStop();
         player.GetComponent<Animator>().SetBool("Clear", true);
         player.GetComponent<PlayerAction>().enabled = false;
+        //紙吹雪エフェクトの出現タイミング
+        Confetti.transform.localPosition = new Vector3(-2.5f,3.5f,6);
+        //紙吹雪エフェクトの再生
         Confetti.Play();
 
         ClearFlag = true;
