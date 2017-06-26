@@ -102,6 +102,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Move;
     public AudioClip Water;
     public AudioClip Magma;
+    public AudioClip Wall;
 
 
     //パーティカルの種類判別用
@@ -508,6 +509,10 @@ public class PlayerAction : MonoBehaviour
                     {
                         particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     }
+                    else
+                    {
+                        audioSource.Stop();
+                    }
                     break;
                 case CardManagement.CardType.Count:
                     //audioSource.PlayOneShot(Attack);        //音
@@ -561,6 +566,8 @@ public class PlayerAction : MonoBehaviour
             OverFlag = true;
 
             audioSource.Stop();
+            
+
 
         }
         else
@@ -607,6 +614,9 @@ public class PlayerAction : MonoBehaviour
             particleType = (int)PARTICLE.HIT;
 
             audioSource.Stop();
+            audioSource.PlayOneShot(Wall);
+            audioSource.PlayOneShot(Wall);
+
 
         }
 

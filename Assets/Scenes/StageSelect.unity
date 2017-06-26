@@ -506,40 +506,70 @@ MonoBehaviour:
   m_zeroPos: {x: 0, y: -4.5, z: 0}
   m_pos: {x: 0, y: 1, z: 1}
   m_pamphletData:
-  - pamphletPrefab: {fileID: 1435797523848852, guid: c0edba4e7a17d16469845eb6232652c5,
+  - pamphletPrefab: {fileID: 1837929138163382, guid: c0edba4e7a17d16469845eb6232652c5,
       type: 2}
     nextScene: 1
-  - pamphletPrefab: {fileID: 1906319343670344, guid: 1be35e9e1fe7cf644a8e743067397de8,
+  - pamphletPrefab: {fileID: 1114446692830660, guid: 1be35e9e1fe7cf644a8e743067397de8,
       type: 2}
     nextScene: 2
-  - pamphletPrefab: {fileID: 1638912240411534, guid: 30ee79b909d992b47a5da7cc65778bd1,
+  - pamphletPrefab: {fileID: 1160765453408044, guid: 30ee79b909d992b47a5da7cc65778bd1,
       type: 2}
     nextScene: 3
-  - pamphletPrefab: {fileID: 1779639102049086, guid: 37d9af48ddf11064097b29f4c72fe952,
+  - pamphletPrefab: {fileID: 1578884973970766, guid: 37d9af48ddf11064097b29f4c72fe952,
       type: 2}
     nextScene: 4
-  - pamphletPrefab: {fileID: 1615459187258896, guid: debb6e2cb75a4084abeee9e9b89cd8a1,
+  - pamphletPrefab: {fileID: 1187038141382744, guid: debb6e2cb75a4084abeee9e9b89cd8a1,
       type: 2}
     nextScene: 5
-  - pamphletPrefab: {fileID: 1806326566946150, guid: ffbbac4e4a6483c4ca54f75de7ed8fe7,
+  - pamphletPrefab: {fileID: 1788266412356418, guid: ffbbac4e4a6483c4ca54f75de7ed8fe7,
       type: 2}
     nextScene: 6
-  - pamphletPrefab: {fileID: 1558659743593782, guid: 2e1558307fc96fd429156840f5671f05,
+  - pamphletPrefab: {fileID: 1421153350429910, guid: 2e1558307fc96fd429156840f5671f05,
       type: 2}
     nextScene: 7
-  - pamphletPrefab: {fileID: 1820672185432858, guid: 741c85056f86f4b419aa8f1f574254be,
+  - pamphletPrefab: {fileID: 1418999927680314, guid: 741c85056f86f4b419aa8f1f574254be,
       type: 2}
     nextScene: 8
-  - pamphletPrefab: {fileID: 1920501604850838, guid: b98190a603d255147be617060a1cec60,
+  - pamphletPrefab: {fileID: 1753449208981200, guid: b98190a603d255147be617060a1cec60,
       type: 2}
     nextScene: 9
-  - pamphletPrefab: {fileID: 1649543153320906, guid: 309aded2e9b5b0240b4cfdf03f19a19e,
+  - pamphletPrefab: {fileID: 1310496135656396, guid: 309aded2e9b5b0240b4cfdf03f19a19e,
       type: 2}
     nextScene: 10
+  - pamphletPrefab: {fileID: 1120189182610988, guid: 20748cdb7814f87408709391764da063,
+      type: 2}
+    nextScene: 11
+  - pamphletPrefab: {fileID: 1929461535156630, guid: 574fb5aa9db5c2e4a938dac80e5f83ae,
+      type: 2}
+    nextScene: 12
+  - pamphletPrefab: {fileID: 1928095319321282, guid: b8d1297a751aefc488609ddf49fd74c3,
+      type: 2}
+    nextScene: 13
+  - pamphletPrefab: {fileID: 1095830294182858, guid: 93f03bfa838dc4a448f59ee8bb470a53,
+      type: 2}
+    nextScene: 14
+  - pamphletPrefab: {fileID: 1382584152495164, guid: 92e003fea18adc643aaa58336a706d7c,
+      type: 2}
+    nextScene: 15
+  - pamphletPrefab: {fileID: 1071472358147250, guid: 19add6e49df17d54284488b238143d33,
+      type: 2}
+    nextScene: 16
+  - pamphletPrefab: {fileID: 1173187774614872, guid: 52bef476ba51e5f48b5859cf76c90119,
+      type: 2}
+    nextScene: 17
+  - pamphletPrefab: {fileID: 1281442469037612, guid: 1ea18ffbdf8651645b899f529d900403,
+      type: 2}
+    nextScene: 18
+  - pamphletPrefab: {fileID: 1285444926106194, guid: af4564c9f708fdc46a9a0c8b60d9e707,
+      type: 2}
+    nextScene: 19
+  - pamphletPrefab: {fileID: 1403639881766966, guid: aa292364bed9a72489eabc00390033c7,
+      type: 2}
+    nextScene: 20
   m_ribbon: {fileID: 1590000985}
   m_clearPrefab: {fileID: 1095684664569536, guid: bce489ca245c3cc4595d6b435426b81c,
     type: 2}
-  stepSpd: 0.01
+  stepSpd: 0.05
   activityAreaFlick: 15
   PlaySound: {fileID: 8300000, guid: 1542666c50be99c47bb19b898e227003, type: 3}
   ScrollSound: {fileID: 8300000, guid: 207adcc385be8944cb009ba2aa517a6e, type: 3}

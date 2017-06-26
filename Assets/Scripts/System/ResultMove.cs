@@ -99,7 +99,7 @@ public class ResultMove : MonoBehaviour
                     titleTime = Time.time;
                     ClearFunc.isUpdate = false;
                     ClearFlag = false;
-
+                    StageSelectDirector.SetAutoScroll(true);
                 }
             }
         }
@@ -137,6 +137,7 @@ public class ResultMove : MonoBehaviour
                     titleTime = Time.time;
                     OverFunc.isUpdate = false;
                     OverFlag = false;
+                    StageSelectDirector.SetAutoScroll(false);
                 }
             }
         }

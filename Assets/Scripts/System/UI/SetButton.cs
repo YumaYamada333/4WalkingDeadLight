@@ -28,6 +28,7 @@ public class SetButton : MonoBehaviour {
     GameManager gameManager;
 
     private bool flag = true;
+    private bool canScroll = true;
     //private float BordPosition_x;
     //private float BordPosition_y;
     //private float BordPosition_z;
@@ -154,13 +155,14 @@ public class SetButton : MonoBehaviour {
             //ActionBord.transform.localPosition = actPosActionBord/* + mainCamera.transform.position - firstPos*/;
         }
         CardBord board = ActionBord.GetComponent<CardBord>();
+        if (canScroll)
+        {
+            if (board.CheckLeftEnd()) ScrollRifhtButton.SetActive(false);
+            else ScrollRifhtButton.SetActive(true);
 
-        if (board.CheckLeftEnd()) ScrollRifhtButton.SetActive(false);
-        else ScrollRifhtButton.SetActive(true);
-
-        if (board.CheckRightEnd()) ScrollLeftButton.SetActive(false);
-        else ScrollLeftButton.SetActive(true);
-
+            if (board.CheckRightEnd()) ScrollLeftButton.SetActive(false);
+            else ScrollLeftButton.SetActive(true);
+        }
         timeStep = (Time.time - m_autoMoveTime) /*/ 10.0f*/;
         if (timeStep > 1.0f)
         {
@@ -328,6 +330,7 @@ public class SetButton : MonoBehaviour {
     {
         ScrollRifhtButton.SetActive(false);
         ScrollLeftButton.SetActive(false);
+        canScroll = false;
     }
 
     void StartMoveLerp()
