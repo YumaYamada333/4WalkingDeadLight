@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     //// カード間のインターバルタイム
     //public float spaceTime;
 
+    SetButton SetButtonCS;
+
     // カード時間
     float cardTime;
 
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
         timeStep = 0;
 
         Move_num = 0;
-
+        SetButtonCS = GameObject.Find("MoveManager").GetComponent<SetButton>();
     }
 
     // Update is called once per frame
@@ -208,6 +210,7 @@ public class GameManager : MonoBehaviour
 
         playButton.SetActive(false);
 
+        SetButtonCS.SetButtonToFasle();
         //Imagebord.SetActive(false);
 
         Imagebord2.SetActive(false);

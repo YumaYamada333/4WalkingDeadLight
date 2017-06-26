@@ -7473,6 +7473,7 @@ GameObject:
   - component: {fileID: 875512387}
   - component: {fileID: 875512386}
   - component: {fileID: 875512391}
+  - component: {fileID: 875512392}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -7577,6 +7578,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef4146628f8f9854aa086e471f286adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &875512392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875512384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f552f0b21c3bb4ea5d95b9ac3be44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &876321230
@@ -9827,6 +9839,26 @@ Prefab:
       propertyPath: CountManager
       value: 
       objectReference: {fileID: 2112663738}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Attack
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d6beccf0af730b4b85bbc707a74b3d3, type: 3}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d6beccf0af730b4b85bbc707a74b3d3, type: 3}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Wall
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c284ff6b0ec17947846dea256e578a0, type: 3}
+    - target: {fileID: 143448120304907324, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: m_Height
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0
