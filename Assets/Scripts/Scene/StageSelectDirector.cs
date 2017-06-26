@@ -81,6 +81,7 @@ public class StageSelectDirector : MonoBehaviour
     private float changeStep = 0.0f;                            // 切り替えのステップ
     private float curtainUpStep = 0.0f;
 
+    private static bool activeAutoScroll;
     static bool isEnd;                                         // scene切り替えフラグ
     Vector3 posBasePamphlet;
     Vector3 posRibbon;
@@ -148,6 +149,8 @@ public class StageSelectDirector : MonoBehaviour
             // ボタンのサイズ調整
             float size = childObject.GetComponent<RectTransform>().sizeDelta.y;
             childObject.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
+
+            if (m_space[0].pamphlietIndex >= m_pamphlet.Length - 1) activeAutoScroll = false;
         }
 
        // FlashingUGui.SetPlayButton(m_pamphlet[0].transform.Find("PamphletCanvas").transform.Find("PlayButton").gameObject);
@@ -182,8 +185,10 @@ public class StageSelectDirector : MonoBehaviour
             // 切り替えが行われていない
             if (changeStep >= 1.0f)
             {
-                if (MouseSystem.GetFlickDistance().y > activityAreaFlick)
+
+                if (MouseSystem.GetFlickDistance().y > activityAreaFlick || activeAutoScroll)
                 {
+                    activeAutoScroll = false;
                     // 配置空間のパンフインデックスの更新
                     for (int i = 0; i < m_space.Length; i++)
                     {
@@ -219,7 +224,7 @@ public class StageSelectDirector : MonoBehaviour
                     audioSource.PlayOneShot(SS);
                     Sound_flag = false;
                 }
-                changeStep += 0.1f;
+                changeStep += stepSpd;
                 if (changeStep > 0.95f)
                 {
                     changeStep = 1.0f;
@@ -340,6 +345,7 @@ public class StageSelectDirector : MonoBehaviour
                 m_space[i].pamphlietIndex = i;
             }
         }
+        SetAutoScroll(false);
     }
 
     public int GetSwipCnt()
@@ -350,6 +356,11 @@ public class StageSelectDirector : MonoBehaviour
     static public void SetisEnd(bool isend)
     {
         isEnd = isend;
+    }
+
+    static public void SetAutoScroll(bool active)
+    {
+        activeAutoScroll = active; 
     }
 
 }
