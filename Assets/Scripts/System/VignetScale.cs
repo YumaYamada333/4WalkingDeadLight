@@ -64,6 +64,15 @@ public class VignetScale : MonoBehaviour {
 
             m_obj.transform.localScale = (1 - timeStep) * m_start_scale + timeStep * (m_start_scale + m_act_distance);
 
+            if(m_old_gimmick)
+            {
+                if (m_obj.transform.localScale.x <= (m_start_scale + m_act_distance).x
+                    && m_obj.transform.localScale.y <= (m_start_scale + m_act_distance).y)
+                {
+                    m_obj.transform.localScale = (m_start_scale + m_act_distance);
+                } 
+            }
+
             //移動時間になったらフラグを止める
             if (timeStep > 1.0f)
             {
