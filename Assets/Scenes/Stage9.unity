@@ -7438,6 +7438,11 @@ Prefab:
       propertyPath: m_Height
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Countsound
+      value: 
+      objectReference: {fileID: 8300000, guid: c70045151d84bee4985e3f7005f1c236, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0

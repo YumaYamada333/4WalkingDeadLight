@@ -283,8 +283,11 @@ public class LinkActionCountDown : MonoBehaviour
     public GameObject m_game_manager;
     //複数オブジェクトが同タイミングで動く場合に最後に動き終わるオブジェクト
     public GameObject m_final_move_obj;
+    /*落ちるウサギ*/
+    public GameObject droprabit;
     /*移動音*/
     public AudioClip MoveSound;
+    public AudioClip rabitdrop;
     //リピートするかどうかのフラグ
     public bool m_repeat_flag = true;
 
@@ -314,6 +317,11 @@ public class LinkActionCountDown : MonoBehaviour
     //パーティクルフラグ取得
     public bool PartTim;
 
+    private bool drop_Flag;
+
+    /*ギミック音を鳴らす*/
+    private AudioSource audioSource;
+
     // Use this for initialization
     void Start()
     {
@@ -329,6 +337,11 @@ public class LinkActionCountDown : MonoBehaviour
         m_obj = this.gameObject;
         //初期待機時間を取得
         //m_init_wait_time = m_wait_time;
+
+        /*ギミック音を鳴らす*/
+        audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+
+        drop_Flag = true;
     }
 
     // Update is called once per frame
@@ -337,6 +350,20 @@ public class LinkActionCountDown : MonoBehaviour
         //カウントダウン
         GetCountZero();
 
+        //if (!rabitdrop)
+        //{
+            if (droprabit.transform.localPosition.y < 1.7f)
+            {
+                if (drop_Flag)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        audioSource.PlayOneShot(rabitdrop);
+                    }
+                        drop_Flag = false;
+                }
+            }
+        //}
         //フラグが立ったらアクションの準備
         if (m_action_flag == true &&
             m_action_flag != m_old_flag)
@@ -389,8 +416,7 @@ public class LinkActionCountDown : MonoBehaviour
             m_old_flag == false)
         {
 
-            /*ギミック音を鳴らす*/
-            AudioSource audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
+            
             audioSource.PlayOneShot(MoveSound);
 
             //ゲームマネージャーのギミックが移動している判定用のフラグをあげる
