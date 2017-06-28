@@ -1834,7 +1834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollstart: {x: 0, y: 0}
-  rangePosX: 15
+  rangePosX: 0
   rangePosY: 0
   underOffset: 0
   safityArea: 20

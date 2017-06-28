@@ -1710,6 +1710,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4828236410964526, guid: 24a7bbc235317004fa9bbf314ac5b4c5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24a7bbc235317004fa9bbf314ac5b4c5, type: 2}
   m_IsPrefabParent: 0
@@ -1856,7 +1860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollstart: {x: 0, y: 0}
-  rangePosX: 15
+  rangePosX: 0
   rangePosY: 0
   underOffset: 0
   safityArea: 20
@@ -4226,7 +4230,7 @@ Prefab:
     - target: {fileID: 143448120304907324, guid: ada03c3df37803c4eb38abae731b56b5,
         type: 2}
       propertyPath: m_Height
-      value: 1.29
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
         type: 2}
