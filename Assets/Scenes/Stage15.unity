@@ -700,6 +700,11 @@ Prefab:
       propertyPath: m_Height
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Countsound
+      value: 
+      objectReference: {fileID: 8300000, guid: c70045151d84bee4985e3f7005f1c236, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0
@@ -1001,6 +1006,11 @@ CanvasRenderer:
 --- !u!1 &319156168 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1345697335594260, guid: d5e7fd29cd5b4414094f7cb657026683,
+    type: 2}
+  m_PrefabInternal: {fileID: 1173784594}
+--- !u!1 &334699085 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1621715844471312, guid: d5e7fd29cd5b4414094f7cb657026683,
     type: 2}
   m_PrefabInternal: {fileID: 1173784594}
 --- !u!1 &340612154
@@ -3129,6 +3139,11 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114256619277041172, guid: d5e7fd29cd5b4414094f7cb657026683,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 334699085}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5e7fd29cd5b4414094f7cb657026683, type: 2}
   m_IsPrefabParent: 0

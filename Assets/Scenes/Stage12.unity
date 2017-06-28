@@ -1626,6 +1626,16 @@ Prefab:
       propertyPath: Bard
       value: 
       objectReference: {fileID: 8300000, guid: cfe762451c724ed4fa5b498d6dd18f6a, type: 3}
+    - target: {fileID: 114743587139192798, guid: aa7db4e18b0208043b3bd18aa607e1e5,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 656705330}
+    - target: {fileID: 114487538668096872, guid: aa7db4e18b0208043b3bd18aa607e1e5,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 656705330}
     m_RemovedComponents:
     - {fileID: 136954730683121388, guid: aa7db4e18b0208043b3bd18aa607e1e5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: aa7db4e18b0208043b3bd18aa607e1e5, type: 2}
