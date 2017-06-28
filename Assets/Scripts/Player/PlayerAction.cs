@@ -702,12 +702,13 @@ public class PlayerAction : MonoBehaviour
                         particleType = (int)PARTICLE.LANDING;        //パーティカルの種類決定
                     }
                 }
-                else
-                {
-                    particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
-                }
             }
         }
+        else
+        {
+            particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
+        }
+
         //tagがUntaggedで待機中の場合
         if (hit.gameObject.tag == "Untagged" && IsIdle())
         {
