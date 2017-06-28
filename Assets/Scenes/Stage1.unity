@@ -743,7 +743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 5, y: -229.42}
+  m_AnchoredPosition: {x: 5, y: -229.41998}
   m_SizeDelta: {x: 737, y: 441.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130047520
@@ -16420,6 +16420,7 @@ MonoBehaviour:
   Water: {fileID: 8300000, guid: 02a5026b92f4f70439bccc160a28fa69, type: 3}
   Magma: {fileID: 0}
   Wall: {fileID: 8300000, guid: 9c284ff6b0ec17947846dea256e578a0, type: 3}
+  Countsound: {fileID: 0}
   particleType: 0
   CountManager: {fileID: 2112663738}
   gravity: 5.8
@@ -16516,7 +16517,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.2
+  m_Height: 1.29
   m_Radius: 0.13
   m_SlopeLimit: 45
   m_StepOffset: 0.3
