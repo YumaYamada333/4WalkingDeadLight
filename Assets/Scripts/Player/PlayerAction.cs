@@ -529,6 +529,7 @@ public class PlayerAction : MonoBehaviour
                     cardSetFlag = true;                     //カードセットフラグ
                     animationNum = (int)ANIMATION.ATTACK;   //アニメーションの番号
                     animationName = "Over";                 //アニメーションの名前
+                    //particleType = (int)PARTICLE.DAMAGE;
                     //プレイヤーのアクションを止める
                     AnimationStop();
                     //Overの文字を移動するためのフラグをonに
