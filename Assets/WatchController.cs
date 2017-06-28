@@ -45,12 +45,15 @@ public class WatchController : MonoBehaviour {
 
     public void CountWatchEffect()
     {
-        m_effectFlag = true;
-        gameObject.SetActive(true);
-        m_time = Time.time;
-        m_pos = m_player.transform.position;
-        m_minuteHand.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        transform.localPosition = m_pos + new Vector3(0,1,0);
+        if (GameObject.Find("GameManager").GetComponent<GameManager>().OverFlag() != true)
+        {
+            m_effectFlag = true;
+            gameObject.SetActive(true);
+            m_time = Time.time;
+            m_pos = m_player.transform.position;
+            m_minuteHand.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localPosition = m_pos + new Vector3(0, 1, 0);
+        }
     }
 }
