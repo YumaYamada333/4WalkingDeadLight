@@ -61,7 +61,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1631901569443744}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 7
+  simulationSpeed: 50
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -108,7 +108,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1680532043
+  randomSeed: 1988935941
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -255,7 +255,7 @@ ParticleSystem:
       maxColor: {r: 0.6627451, g: 1, b: 1, a: 1}
     startSize:
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1521,7 +1521,7 @@ ParticleSystem:
         m_RotationOrder: 4
     magnitude:
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:

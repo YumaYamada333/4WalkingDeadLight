@@ -452,6 +452,8 @@ public class PlayerAction : MonoBehaviour
                     else
                     {
                         transform.position -= new Vector3(0, Constants.FallVelocity, 0);
+                        particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
+
                     }
                 }
             }
