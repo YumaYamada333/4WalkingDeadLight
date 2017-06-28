@@ -4223,7 +4223,9 @@ MonoBehaviour:
   m_count_obj: {fileID: 138897387}
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 0}
+  droprabit: {fileID: 509787660}
   MoveSound: {fileID: 0}
+  rabitdrop: {fileID: 0}
   m_repeat_flag: 1
   PartTim: 0
 --- !u!65 &509787663
@@ -9859,6 +9861,11 @@ Prefab:
       propertyPath: m_Height
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114468435559561982, guid: ada03c3df37803c4eb38abae731b56b5,
+        type: 2}
+      propertyPath: Countsound
+      value: 
+      objectReference: {fileID: 8300000, guid: c70045151d84bee4985e3f7005f1c236, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ada03c3df37803c4eb38abae731b56b5, type: 2}
   m_IsPrefabParent: 0
@@ -10849,7 +10856,9 @@ MonoBehaviour:
   m_count_obj: {fileID: 138897387}
   m_game_manager: {fileID: 208914368}
   m_final_move_obj: {fileID: 0}
+  droprabit: {fileID: 1251206087}
   MoveSound: {fileID: 0}
+  rabitdrop: {fileID: 0}
   m_repeat_flag: 1
   PartTim: 0
 --- !u!65 &1251206090

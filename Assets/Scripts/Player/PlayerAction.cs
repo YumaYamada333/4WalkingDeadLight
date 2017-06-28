@@ -103,6 +103,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip Water;
     public AudioClip Magma;
     public AudioClip Wall;
+    public AudioClip Countsound;
 
 
     //パーティカルの種類判別用
@@ -481,7 +482,7 @@ public class PlayerAction : MonoBehaviour
                     {
                         particleType = (int)PARTICLE.MOVE;               //パーティクルの種類決定
                     }
-                    else
+                    if(OverFlag)
                     {
                         audioSource.Stop();
                     }
@@ -515,7 +516,10 @@ public class PlayerAction : MonoBehaviour
                     }
                     break;
                 case CardManagement.CardType.Count:
-                    //audioSource.PlayOneShot(Attack);        //音
+                    for (int i = 0; i < 20; i++)
+                    {
+                        audioSource.PlayOneShot(Countsound,1.0f);        //音
+                    }
                     cardSetFlag = true;                     //カードセットフラグ
                     animationNum = (int)ANIMATION.COUNT;   //アニメーションの番号
                     animationName = "Count";               //アニメーションの名前
@@ -523,6 +527,10 @@ public class PlayerAction : MonoBehaviour
                     //particleType = (int)PARTICLE.ATTACK;        //パーティカルの種類決定
                     //CountDown.SetCountDown(type);
                     watchController.GetComponent<WatchController>().CountWatchEffect();
+                    if (OverFlag)
+                    {
+                        audioSource.Stop();
+                    }
                     break;
                 //finish
                 case CardManagement.CardType.Finish:

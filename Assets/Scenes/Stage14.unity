@@ -144,6 +144,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &69730724 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1097226725682740, guid: 8c4465c656d494342adbc71b02ae2036,
+    type: 2}
+  m_PrefabInternal: {fileID: 381668579}
 --- !u!1 &130047518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1120,36 @@ Prefab:
       propertyPath: MoveSound
       value: 
       objectReference: {fileID: 8300000, guid: 75f846155eec9d84f88050027747c035, type: 3}
+    - target: {fileID: 114114568258706260, guid: 8c4465c656d494342adbc71b02ae2036,
+        type: 2}
+      propertyPath: MoveSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114114568258706260, guid: 8c4465c656d494342adbc71b02ae2036,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 69730724}
+    - target: {fileID: 114114568258706260, guid: 8c4465c656d494342adbc71b02ae2036,
+        type: 2}
+      propertyPath: rabitdrop
+      value: 
+      objectReference: {fileID: 8300000, guid: a1082f436f1953140be9338b4d76e612, type: 3}
+    - target: {fileID: 114322978441286336, guid: 8c4465c656d494342adbc71b02ae2036,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 69730724}
+    - target: {fileID: 114955216844863284, guid: 8c4465c656d494342adbc71b02ae2036,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 69730724}
+    - target: {fileID: 114893098075245212, guid: 8c4465c656d494342adbc71b02ae2036,
+        type: 2}
+      propertyPath: droprabit
+      value: 
+      objectReference: {fileID: 69730724}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c4465c656d494342adbc71b02ae2036, type: 2}
   m_IsPrefabParent: 0
