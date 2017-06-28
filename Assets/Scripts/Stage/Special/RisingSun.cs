@@ -60,8 +60,8 @@ public class RisingSun : MonoBehaviour {
         audioSource = GameObject.Find("GimmickAudio").GetComponent<AudioSource>();
 
         /*ギミック音を鳴らす*/
-        Nightaudio.PlayOneShot(night);
-        Morningaudio.PlayOneShot(morning);
+        //Nightaudio.PlayOneShot(night);
+       // Morningaudio.PlayOneShot(morning);
 
         bard_Cnt = 0;
 
