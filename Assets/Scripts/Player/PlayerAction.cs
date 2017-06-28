@@ -264,6 +264,7 @@ public class PlayerAction : MonoBehaviour
         else
         {
             isGround = false;
+            particleType = (int)PARTICLE.NONE;               //パーティクルの種類決定
         }
 
         //液体パーティクル判別
@@ -551,6 +552,10 @@ public class PlayerAction : MonoBehaviour
 
             }
         }
+        else
+        {
+            particleType = (int)PARTICLE.NONE;
+        }
     }
 
     //----------------------------------------------------------------------
@@ -704,11 +709,6 @@ public class PlayerAction : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
-        }
-
         //tagがUntaggedで待機中の場合
         if (hit.gameObject.tag == "Untagged" && IsIdle())
         {
