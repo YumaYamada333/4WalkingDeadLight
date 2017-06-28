@@ -2525,7 +2525,7 @@ Prefab:
     - target: {fileID: 198041484583552126, guid: 6b676e3500227974fa9b0dc4072e53cb,
         type: 2}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 198041484583552126, guid: 6b676e3500227974fa9b0dc4072e53cb,
         type: 2}
@@ -2535,7 +2535,7 @@ Prefab:
     - target: {fileID: 198041484583552126, guid: 6b676e3500227974fa9b0dc4072e53cb,
         type: 2}
       propertyPath: simulationSpeed
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b676e3500227974fa9b0dc4072e53cb, type: 2}
