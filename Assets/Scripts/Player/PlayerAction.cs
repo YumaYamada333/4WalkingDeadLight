@@ -134,6 +134,9 @@ public class PlayerAction : MonoBehaviour
 
     //液体ブロック種類判別用
     public int LiquidType;
+    int LandCnt;
+    bool LandFlag;
+    private Vector3 LandPos;
 
     /*水の音フラグ*/
     private bool water_flag;
@@ -171,6 +174,9 @@ public class PlayerAction : MonoBehaviour
         particleType = (int)PARTICLE.NONE;
         LiquidType = 0;
         water_flag = true;
+        LandFlag = false;
+        LandCnt = 0;
+        LandPos = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -265,6 +271,21 @@ public class PlayerAction : MonoBehaviour
         {
             isGround = false;
             particleType = (int)PARTICLE.NONE;               //パーティクルの種類決定
+        }
+
+        if(LandFlag)
+        {
+            LandCnt++;
+            if(LandCnt<=30)
+            {
+                particleType = (int)PARTICLE.LANDING;               //パーティクルの種類決定
+            }
+            else
+            {
+                LandCnt = 0;
+                particleType = (int)PARTICLE.NONE;               //パーティクルの種類決定
+                LandFlag = false;
+            }
         }
 
         //液体パーティクル判別
@@ -706,7 +727,8 @@ public class PlayerAction : MonoBehaviour
                 {
                     if (!ClearFlag && !OverFlag)
                     {
-                        particleType = (int)PARTICLE.LANDING;        //パーティカルの種類決定
+                        LandFlag = true;
+                        LandPos = transform.position;
                     }
                 }
             }
@@ -914,6 +936,11 @@ public class PlayerAction : MonoBehaviour
                 break;
         }
         return LiquidType;
+    }
+
+    public Vector3 GetPos()
+    {
+        return LandPos;
     }
 
 }

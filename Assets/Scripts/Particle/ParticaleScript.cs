@@ -131,6 +131,7 @@ public class ParticaleScript : MonoBehaviour
             case LANDING:
                 if (particle.name == "LandingParticle")
                 {
+                    transform.position = new Vector3(act.GetPos().x, act.GetPos().y, act.GetPos().z);
                     particle.Play();
                 }
                 else
