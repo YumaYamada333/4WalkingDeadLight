@@ -70,7 +70,6 @@ public class HeatRock : MonoBehaviour {
 
             //経過時間を移動時間で割る
             float timeStep = (Time.time - m_start_time) / 1;
-
             if (timeStep <= 1.0f)
             {
                 //色を徐々に変える
@@ -80,6 +79,19 @@ public class HeatRock : MonoBehaviour {
                                                 1.0f);
             }
                
+            if(timeStep > 0.6f)
+            {
+                if (m_isHeat )
+                {
+                    //熱当たり判定を変更
+                    m_heat_obj.SetActive(false);
+                }
+                else
+                {
+                    //熱当たり判定を変更
+                    m_heat_obj.SetActive(true);
+                }
+            }
            
 
             //移動時間になったらフラグを止める
@@ -131,7 +143,7 @@ public class HeatRock : MonoBehaviour {
             //マテリアルを変更
             //m_rock_obj.GetComponent<MeshRenderer>().material = m_material[0];
             //熱当たり判定を変更
-            m_heat_obj.SetActive(true);
+            //m_heat_obj.SetActive(true);
             //タグを変更
             this.tag = "Break";
         }
@@ -140,7 +152,7 @@ public class HeatRock : MonoBehaviour {
             //マテリアルを変更
             //m_rock_obj.GetComponent<MeshRenderer>().material = m_material[1];
             //熱当たり判定を変更
-            m_heat_obj.SetActive(false);
+            //m_heat_obj.SetActive(false);
             //タグを変更
             this.tag = "Block";
         }

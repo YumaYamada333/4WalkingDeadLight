@@ -3857,6 +3857,26 @@ Prefab:
       propertyPath: MagmaSound
       value: 
       objectReference: {fileID: 8300000, guid: de51a681481b49d4d921dd5d3c868fdf, type: 3}
+    - target: {fileID: 65989981919286956, guid: 2a30ad8f99fc77f4880575e1b933454c,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65989981919286956, guid: 2a30ad8f99fc77f4880575e1b933454c,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 65013439412173960, guid: 2a30ad8f99fc77f4880575e1b933454c,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65013439412173960, guid: 2a30ad8f99fc77f4880575e1b933454c,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a30ad8f99fc77f4880575e1b933454c, type: 2}
   m_IsPrefabParent: 0
