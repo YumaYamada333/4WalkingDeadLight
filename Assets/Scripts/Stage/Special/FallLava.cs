@@ -214,6 +214,12 @@ public class FallLava : MonoBehaviour
             m_action_flag == false &&
             m_old_flag == false)
         {
+            //Debug.Log("countzero");
+            //ゲームマネージャーのギミックが移動している判定用のフラグをあげる
+            m_game_manager.GetComponent<GameManager>().SetGimmickFlag(true);
+            //起動フラグを上げる
+            m_awake_flag = true;
+
             //待機時間があるなら待機する
             if (m_wait_time > 0.0f)
             {
@@ -222,12 +228,6 @@ public class FallLava : MonoBehaviour
             }
             else
             {
-                //ゲームマネージャーのギミックが移動している判定用のフラグをあげる
-                m_game_manager.GetComponent<GameManager>().SetGimmickFlag(true);
-                //起動フラグを上げる
-                m_awake_flag = true;
-
-
                 //フラグを上げる
                 m_action_flag = true;
             }
