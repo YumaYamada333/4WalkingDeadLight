@@ -3701,7 +3701,7 @@ Prefab:
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
       propertyPath: randomSeed
-      value: -35633218
+      value: -598661972
       objectReference: {fileID: 0}
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
@@ -3728,6 +3728,11 @@ Prefab:
       propertyPath: breakObject
       value: 
       objectReference: {fileID: 381668588}
+    - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
+        type: 2}
+      propertyPath: ClampVelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e047fdcbcde68645be822dfeaf082b5, type: 2}
   m_IsPrefabParent: 0
@@ -4071,7 +4076,7 @@ Prefab:
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
       propertyPath: randomSeed
-      value: 310415759
+      value: 399668078
       objectReference: {fileID: 0}
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
@@ -4093,6 +4098,11 @@ Prefab:
       propertyPath: breakObject
       value: 
       objectReference: {fileID: 381668587}
+    - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
+        type: 2}
+      propertyPath: ClampVelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e047fdcbcde68645be822dfeaf082b5, type: 2}
   m_IsPrefabParent: 0

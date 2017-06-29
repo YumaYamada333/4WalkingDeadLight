@@ -6,6 +6,8 @@ public class AttackCollider : MonoBehaviour {
 
     //当たった判定
     bool Flag;
+    //オブジェクト名
+    string ObjName;
 
     /*音*/
     public AudioClip block;
@@ -33,6 +35,7 @@ public class AttackCollider : MonoBehaviour {
         if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Break")
         {
             Flag = true;
+            ObjName = coll.gameObject.name;
             Destroy(coll.gameObject);
         }
         if(coll.gameObject.tag == "Block")
@@ -49,5 +52,10 @@ public class AttackCollider : MonoBehaviour {
     public bool GetFlag()
     {
         return Flag;
+    }
+
+    public string GetName()
+    {
+        return ObjName;
     }
 }

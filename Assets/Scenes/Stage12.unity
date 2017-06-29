@@ -3971,7 +3971,7 @@ Prefab:
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
       propertyPath: ShapeModule.type
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
@@ -4781,7 +4781,7 @@ Prefab:
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
       propertyPath: ShapeModule.type
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198553325537849116, guid: 6e047fdcbcde68645be822dfeaf082b5,
         type: 2}
