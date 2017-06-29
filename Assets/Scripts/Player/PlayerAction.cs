@@ -717,6 +717,7 @@ public class PlayerAction : MonoBehaviour
             slideStartTime = Time.timeSinceLevelLoad;
             slideStartPos = transform.position;
             float pos = transform.position.x;
+            particleType = (int)PARTICLE.NONE;        //パーティカルの種類決定
             //場所が違う場合
             if (pos % 2 != 0 && isSlidisgOld == true)
             {
